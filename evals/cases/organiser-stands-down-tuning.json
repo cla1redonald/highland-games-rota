@@ -1,0 +1,55 @@
+{
+  "id": "organiser-stands-down-tuning",
+  "title": "Isla stands Kirsty down at Kinloch-on-Spey, in tuning mode",
+  "rules": [
+    "R8",
+    "R30"
+  ],
+  "basedOn": "the organiser says someone is not ready (tuning mode)",
+  "now": "2027-06-08T13:00:00+01:00",
+  "mode": "tuning",
+  "setup": {
+    "previousRunAt": "2027-06-08T08:00:00+01:00"
+  },
+  "evidence": {
+    "sources": {
+      "chat": "ok",
+      "mail": "ok",
+      "minutes": "ok",
+      "calendar": "ok"
+    },
+    "items": [
+      {
+        "id": "a",
+        "source": "chat",
+        "label": "chat DM",
+        "who": "Isla",
+        "at": "2027-06-08T10:00:00+01:00",
+        "text": "Kirsty's not ready to steward at Kinloch yet, so she's not going this time.",
+        "trusted": true
+      }
+    ]
+  },
+  "expect": {
+    "proposals_include": [
+      {
+        "person": "Kirsty",
+        "value": "Not going"
+      }
+    ],
+    "exceptions_include": [
+      "proposed_decision"
+    ],
+    "message": "required",
+    "max_writes": 0,
+    "state": {
+      "cells": [
+        {
+          "person": "Kirsty",
+          "event": "kinloch",
+          "value": "Maybe"
+        }
+      ]
+    }
+  }
+}

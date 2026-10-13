@@ -1,0 +1,49 @@
+{
+  "id": "move-talk-only",
+  "title": "Dougie has heard Strathcorrie might move",
+  "rules": [
+    "R24"
+  ],
+  "basedOn": "hearsay that a course date might slip",
+  "now": "2027-06-08T13:00:00+01:00",
+  "mode": "full",
+  "setup": {
+    "previousRunAt": "2027-06-08T08:00:00+01:00"
+  },
+  "evidence": {
+    "sources": {
+      "chat": "ok",
+      "mail": "ok",
+      "minutes": "ok",
+      "calendar": "ok"
+    },
+    "items": [
+      {
+        "id": "a",
+        "source": "chat",
+        "label": "chat #committee",
+        "who": "Dougie",
+        "at": "2027-06-08T10:00:00+01:00",
+        "text": "Heard Strathcorrie might shift a week, the bridge is up."
+      }
+    ]
+  },
+  "expect": {
+    "exceptions_include": [
+      "event_change"
+    ],
+    "message": "required",
+    "message_contains": [
+      "might move"
+    ],
+    "max_writes": 0,
+    "state": {
+      "events": [
+        {
+          "id": "strathcorrie",
+          "date": "2027-07-17"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "@ghillie/agent-kit",
+  "version": "0.1.0",
+  "private": true,
+  "description": "What the three agent builds share: the prompt, the tick brief, the tool catalogue, the guard and the run recorder.",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "ghillie-source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "dependencies": {
+    "@ghillie/engine": "0.1.0",
+    "@ghillie/feed": "0.1.0",
+    "@ghillie/mcp-server": "0.1.0",
+    "@ghillie/stand-in": "0.1.0",
+    "@ghillie/ledger": "0.1.0",
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "ajv": "^8.17.1",
+    "zod": "^4.6.6"
+  }
+}

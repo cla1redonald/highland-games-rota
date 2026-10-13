@@ -1,0 +1,69 @@
+{
+  "id": "own-edit-beats-summary",
+  "title": "Isla's newer hand edit beats her own older summary that arrives later",
+  "rules": [
+    "R2",
+    "R1"
+  ],
+  "basedOn": "a person's own edit beats an older summary of their dates",
+  "now": "2027-06-08T13:00:00+01:00",
+  "mode": "tuning",
+  "setup": {
+    "previousRunAt": "2027-06-08T08:00:00+01:00",
+    "after": [
+      {
+        "at": "2027-06-08T10:30:00+01:00",
+        "edits": [
+          {
+            "person": "Hamish",
+            "event": "kinloch",
+            "value": "Maybe"
+          }
+        ]
+      }
+    ]
+  },
+  "evidence": {
+    "sources": {
+      "chat": "ok",
+      "mail": "ok",
+      "minutes": "ok",
+      "calendar": "ok"
+    },
+    "items": [
+      {
+        "id": "a",
+        "source": "chat",
+        "label": "chat DM",
+        "who": "Isla",
+        "at": "2027-06-08T09:30:00+01:00",
+        "text": "Hamish can't do Kinloch.",
+        "trusted": true
+      }
+    ]
+  },
+  "expect": {
+    "refused_include": [
+      {
+        "action": "set_availability",
+        "person": "Hamish",
+        "event": "kinloch",
+        "outcome": "newer_entry"
+      }
+    ],
+    "exceptions_exclude": [
+      "unresolved",
+      "booked_dropout"
+    ],
+    "max_writes": 0,
+    "state": {
+      "cells": [
+        {
+          "person": "Hamish",
+          "event": "kinloch",
+          "value": "Maybe"
+        }
+      ]
+    }
+  }
+}

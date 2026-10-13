@@ -1,0 +1,69 @@
+{
+  "id": "until-excludes-end",
+  "title": "Hamish is available until 9 July",
+  "rules": [
+    "R3",
+    "R14",
+    "R30"
+  ],
+  "basedOn": "available until the week of a date",
+  "now": "2027-06-08T13:00:00+01:00",
+  "mode": "tuning",
+  "setup": {
+    "previousRunAt": "2027-06-08T08:00:00+01:00"
+  },
+  "evidence": {
+    "sources": {
+      "chat": "ok",
+      "mail": "ok",
+      "minutes": "ok",
+      "calendar": "ok"
+    },
+    "items": [
+      {
+        "id": "a",
+        "source": "chat",
+        "label": "chat #stewards",
+        "who": "Hamish",
+        "at": "2027-06-08T10:00:00+01:00",
+        "text": "Available until 9 July."
+      }
+    ]
+  },
+  "expect": {
+    "writes_include": [
+      {
+        "action": "set_availability",
+        "person": "Hamish",
+        "event": "balvaig",
+        "value": "No"
+      },
+      {
+        "action": "set_availability",
+        "person": "Hamish",
+        "event": "inverallt",
+        "value": "No"
+      }
+    ],
+    "writes_exclude": [
+      {
+        "person": "Hamish",
+        "event": "balvaig",
+        "value": "Yes"
+      },
+      {
+        "person": "Hamish",
+        "event": "inverallt",
+        "value": "Yes"
+      }
+    ],
+    "exceptions_include": [
+      "tuning_write"
+    ],
+    "message": "required",
+    "message_contains": [
+      "until Friday 9 July"
+    ],
+    "max_writes": 4
+  }
+}

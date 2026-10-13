@@ -1,0 +1,77 @@
+{
+  "threads": [
+    {
+      "id": "thread-briefing",
+      "subject": "Glen Dunnock: stewards' briefing",
+      "messages": [
+        {
+          "id": "msg-briefing-1",
+          "from": "isla.munro@example.scot",
+          "to": [
+            "stewards@example.scot"
+          ],
+          "date": "2027-06-07T08:30:00+01:00",
+          "body": "Briefing at the hall on Thursday 24 June, 7pm. Tea and pieces provided."
+        },
+        {
+          "id": "msg-briefing-2",
+          "from": "gregor.pirie@example.scot",
+          "to": [
+            "isla.munro@example.scot"
+          ],
+          "date": "2027-06-08T12:15:00+01:00",
+          "body": "Free until the Auchterbrae Games apart from my gall bladder op on Tuesday 29 June, and then a fortnight of no lifting. See you at the briefing."
+        }
+      ]
+    },
+    {
+      "id": "thread-piping",
+      "subject": "Glen Dunnock piping",
+      "messages": [
+        {
+          "id": "msg-piping-1",
+          "from": "isla.munro@example.scot",
+          "to": [
+            "calum.rattray@example.scot"
+          ],
+          "date": "2027-06-11T16:00:00+01:00",
+          "body": "Calum, are you still piping and stewarding at Glen Dunnock?"
+        },
+        {
+          "id": "msg-piping-2",
+          "from": "calum.rattray@example.scot",
+          "to": [
+            "isla.munro@example.scot"
+          ],
+          "date": "2027-06-11T16:45:00+01:00",
+          "body": "Aye, Glen Dunnock is fine. The pipes are another matter."
+        },
+        {
+          "id": "msg-piping-3",
+          "from": "calum.rattray@example.scot",
+          "to": [
+            "isla.munro@example.scot"
+          ],
+          "date": "2027-06-18T17:40:00+01:00",
+          "staleInListing": true,
+          "body": "Isla, I'm sorry, I'll have to pull out of Glen Dunnock. The band's been double-booked for the Saturday and I can't let them down."
+        }
+      ]
+    },
+    {
+      "id": "thread-lift",
+      "subject": "Lift to Balvaig Bridge",
+      "messages": [
+        {
+          "id": "msg-lift-1",
+          "from": "netta.bain@example.scot",
+          "to": [
+            "isla.munro@example.scot"
+          ],
+          "date": "2027-06-15T11:05:00+01:00",
+          "body": "Sorted a lift with Dougie, so Balvaig Bridge is a yes."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "id": "leads-support-not-counted",
+  "title": "Hamish is supporting at Glen Dunnock, judging the heavies",
+  "rules": [
+    "R29",
+    "R8"
+  ],
+  "basedOn": "leads on site for a reason, not presenting",
+  "now": "2027-06-08T13:00:00+01:00",
+  "mode": "full",
+  "setup": {
+    "previousRunAt": "2027-06-08T08:00:00+01:00",
+    "after": [
+      {
+        "at": "2027-06-08T09:50:00+01:00",
+        "approvals": [
+          {
+            "decision": {
+              "person": "Hamish",
+              "event": "glen-dunnock",
+              "value": "Supporting"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "evidence": {
+    "sources": {
+      "chat": "ok",
+      "mail": "ok",
+      "minutes": "ok",
+      "calendar": "ok"
+    },
+    "items": [
+      {
+        "id": "a",
+        "source": "chat",
+        "label": "chat DM",
+        "who": "Isla",
+        "at": "2027-06-08T10:00:00+01:00",
+        "text": "Hamish is supporting at Glen Dunnock, he's judging the heavies.",
+        "trusted": true
+      }
+    ]
+  },
+  "expect": {
+    "exceptions_exclude": [
+      "double_booked",
+      "proposed_decision"
+    ],
+    "state": {
+      "cells": [
+        {
+          "person": "Hamish",
+          "event": "glen-dunnock",
+          "value": "Supporting"
+        }
+      ]
+    }
+  }
+}

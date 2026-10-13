@@ -1,0 +1,407 @@
+{
+ "version": 1,
+ "label": "2027-06-17T18:00:00+01:00",
+ "model": "claude-sonnet-5-5",
+ "recordedAt": "2026-10-12T11:26:15.046Z",
+ "turns": [
+  {
+   "request": "c1683a372b1a04b5",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxG7QD12hfx9gQbqmHDi",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "tool_use",
+      "id": "toolu_01N76gpg9aewoC2ytPqELDDd",
+      "name": "read_rota",
+      "input": {},
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 4,
+     "cache_creation_input_tokens": 870,
+     "cache_read_input_tokens": 9104,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 870,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 4,
+       "output_tokens": 27,
+       "cache_read_input_tokens": 9104,
+       "cache_creation_input_tokens": 870,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 870,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 27,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "b94bea7f624ede52",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxG7YN8qBdMAtVesJHm9",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "thinking",
+      "thinking": "",
+      "signature": ""
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01YHC916s82V47kawqABHEqP",
+      "name": "set_decision",
+      "input": {
+       "person": "Dougie",
+       "event": "inverallt",
+       "value": "Stewarding",
+       "source": "organiser approval",
+       "evidenceAt": "2027-06-17T12:55:00.000Z"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 13019,
+     "cache_read_input_tokens": 9974,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 13019,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 250,
+       "cache_read_input_tokens": 9974,
+       "cache_creation_input_tokens": 13019,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 13019,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 250,
+     "output_tokens_details": {
+      "thinking_tokens": 83
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "d50be0d6e7fd6201",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxG7jkFqeETAZ51wDeb1",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "tool_use",
+      "id": "toolu_01VaYzWvuRfm5LkJfVWucLEc",
+      "name": "set_decision",
+      "input": {
+       "person": "Dougie",
+       "event": "balvaig",
+       "value": "Stewarding",
+       "source": "organiser approval",
+       "evidenceAt": "2027-06-17T12:55:00.000Z"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 302,
+     "cache_read_input_tokens": 22993,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 302,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 166,
+       "cache_read_input_tokens": 22993,
+       "cache_creation_input_tokens": 302,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 302,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 166,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "7261a0d6789ad1fd",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxG7twtVbHmXZJvp33Wk",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "tool_use",
+      "id": "toolu_01KdNbk81dBGKYMhxTDEGcME",
+      "name": "read_rota",
+      "input": {},
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 230,
+     "cache_read_input_tokens": 23295,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 230,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 27,
+       "cache_read_input_tokens": 23295,
+       "cache_creation_input_tokens": 230,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 230,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 27,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "0a14a798249ed34f",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxG7wrX9JQ2c2TARZB5J",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "thinking",
+      "thinking": "",
+      "signature": ""
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_013BAiL3YqoXZm6iwt2CTPRc",
+      "name": "message_organiser",
+      "input": {
+       "exceptions": [
+        {
+         "type": "double_booked",
+         "person": "Dougie",
+         "saturday": "2027-07-10",
+         "events": [
+          "inverallt",
+          "balvaig"
+         ],
+         "refused": true
+        }
+       ],
+       "readings": []
+      },
+      "caller": {
+       "type": "direct"
+      }
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01UFtS9pb3HumySHmscz55xG",
+      "name": "log_run",
+      "input": {
+       "window": [
+        "2027-06-17T11:00:00.000Z",
+        "2027-06-17T18:00:00+01:00"
+       ],
+       "sources": {
+        "chat": "ok",
+        "mail": "ok",
+        "minutes": "ok",
+        "calendar": "ok"
+       },
+       "sourceWindows": {
+        "chat": [
+         "2027-06-17T11:00:00.000Z",
+         "2027-06-17T18:00:00+01:00"
+        ],
+        "mail": [
+         "2027-06-17T11:00:00.000Z",
+         "2027-06-17T18:00:00+01:00"
+        ],
+        "minutes": [
+         "2027-06-17T11:00:00.000Z",
+         "2027-06-17T18:00:00+01:00"
+        ],
+        "calendar": [
+         "2027-06-17T11:00:00.000Z",
+         "2027-06-17T18:00:00+01:00"
+        ]
+       },
+       "exceptions": 1,
+       "read": [
+        "c91384bfa822d7ea",
+        "548bea6cabf062c8"
+       ],
+       "toolCalls": 6
+      },
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 13142,
+     "cache_read_input_tokens": 23525,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 13142,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 579,
+       "cache_read_input_tokens": 23525,
+       "cache_creation_input_tokens": 13142,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 13142,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 579,
+     "output_tokens_details": {
+      "thinking_tokens": 36
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "f75144524be36e61",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxG8HPGXNfCktvdFsLSx",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "text",
+      "text": "I booked Dougie as steward at Inverallt, but I couldn't book him for Balvaig Bridge. Both games are on Sat 10 Jul and he can only be on one ground, so the second booking was refused as a double booking. I've messaged Isla asking which of the two she wants.\n\nThe only other item, Eilidh's offer to lead at Kinloch, was already read. The run is logged."
+     }
+    ],
+    "container": null,
+    "stop_reason": "end_turn",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 1915,
+     "cache_read_input_tokens": 36667,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 1915,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 128,
+       "cache_read_input_tokens": 36667,
+       "cache_creation_input_tokens": 1915,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 1915,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 128,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  }
+ ]
+}

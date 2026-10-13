@@ -1,0 +1,25 @@
+{
+  "name": "@ghillie/demo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Offline demo: plays the fortnight in half-day ticks.",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "ghillie-source": "./src/play.ts",
+      "types": "./dist/play.d.ts",
+      "default": "./dist/play.js"
+    }
+  },
+  "dependencies": {
+    "@ghillie/engine": "0.1.0",
+    "@ghillie/feed": "0.1.0",
+    "@ghillie/mcp-server": "0.1.0",
+    "@ghillie/stand-in": "0.1.0",
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "@ghillie/agent-kit": "0.1.0",
+    "@ghillie/agent-messages": "0.1.0",
+    "@ghillie/ledger": "0.1.0"
+  }
+}

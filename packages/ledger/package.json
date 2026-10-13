@@ -1,0 +1,15 @@
+{
+  "name": "@ghillie/ledger",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A cost ledger: records the usage of every model response, prices it at list rates, and stops the process at a hard cap.",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "ghillie-source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "@ghillie/agent-managed",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The rota agent on Managed Agents: agent, environment and deployment as files, confirm-first writes, session budgets.",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "ghillie-source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "dependencies": {
+    "@ghillie/agent-kit": "0.1.0",
+    "@ghillie/engine": "0.1.0",
+    "@ghillie/ledger": "0.1.0",
+    "@ghillie/stand-in": "0.1.0",
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "@anthropic-ai/sdk": "^0.133.0"
+  }
+}

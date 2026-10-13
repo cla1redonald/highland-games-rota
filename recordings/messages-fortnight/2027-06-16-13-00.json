@@ -1,0 +1,919 @@
+{
+ "version": 1,
+ "label": "2027-06-16T13:00:00+01:00",
+ "model": "claude-sonnet-5-5",
+ "recordedAt": "2026-10-12T11:25:21.591Z",
+ "turns": [
+  {
+   "request": "55369543bae27caa",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxG3Te1jWfCikFnUtdFf",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "tool_use",
+      "id": "toolu_01LsgGoNrkEZQ58VVRwAUsmf",
+      "name": "read_rota",
+      "input": {},
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 4,
+     "cache_creation_input_tokens": 730,
+     "cache_read_input_tokens": 9104,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 730,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 4,
+       "output_tokens": 27,
+       "cache_read_input_tokens": 9104,
+       "cache_creation_input_tokens": 730,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 730,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 27,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "c38f23fb7adcbca9",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxG3cJAW92HrnUW4U9uf",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "thinking",
+      "thinking": "",
+      "signature": ""
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01CUGrniNNZX1gsdyoZVMwyH",
+      "name": "set_availability",
+      "input": {
+       "person": "Fergus",
+       "event": "balvaig",
+       "value": "Maybe",
+       "basis": "request",
+       "dateWords": [
+        "Balvaig Bridge"
+       ],
+       "source": "chat #stewards",
+       "evidenceAt": "2027-06-16T09:30:00.000Z",
+       "saidBy": "Fergus"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01HkMktCscRpfn5Frbnee7ac",
+      "name": "set_availability",
+      "input": {
+       "person": "Fergus",
+       "event": "inverallt",
+       "value": "Maybe",
+       "basis": "request",
+       "dateWords": [
+        "Inverallt"
+       ],
+       "source": "chat #stewards",
+       "evidenceAt": "2027-06-16T09:30:00.000Z",
+       "saidBy": "Fergus"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 12532,
+     "cache_read_input_tokens": 9834,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 12532,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 738,
+       "cache_read_input_tokens": 9834,
+       "cache_creation_input_tokens": 12532,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 12532,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 738,
+     "output_tokens_details": {
+      "thinking_tokens": 244
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "4e6e95b12e11c143",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxG3ytwbmvQegBARcCR4",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "tool_use",
+      "id": "toolu_01ArA9sfGKTfqL5CY8V1Fbwq",
+      "name": "update_person",
+      "input": {
+       "person": "Fergus",
+       "source": "chat #stewards",
+       "evidenceAt": "2027-06-16T09:30:00.000Z",
+       "saidBy": "Fergus"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 882,
+     "cache_read_input_tokens": 22366,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 882,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 146,
+       "cache_read_input_tokens": 22366,
+       "cache_creation_input_tokens": 882,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 882,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 146,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "a7e5acb9e033804b",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxG48mUjCnV4nyjjuE85",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "thinking",
+      "thinking": "",
+      "signature": ""
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_017fhMN1AGptnNAiZCVLy3o6",
+      "name": "update_person",
+      "input": {
+       "person": "Fergus",
+       "fields": {
+        "statement": {
+         "verdicts": [
+          {
+           "event": "balvaig",
+           "value": "Maybe"
+          },
+          {
+           "event": "inverallt",
+           "value": "Maybe"
+          }
+         ],
+         "dateWords": [
+          "Balvaig Bridge",
+          "Inverallt"
+         ]
+        },
+        "nextStep": {
+         "action": "confirm",
+         "about": "Fergus to confirm Balvaig Bridge or Inverallt",
+         "by": "2027-06-23','events':['balvaig','inverallt']"
+        }
+       },
+       "source": "chat #stewards",
+       "evidenceAt": "2027-06-16T09:30:00.000Z",
+       "saidBy": "Fergus"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 183,
+     "cache_read_input_tokens": 23248,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 183,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 346,
+       "cache_read_input_tokens": 23248,
+       "cache_creation_input_tokens": 183,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 183,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 346,
+     "output_tokens_details": {
+      "thinking_tokens": 35
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "1972a8e213a29397",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxG4MyyudWaQheTWqWdH",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "tool_use",
+      "id": "toolu_013fnJfChAX4m4LVUidrx85V",
+      "name": "update_person",
+      "input": {
+       "person": "Fergus",
+       "fields": {
+        "statement": {
+         "verdicts": [
+          {
+           "event": "balvaig",
+           "value": "Maybe"
+          },
+          {
+           "event": "inverallt",
+           "value": "Maybe"
+          }
+         ],
+         "dateWords": [
+          "Balvaig Bridge",
+          "Inverallt"
+         ]
+        },
+        "nextStep": {
+         "action": "confirm",
+         "about": "Fergus to confirm Balvaig Bridge or Inverallt",
+         "by": "2027-06-23"
+        }
+       },
+       "source": "chat #stewards",
+       "evidenceAt": "2027-06-16T09:30:00.000Z",
+       "saidBy": "Fergus"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01TyU6ftk63ZGzsHB1VKfYNY",
+      "name": "update_person",
+      "input": {
+       "person": "Fergus",
+       "fields": {
+        "lastChecked": "2027-06-16"
+       },
+       "source": "run",
+       "evidenceAt": "2027-06-16T13:00:00+01:00",
+       "saidBy": "Ghillie"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01WnCT395iXciAp1mSBp5ji3",
+      "name": "read_rota",
+      "input": {},
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 419,
+     "cache_read_input_tokens": 23431,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 419,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 503,
+       "cache_read_input_tokens": 23431,
+       "cache_creation_input_tokens": 419,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 419,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 503,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "8bf21cace6741dc1",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxG4cGhZjmPaj1Y2kuQZ",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "thinking",
+      "thinking": "",
+      "signature": ""
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_015jJGDZGbsCA27ApugnUp13",
+      "name": "update_person",
+      "input": {
+       "person": "Fergus",
+       "fields": {
+        "statement": {
+         "verdicts": [
+          {
+           "event": "balvaig",
+           "value": "Maybe"
+          },
+          {
+           "event": "inverallt",
+           "value": "Maybe"
+          }
+         ],
+         "dateWords": [
+          "Balvaig Bridge",
+          "Inverallt"
+         ]
+        },
+        "nextStep": {
+         "action": "confirm",
+         "about": "Balvaig Bridge or Inverallt, whichever is short",
+         "by": "2027-06-23"
+        }
+       },
+       "source": "chat #stewards",
+       "evidenceAt": "2027-06-16T09:30:00.000Z",
+       "saidBy": "Fergus"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 14018,
+     "cache_read_input_tokens": 23850,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 14018,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 476,
+       "cache_read_input_tokens": 23850,
+       "cache_creation_input_tokens": 14018,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 14018,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 476,
+     "output_tokens_details": {
+      "thinking_tokens": 173
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "189bea1ba74b0614",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxG4vyMbLfEkMB9XeKuz",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "thinking",
+      "thinking": "",
+      "signature": ""
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_019ig24EMgxHpSBQ4j793Xmr",
+      "name": "update_person",
+      "input": {
+       "person": "Fergus",
+       "fields": {
+        "statement": {
+         "verdicts": [
+          {
+           "event": "balvaig",
+           "value": "Maybe"
+          },
+          {
+           "event": "inverallt",
+           "value": "Maybe"
+          }
+         ],
+         "dateWords": [
+          "Balvaig Bridge",
+          "Inverallt"
+         ]
+        },
+        "nextStep": {
+         "action": "confirm",
+         "about": "confirm which Saturday 10 Jul game",
+         "by": "2027-06-23"
+        }
+       },
+       "source": "chat #stewards",
+       "evidenceAt": "2027-06-16T09:30:00.000Z",
+       "saidBy": "Fergus"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 517,
+     "cache_read_input_tokens": 37868,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 517,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 337,
+       "cache_read_input_tokens": 37868,
+       "cache_creation_input_tokens": 517,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 517,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 337,
+     "output_tokens_details": {
+      "thinking_tokens": 40
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "e2969944f7ae0680",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxG5745WLvdkskd5NRVp",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "thinking",
+      "thinking": "",
+      "signature": ""
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_012Q49JGWAuTo69SHmjCBqZk",
+      "name": "update_person",
+      "input": {
+       "person": "Fergus",
+       "fields": {
+        "statement": {
+         "verdicts": [
+          {
+           "event": "balvaig",
+           "value": "Maybe"
+          },
+          {
+           "event": "inverallt",
+           "value": "Maybe"
+          }
+         ],
+         "dateWords": [
+          "Balvaig Bridge",
+          "Inverallt"
+         ]
+        },
+        "nextStep": {
+         "action": "confirm",
+         "about": "Isla to confirm Fergus",
+         "by": "2027-06-23"
+        }
+       },
+       "source": "chat #stewards",
+       "evidenceAt": "2027-06-16T09:30:00.000Z",
+       "saidBy": "Fergus"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 378,
+     "cache_read_input_tokens": 38385,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 378,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 362,
+       "cache_read_input_tokens": 38385,
+       "cache_creation_input_tokens": 378,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 378,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 362,
+     "output_tokens_details": {
+      "thinking_tokens": 69
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "40ecb836fb072ffe",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxG5MFbWuyLravmrqfW8",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "text",
+      "text": "Next step keeps failing; record the statement alone."
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01QheQHcNzY521aDTW5guDGz",
+      "name": "update_person",
+      "input": {
+       "person": "Fergus",
+       "fields": {
+        "statement": {
+         "verdicts": [
+          {
+           "event": "balvaig",
+           "value": "Maybe"
+          },
+          {
+           "event": "inverallt",
+           "value": "Maybe"
+          }
+         ],
+         "dateWords": [
+          "Balvaig Bridge",
+          "Inverallt"
+         ]
+        }
+       },
+       "source": "chat #stewards",
+       "evidenceAt": "2027-06-16T09:30:00.000Z",
+       "saidBy": "Fergus"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 403,
+     "cache_read_input_tokens": 38763,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 403,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 265,
+       "cache_read_input_tokens": 38763,
+       "cache_creation_input_tokens": 403,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 403,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 265,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "b11d85add2960d6f",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxG5Vq3Wt7dPMWbdvU4S",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "tool_use",
+      "id": "toolu_01FXJXYLzxh68wYsY29uL9Zz",
+      "name": "message_organiser",
+      "input": {
+       "exceptions": [],
+       "readings": [
+        {
+         "person": "Fergus",
+         "source": "chat #stewards",
+         "at": "2027-06-16T09:30:00.000Z",
+         "dateWords": [
+          "Balvaig Bridge",
+          "Inverallt"
+         ],
+         "verdicts": [
+          {
+           "event": "balvaig",
+           "value": "Maybe",
+           "qualifier": "request"
+          },
+          {
+           "event": "inverallt",
+           "value": "Maybe",
+           "qualifier": "request"
+          }
+         ]
+        }
+       ]
+      },
+      "caller": {
+       "type": "direct"
+      }
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01NkWYkvNJYao88vF4qPehfn",
+      "name": "log_run",
+      "input": {
+       "window": [
+        "2027-06-15T16:00:00.000Z",
+        "2027-06-16T13:00:00+01:00"
+       ],
+       "sources": {
+        "chat": "ok",
+        "mail": "ok",
+        "minutes": "ok",
+        "calendar": "ok"
+       },
+       "sourceWindows": {
+        "chat": [
+         "2027-06-15T16:00:00.000Z",
+         "2027-06-16T13:00:00+01:00"
+        ],
+        "mail": [
+         "2027-06-15T16:00:00.000Z",
+         "2027-06-16T13:00:00+01:00"
+        ],
+        "minutes": [
+         "2027-06-15T16:00:00.000Z",
+         "2027-06-16T13:00:00+01:00"
+        ],
+        "calendar": [
+         "2027-06-15T16:00:00.000Z",
+         "2027-06-16T13:00:00+01:00"
+        ]
+       },
+       "exceptions": 0,
+       "read": [
+        "8fb6adb139a63196"
+       ],
+       "toolCalls": 13
+      },
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 416,
+     "cache_read_input_tokens": 39166,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 416,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 606,
+       "cache_read_input_tokens": 39166,
+       "cache_creation_input_tokens": 416,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 416,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 606,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "d44af8943fa3f800",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxG5kMQFaP9fHXXWVZQG",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "text",
+      "text": "Fergus's chat message is recorded as a Maybe (a request) for both Balvaig Bridge and Inverallt, and I've told Isla in one message. His lastChecked is also updated.\n\nThe next step I tried to set for him was refused every time with \"unknown_person\", so he has no confirm-by-23-June entry. I tried four wordings before recording the statement on its own. Nothing else changed this tick, and the run is logged."
+     }
+    ],
+    "container": null,
+    "stop_reason": "end_turn",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 1964,
+     "cache_read_input_tokens": 39582,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 1964,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 139,
+       "cache_read_input_tokens": 39582,
+       "cache_creation_input_tokens": 1964,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 1964,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 139,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  }
+ ]
+}

@@ -1,0 +1,67 @@
+{
+  "id": "latest-statement-wins",
+  "title": "Lachlan says yes to Strathcorrie, then no the same morning",
+  "rules": [
+    "R1",
+    "R32",
+    "R30"
+  ],
+  "basedOn": "a person changes their answer the same afternoon",
+  "now": "2027-06-08T13:00:00+01:00",
+  "mode": "tuning",
+  "setup": {
+    "previousRunAt": "2027-06-08T08:00:00+01:00"
+  },
+  "evidence": {
+    "sources": {
+      "chat": "ok",
+      "mail": "ok",
+      "minutes": "ok",
+      "calendar": "ok"
+    },
+    "items": [
+      {
+        "id": "a",
+        "source": "chat",
+        "label": "chat #stewards",
+        "who": "Lachlan",
+        "at": "2027-06-08T09:30:00+01:00",
+        "text": "I can do Strathcorrie."
+      },
+      {
+        "id": "b",
+        "source": "chat",
+        "label": "chat #stewards",
+        "who": "Lachlan",
+        "at": "2027-06-08T11:30:00+01:00",
+        "text": "Sorry, I can't do Strathcorrie after all."
+      }
+    ]
+  },
+  "expect": {
+    "writes_include": [
+      {
+        "action": "set_availability",
+        "person": "Lachlan",
+        "event": "strathcorrie",
+        "value": "No"
+      }
+    ],
+    "exceptions_include": [
+      "tuning_write"
+    ],
+    "exceptions_exclude": [
+      "unresolved"
+    ],
+    "message": "required",
+    "state": {
+      "cells": [
+        {
+          "person": "Lachlan",
+          "event": "strathcorrie",
+          "value": "No"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "span-with-a-medical-reason",
+  "title": "Gregor's span with an operation in it: dates only, anywhere",
+  "rules": [
+    "R5",
+    "R3",
+    "R27",
+    "R14"
+  ],
+  "basedOn": "a span with named exceptions",
+  "now": "2027-06-08T13:00:00+01:00",
+  "mode": "full",
+  "setup": {
+    "previousRunAt": "2027-06-08T08:00:00+01:00"
+  },
+  "evidence": {
+    "sources": {
+      "chat": "ok",
+      "mail": "ok",
+      "minutes": "ok",
+      "calendar": "ok"
+    },
+    "items": [
+      {
+        "id": "a",
+        "source": "mail",
+        "label": "mail",
+        "who": "Gregor",
+        "at": "2027-06-08T12:15:00+01:00",
+        "text": "Free until the Auchterbrae Games apart from my gall bladder op on Tuesday 29 June, and then a fortnight of no lifting."
+      }
+    ]
+  },
+  "expect": {
+    "writes_include": [
+      {
+        "action": "set_availability",
+        "person": "Gregor",
+        "event": "glen-dunnock",
+        "value": "Yes"
+      },
+      {
+        "action": "set_availability",
+        "person": "Gregor",
+        "event": "kinloch",
+        "value": "No"
+      },
+      {
+        "action": "set_availability",
+        "person": "Gregor",
+        "event": "balvaig",
+        "value": "No"
+      },
+      {
+        "action": "set_availability",
+        "person": "Gregor",
+        "event": "strathcorrie",
+        "value": "Yes"
+      },
+      {
+        "action": "set_availability",
+        "person": "Gregor",
+        "event": "auchterbrae",
+        "value": "No"
+      }
+    ],
+    "message": "required",
+    "message_contains_all": [
+      "\"until the Auchterbrae Games\"",
+      "\"Tuesday 29 June\"",
+      "\"a fortnight\""
+    ],
+    "forbidden_text": [
+      "gall",
+      "bladder",
+      " op ",
+      "lifting"
+    ]
+  }
+}

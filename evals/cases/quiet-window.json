@@ -1,0 +1,49 @@
+{
+  "id": "quiet-window",
+  "title": "A quiet morning with nothing about staffing",
+  "rules": [
+    "R25"
+  ],
+  "basedOn": "a quiet window",
+  "now": "2027-06-08T13:00:00+01:00",
+  "mode": "tuning",
+  "setup": {
+    "previousRunAt": "2027-06-08T08:00:00+01:00"
+  },
+  "evidence": {
+    "sources": {
+      "chat": "ok",
+      "mail": "ok",
+      "minutes": "ok",
+      "calendar": "ok"
+    },
+    "items": [
+      {
+        "id": "a",
+        "source": "chat",
+        "label": "chat #committee",
+        "who": "Struan",
+        "at": "2027-06-08T09:00:00+01:00",
+        "text": "Raffle prizes need collecting by Friday, folks."
+      },
+      {
+        "id": "b",
+        "source": "chat",
+        "label": "chat #committee",
+        "who": "Morven",
+        "at": "2027-06-08T10:00:00+01:00",
+        "text": "Kinloch's heavy events field has been moved to the far side of the burn, by the way. Bring wellies."
+      }
+    ]
+  },
+  "expect": {
+    "exceptions_exclude": [
+      "tuning_write",
+      "red_or_delta_drop",
+      "event_change",
+      "source_unreadable"
+    ],
+    "message": "none",
+    "max_writes": 0
+  }
+}

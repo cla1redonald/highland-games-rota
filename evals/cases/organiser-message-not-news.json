@@ -1,0 +1,68 @@
+{
+  "id": "organiser-message-not-news",
+  "title": "Isla's own approved booking and chatter: no message",
+  "rules": [
+    "R15",
+    "R8"
+  ],
+  "basedOn": "the organiser's own actions are not news",
+  "now": "2027-06-08T13:00:00+01:00",
+  "mode": "full",
+  "setup": {
+    "previousRunAt": "2027-06-08T08:00:00+01:00",
+    "after": [
+      {
+        "at": "2027-06-08T09:10:00+01:00",
+        "approvals": [
+          {
+            "decision": {
+              "person": "Fergus",
+              "event": "glen-dunnock",
+              "value": "Stewarding"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "evidence": {
+    "sources": {
+      "chat": "ok",
+      "mail": "ok",
+      "minutes": "ok",
+      "calendar": "ok"
+    },
+    "items": [
+      {
+        "id": "a",
+        "source": "chat",
+        "label": "chat DM",
+        "who": "Isla",
+        "at": "2027-06-08T09:14:00+01:00",
+        "text": "I've put Fergus down to steward Glen Dunnock.",
+        "trusted": true
+      },
+      {
+        "id": "b",
+        "source": "chat",
+        "label": "chat DM",
+        "who": "Isla",
+        "at": "2027-06-08T09:20:00+01:00",
+        "text": "Lovely turnout at the committee last night.",
+        "trusted": true
+      }
+    ]
+  },
+  "expect": {
+    "message": "none",
+    "state": {
+      "cells": [
+        {
+          "person": "Fergus",
+          "event": "glen-dunnock",
+          "value": "Stewarding"
+        }
+      ]
+    }
+  }
+}

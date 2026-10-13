@@ -1,0 +1,50 @@
+{
+  "id": "chat-unreadable",
+  "title": "Chat cannot be read; one mail arrives",
+  "rules": [
+    "R16",
+    "R30"
+  ],
+  "basedOn": "the main source needs re-authorising",
+  "now": "2027-06-08T13:00:00+01:00",
+  "mode": "tuning",
+  "setup": {
+    "previousRunAt": "2027-06-08T08:00:00+01:00"
+  },
+  "evidence": {
+    "sources": {
+      "chat": "error",
+      "mail": "ok",
+      "minutes": "ok",
+      "calendar": "ok"
+    },
+    "items": [
+      {
+        "id": "a",
+        "source": "mail",
+        "label": "mail",
+        "who": "Lachlan",
+        "at": "2027-06-08T10:00:00+01:00",
+        "text": "I can do Strathcorrie and Auchterbrae."
+      }
+    ]
+  },
+  "expect": {
+    "writes_include": [
+      {
+        "action": "set_availability",
+        "person": "Lachlan",
+        "event": "strathcorrie",
+        "value": "Yes"
+      }
+    ],
+    "exceptions_include": [
+      "source_unreadable",
+      "tuning_write"
+    ],
+    "message": "required",
+    "message_contains": [
+      "Could not read chat"
+    ]
+  }
+}

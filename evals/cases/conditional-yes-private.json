@@ -1,0 +1,63 @@
+{
+  "id": "conditional-yes-private",
+  "title": "Netta can do Kinloch-on-Spey if there is a lift, and gives a family reason",
+  "rules": [
+    "R6",
+    "R27",
+    "R30"
+  ],
+  "basedOn": "a conditional yes with a private reason",
+  "now": "2027-06-08T13:00:00+01:00",
+  "mode": "tuning",
+  "setup": {
+    "previousRunAt": "2027-06-08T08:00:00+01:00"
+  },
+  "evidence": {
+    "sources": {
+      "chat": "ok",
+      "mail": "ok",
+      "minutes": "ok",
+      "calendar": "ok"
+    },
+    "items": [
+      {
+        "id": "a",
+        "source": "chat",
+        "label": "chat #stewards",
+        "who": "Netta",
+        "at": "2027-06-08T10:00:00+01:00",
+        "text": "I can do Kinloch but only if there's a lift. I need to be back Sunday evening for my mum, she's just out of hospital."
+      }
+    ]
+  },
+  "expect": {
+    "writes_include": [
+      {
+        "action": "set_availability",
+        "person": "Netta",
+        "event": "kinloch",
+        "value": "Maybe"
+      }
+    ],
+    "writes_exclude": [
+      {
+        "person": "Netta",
+        "event": "kinloch",
+        "value": "Yes"
+      }
+    ],
+    "exceptions_include": [
+      "tuning_write"
+    ],
+    "message": "required",
+    "message_contains": [
+      "condition"
+    ],
+    "forbidden_text": [
+      "hospital",
+      " mum",
+      "lift"
+    ],
+    "max_writes": 2
+  }
+}

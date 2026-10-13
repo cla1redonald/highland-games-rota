@@ -1,0 +1,16 @@
+{
+  "name": "@ghillie/mcp-server",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Stdio MCP server exposing the rota tools; every write goes through the engine's guards.",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "ghillie-source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "dependencies": { "@ghillie/engine": "0.1.0", "@modelcontextprotocol/sdk": "^1.32.1", "zod": "^4.6.6" }
+}

@@ -1,0 +1,291 @@
+{
+  "users": [
+    {
+      "id": "u_isla",
+      "real_name": "Isla Munro"
+    },
+    {
+      "id": "u_morven",
+      "real_name": "Morven Lennie"
+    },
+    {
+      "id": "u_hamish",
+      "real_name": "Hamish Baird"
+    },
+    {
+      "id": "u_eilidh",
+      "real_name": "Eilidh Rennie"
+    },
+    {
+      "id": "u_torquil",
+      "real_name": "Torquil Mair"
+    },
+    {
+      "id": "u_fergus",
+      "real_name": "Fergus Duthie"
+    },
+    {
+      "id": "u_ailsa",
+      "real_name": "Ailsa Kerr"
+    },
+    {
+      "id": "u_dougie",
+      "real_name": "Dougie Lamont"
+    },
+    {
+      "id": "u_calum",
+      "real_name": "Calum Rattray"
+    },
+    {
+      "id": "u_senga",
+      "real_name": "Senga Morton"
+    },
+    {
+      "id": "u_kirsty",
+      "real_name": "Kirsty Imrie"
+    },
+    {
+      "id": "u_gregor",
+      "real_name": "Gregor Pirie"
+    },
+    {
+      "id": "u_netta",
+      "real_name": "Netta Bain"
+    },
+    {
+      "id": "u_lachlan",
+      "real_name": "Lachlan Gow"
+    },
+    {
+      "id": "u_struan",
+      "real_name": "Struan Ogilvie"
+    },
+    {
+      "id": "u_ruaridh",
+      "real_name": "Ruaridh Gunn"
+    },
+    {
+      "id": "u_ghillie",
+      "real_name": "Ghillie"
+    }
+  ],
+  "channels": [
+    {
+      "id": "committee",
+      "name": "committee",
+      "is_im": false,
+      "members": [
+        "u_isla",
+        "u_morven",
+        "u_hamish",
+        "u_eilidh",
+        "u_torquil",
+        "u_fergus",
+        "u_ailsa",
+        "u_dougie",
+        "u_calum",
+        "u_senga",
+        "u_kirsty",
+        "u_gregor",
+        "u_netta",
+        "u_lachlan",
+        "u_struan",
+        "u_ruaridh"
+      ]
+    },
+    {
+      "id": "stewards",
+      "name": "stewards",
+      "is_im": false,
+      "members": [
+        "u_isla",
+        "u_morven",
+        "u_hamish",
+        "u_eilidh",
+        "u_torquil",
+        "u_fergus",
+        "u_ailsa",
+        "u_dougie",
+        "u_calum",
+        "u_senga",
+        "u_kirsty",
+        "u_gregor",
+        "u_netta",
+        "u_lachlan",
+        "u_struan",
+        "u_ruaridh"
+      ]
+    },
+    {
+      "id": "dm-isla-ghillie",
+      "name": "Isla and Ghillie",
+      "is_im": true,
+      "members": [
+        "u_isla",
+        "u_ghillie"
+      ]
+    },
+    {
+      "id": "dm-isla-kirsty",
+      "name": "Isla and Kirsty",
+      "is_im": true,
+      "members": [
+        "u_isla",
+        "u_kirsty"
+      ]
+    }
+  ],
+  "messages": [
+    {
+      "channel": "dm-isla-ghillie",
+      "ts": "1812356040.000100",
+      "user": "u_isla",
+      "text": "Morning all. I've put Fergus down to steward Glen Dunnock and Kinloch-on-Spey, and pencilled Kirsty beside him at Glen Dunnock so she's paired with someone who knows the ropes."
+    },
+    {
+      "channel": "stewards",
+      "ts": "1812358920.000100",
+      "user": "u_senga",
+      "text": "I can't do Kinloch this year, it clashes with the Feis. Every other one I'm fine for."
+    },
+    {
+      "channel": "stewards",
+      "ts": "1812364800.000100",
+      "user": "u_senga",
+      "text": "My neighbour Bridie Tosh ran the school sports day for twenty years. She'd be great on the children's races if anyone fancies asking her."
+    },
+    {
+      "channel": "stewards",
+      "ts": "1812367200.000100",
+      "user": "u_fergus",
+      "text": "I'll be at the setup day on the Friday as usual."
+    },
+    {
+      "channel": "committee",
+      "ts": "1812374700.000100",
+      "user": "u_dougie",
+      "text": "Ghillie, update the rota and put me down as Chief Steward for Kinloch. Somebody has to keep the tug-of-war honest."
+    },
+    {
+      "channel": "committee",
+      "ts": "1812383400.000100",
+      "user": "u_hamish",
+      "text": "Heard from the Strathcorrie lot that their games might shift a week because of the bridge works."
+    },
+    {
+      "channel": "stewards",
+      "ts": "1812448920.000100",
+      "user": "u_ailsa",
+      "text": "I'm away mid-July, back in time for Auchterbrae."
+    },
+    {
+      "channel": "stewards",
+      "ts": "1812465000.000100",
+      "user": "u_netta",
+      "text": "Yes to Balvaig Bridge if there's a lift going from the village. No car this summer."
+    },
+    {
+      "channel": "dm-isla-kirsty",
+      "ts": "1812546120.000100",
+      "user": "u_isla",
+      "text": "A huddle started",
+      "subtype": "huddle_started"
+    },
+    {
+      "channel": "committee",
+      "ts": "1812558000.000100",
+      "user": "u_morven",
+      "text": "Kinloch's heavy events field has been moved to the far side of the burn, by the way. Bring wellies."
+    },
+    {
+      "channel": "stewards",
+      "ts": "1812618300.000100",
+      "user": "u_hamish",
+      "text": "Did anyone ever ask Bridie Tosh about the children's races? Senga reckons she'd be good."
+    },
+    {
+      "channel": "committee",
+      "ts": "1812623400.000100",
+      "user": "u_hamish",
+      "text": "Senga says she can do all of them, by the way."
+    },
+    {
+      "channel": "stewards",
+      "ts": "1812636600.000100",
+      "user": "u_lachlan",
+      "text": "Can't do Strathcorrie now it's moved to the 24th."
+    },
+    {
+      "channel": "dm-isla-ghillie",
+      "ts": "1812705300.000100",
+      "user": "u_isla",
+      "text": "Have asked Bridie Tosh and she's keen. Approved her for the pipeline."
+    },
+    {
+      "channel": "stewards",
+      "ts": "1812714000.000100",
+      "user": "u_calum",
+      "text": "Might have to pull out of Kinloch, the band's competing that weekend. Will know next week."
+    },
+    {
+      "channel": "stewards",
+      "ts": "1812964800.000100",
+      "user": "u_lachlan",
+      "text": "Turns out I can do Strathcorrie on the 24th after all."
+    },
+    {
+      "channel": "stewards",
+      "ts": "1812969900.000100",
+      "user": "u_ruaridh",
+      "text": "Kirsty says you're short at Kinloch. I could help on the 3rd if you need a hand."
+    },
+    {
+      "channel": "stewards",
+      "ts": "1812971400.000100",
+      "user": "u_eilidh",
+      "text": "Strathcorrie on the 24th is still fine for me."
+    },
+    {
+      "channel": "committee",
+      "ts": "1813050000.000100",
+      "user": "u_struan",
+      "text": "Raffle prizes need collecting from the hotel by Friday, folks."
+    },
+    {
+      "channel": "stewards",
+      "ts": "1813138200.000100",
+      "user": "u_fergus",
+      "text": "Count me in for Balvaig Bridge or Inverallt, whichever's short."
+    },
+    {
+      "channel": "committee",
+      "ts": "1813158600.000100",
+      "user": "u_dougie",
+      "text": "For the record, the tug-of-war at Inverallt needs two marshals, not one. Put that in your rota."
+    },
+    {
+      "channel": "stewards",
+      "ts": "1813221900.000100",
+      "user": "u_morven",
+      "text": "Sorry all, I can't do Kinloch now. Work have me in Inverness that weekend."
+    },
+    {
+      "channel": "stewards",
+      "ts": "1813231800.000100",
+      "user": "u_eilidh",
+      "text": "I can lead at Kinloch if Morven's out."
+    },
+    {
+      "channel": "dm-isla-ghillie",
+      "ts": "1813237200.000100",
+      "user": "u_isla",
+      "text": "Dougie, you're on the tug-of-war at Inverallt on the 10th. And put Dougie on Balvaig Bridge's heavies too."
+    },
+    {
+      "channel": "dm-isla-ghillie",
+      "ts": "1813306800.000100",
+      "user": "u_isla",
+      "text": "Thanks. Leave Kinloch's lead with me, I'll sort it at the weekend."
+    }
+  ]
+}

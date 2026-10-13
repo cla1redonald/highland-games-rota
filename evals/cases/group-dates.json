@@ -1,0 +1,82 @@
+{
+  "id": "group-dates",
+  "title": "Senga gives her dates over three messages",
+  "rules": [
+    "R1",
+    "R14",
+    "R30"
+  ],
+  "basedOn": "dates given across a group thread",
+  "now": "2027-06-08T13:00:00+01:00",
+  "mode": "tuning",
+  "setup": {
+    "previousRunAt": "2027-06-08T08:00:00+01:00"
+  },
+  "evidence": {
+    "sources": {
+      "chat": "ok",
+      "mail": "ok",
+      "minutes": "ok",
+      "calendar": "ok"
+    },
+    "items": [
+      {
+        "id": "a",
+        "source": "chat",
+        "label": "chat #stewards",
+        "who": "Senga",
+        "at": "2027-06-08T09:10:00+01:00",
+        "text": "Glen Dunnock is fine for me."
+      },
+      {
+        "id": "b",
+        "source": "chat",
+        "label": "chat #stewards",
+        "who": "Senga",
+        "at": "2027-06-08T09:12:00+01:00",
+        "text": "Can't do Kinloch."
+      },
+      {
+        "id": "c",
+        "source": "chat",
+        "label": "chat #stewards",
+        "who": "Senga",
+        "at": "2027-06-08T09:13:00+01:00",
+        "text": "Happy to do Balvaig Bridge or Inverallt."
+      }
+    ]
+  },
+  "expect": {
+    "writes_include": [
+      {
+        "action": "set_availability",
+        "person": "Senga",
+        "event": "kinloch",
+        "value": "No"
+      },
+      {
+        "action": "set_availability",
+        "person": "Senga",
+        "event": "balvaig",
+        "value": "Yes"
+      },
+      {
+        "action": "set_availability",
+        "person": "Senga",
+        "event": "inverallt",
+        "value": "Yes"
+      }
+    ],
+    "exceptions_include": [
+      "tuning_write"
+    ],
+    "exceptions_exclude": [
+      "proposed_decision"
+    ],
+    "message": "required",
+    "message_contains": [
+      "Senga"
+    ],
+    "max_writes": 4
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "id": "organiser-relays-answer",
+  "title": "Isla tells Ghillie that Ailsa can do Kinloch-on-Spey",
+  "rules": [
+    "R1",
+    "R15",
+    "R30"
+  ],
+  "basedOn": "the organiser corrects a reading in her direct messages",
+  "now": "2027-06-08T13:00:00+01:00",
+  "mode": "tuning",
+  "setup": {
+    "previousRunAt": "2027-06-08T08:00:00+01:00"
+  },
+  "evidence": {
+    "sources": {
+      "chat": "ok",
+      "mail": "ok",
+      "minutes": "ok",
+      "calendar": "ok"
+    },
+    "items": [
+      {
+        "id": "a",
+        "source": "chat",
+        "label": "chat DM",
+        "who": "Isla",
+        "at": "2027-06-08T10:00:00+01:00",
+        "text": "Ailsa can do Kinloch, she told me at the hall.",
+        "trusted": true
+      }
+    ]
+  },
+  "expect": {
+    "writes_include": [
+      {
+        "action": "set_availability",
+        "person": "Ailsa",
+        "event": "kinloch",
+        "value": "Yes"
+      }
+    ],
+    "exceptions_include": [
+      "tuning_write"
+    ],
+    "message": "required",
+    "max_writes": 1,
+    "state": {
+      "cells": [
+        {
+          "person": "Ailsa",
+          "event": "kinloch",
+          "value": "Yes"
+        }
+      ]
+    }
+  }
+}

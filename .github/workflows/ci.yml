@@ -1,0 +1,70 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          # The deny-list check reads every commit message and diff.
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Test
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
+      - name: Demo
+        run: npm run demo
+
+      - name: Demo, replayed twice (zero net writes)
+        run: npm run demo:replay-twice
+
+      - name: Eval against the stand-in
+        run: npm run eval
+
+      - name: Deny-list, working tree
+        env:
+          # The terms live only in a repository secret, never in the repo. Empty fails the check.
+          DENY_LIST: ${{ secrets.DENY_LIST }}
+        run: npm run deny-list
+
+      - name: Deny-list, every commit message and diff
+        env:
+          # The terms live only in a repository secret, never in the repo. Empty fails the check.
+          DENY_LIST: ${{ secrets.DENY_LIST }}
+        run: npm run deny-list:history
+
+      - name: Keep the plan and the eval report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: plan-and-eval
+          path: |
+            out/plan.html
+            out/eval-report.json
+          if-no-files-found: ignore

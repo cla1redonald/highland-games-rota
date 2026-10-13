@@ -1,0 +1,204 @@
+{
+ "version": 1,
+ "label": "2027-06-14T18:00:00+01:00",
+ "model": "claude-sonnet-5-5",
+ "recordedAt": "2026-10-12T11:24:45.632Z",
+ "turns": [
+  {
+   "request": "abdaa66a2bfa0551",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxFzp4m32SeeQcXjT6iB",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "tool_use",
+      "id": "toolu_01FKzTLUkS21wen21vvDfj4e",
+      "name": "read_rota",
+      "input": {},
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 4,
+     "cache_creation_input_tokens": 728,
+     "cache_read_input_tokens": 9104,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 728,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 4,
+       "output_tokens": 27,
+       "cache_read_input_tokens": 9104,
+       "cache_creation_input_tokens": 728,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 728,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 27,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "0b7c891dccaf2f05",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxFzwJqTeEPeSRW7yGKn",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "thinking",
+      "thinking": "",
+      "signature": ""
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01TT4njmzzDwicfHLHcnRVqY",
+      "name": "log_run",
+      "input": {
+       "window": [
+        "2027-06-14T11:00:00.000Z",
+        "2027-06-14T18:00:00+01:00"
+       ],
+       "sources": {
+        "chat": "ok",
+        "mail": "ok",
+        "minutes": "ok",
+        "calendar": "ok"
+       },
+       "sourceWindows": {
+        "chat": [
+         "2027-06-14T11:00:00.000Z",
+         "2027-06-14T18:00:00+01:00"
+        ],
+        "mail": [
+         "2027-06-14T11:00:00.000Z",
+         "2027-06-14T18:00:00+01:00"
+        ],
+        "minutes": [
+         "2027-06-14T11:00:00.000Z",
+         "2027-06-14T18:00:00+01:00"
+        ],
+        "calendar": [
+         "2027-06-14T11:00:00.000Z",
+         "2027-06-14T18:00:00+01:00"
+        ]
+       },
+       "exceptions": 0,
+       "read": [
+        "0546dfa6875cad10"
+       ],
+       "toolCalls": 2
+      },
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 12579,
+     "cache_read_input_tokens": 9832,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 12579,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 514,
+       "cache_read_input_tokens": 9832,
+       "cache_creation_input_tokens": 12579,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 12579,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 514,
+     "output_tokens_details": {
+      "thinking_tokens": 106
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "acb0dfaccd66b377",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxG1Ci31Zkg1LuHaA4qi",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "text",
+      "text": "Nothing new this tick, so I sent no message to Isla. The one evidence item (Eilidh's \"Strathcorrie on the 24th is still fine for me\") had already been read, and no approvals were waiting to be carried out. I made no changes to the rota and logged the run.\n\nThe log summary says \"messaged\": true, even though I didn't call message_organiser. I haven't been able to explain that."
+     }
+    ],
+    "container": null,
+    "stop_reason": "end_turn",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 1637,
+     "cache_read_input_tokens": 22411,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 1637,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 127,
+       "cache_read_input_tokens": 22411,
+       "cache_creation_input_tokens": 1637,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 1637,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 127,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  }
+ ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "@ghillie/engine",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Rota rules, store, write guards, coverage, split, exceptions and renderers.",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "ghillie-source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "dependencies": {
+    "better-sqlite3": "^13.0.3",
+    "zod": "^4.6.6"
+  }
+}

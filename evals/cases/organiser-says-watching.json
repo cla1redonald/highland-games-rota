@@ -1,0 +1,59 @@
+{
+  "id": "organiser-says-watching",
+  "title": "Kirsty asks to watch at Balvaig Bridge and Isla agrees, in tuning mode",
+  "rules": [
+    "R8",
+    "R30"
+  ],
+  "basedOn": "someone asks to observe and the organiser agrees",
+  "now": "2027-06-08T13:00:00+01:00",
+  "mode": "tuning",
+  "setup": {
+    "previousRunAt": "2027-06-08T08:00:00+01:00"
+  },
+  "evidence": {
+    "sources": {
+      "chat": "ok",
+      "mail": "ok",
+      "minutes": "ok",
+      "calendar": "ok"
+    },
+    "items": [
+      {
+        "id": "a",
+        "source": "chat",
+        "label": "chat #stewards",
+        "who": "Kirsty",
+        "at": "2027-06-08T09:30:00+01:00",
+        "text": "Could I come and watch at Balvaig Bridge to learn the ropes?"
+      },
+      {
+        "id": "b",
+        "source": "chat",
+        "label": "chat DM",
+        "who": "Isla",
+        "at": "2027-06-08T10:15:00+01:00",
+        "text": "Kirsty can come and watch at Balvaig Bridge.",
+        "trusted": true
+      }
+    ]
+  },
+  "expect": {
+    "proposals_include": [
+      {
+        "person": "Kirsty",
+        "value": "Watching"
+      }
+    ],
+    "exceptions_include": [
+      "proposed_decision"
+    ],
+    "message": "required",
+    "max_writes": 0,
+    "writes_exclude": [
+      {
+        "action": "set_decision"
+      }
+    ]
+  }
+}

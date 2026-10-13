@@ -1,0 +1,72 @@
+{
+  "id": "double-booking-refused",
+  "title": "Isla approves Dougie at both games on Sat 10 Jul",
+  "rules": [
+    "R9",
+    "R8"
+  ],
+  "basedOn": "one place at a time",
+  "now": "2027-06-08T13:00:00+01:00",
+  "mode": "full",
+  "setup": {
+    "previousRunAt": "2027-06-08T08:00:00+01:00",
+    "after": [
+      {
+        "at": "2027-06-08T09:55:00+01:00",
+        "approvals": [
+          {
+            "decision": {
+              "person": "Dougie",
+              "event": "inverallt",
+              "value": "Stewarding"
+            }
+          },
+          {
+            "decision": {
+              "person": "Dougie",
+              "event": "balvaig",
+              "value": "Stewarding"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "evidence": {
+    "sources": {
+      "chat": "ok",
+      "mail": "ok",
+      "minutes": "ok",
+      "calendar": "ok"
+    },
+    "items": [
+      {
+        "id": "a",
+        "source": "chat",
+        "label": "chat DM",
+        "who": "Isla",
+        "at": "2027-06-08T10:00:00+01:00",
+        "text": "Dougie, you're on the tug-of-war at Inverallt on the 10th. And put Dougie on Balvaig Bridge's heavies too.",
+        "trusted": true
+      }
+    ]
+  },
+  "expect": {
+    "exceptions_include": [
+      "double_booked"
+    ],
+    "message": "required",
+    "message_contains": [
+      "One place at a time"
+    ],
+    "state": {
+      "cells": [
+        {
+          "person": "Dougie",
+          "event": "inverallt",
+          "value": "Stewarding"
+        }
+      ]
+    }
+  }
+}

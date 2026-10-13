@@ -1,0 +1,52 @@
+{
+  "id": "recruit-twice-suppressed",
+  "title": "Bridie is mentioned again with nothing new: not raised twice",
+  "rules": [
+    "R10"
+  ],
+  "basedOn": "a pipeline suggestion repeated",
+  "now": "2027-06-08T13:00:00+01:00",
+  "mode": "full",
+  "setup": {
+    "previousRunAt": "2027-06-08T08:00:00+01:00",
+    "before": {
+      "proposals": [
+        {
+          "name": "Bridie Tosh",
+          "suggestedBy": "Senga",
+          "arena": "Children's races"
+        }
+      ]
+    }
+  },
+  "evidence": {
+    "sources": {
+      "chat": "ok",
+      "mail": "ok",
+      "minutes": "ok",
+      "calendar": "ok"
+    },
+    "items": [
+      {
+        "id": "a",
+        "source": "chat",
+        "label": "chat #stewards",
+        "who": "Hamish",
+        "at": "2027-06-08T10:05:00+01:00",
+        "text": "Did anyone ever ask Bridie Tosh about the children's races? Senga reckons she'd be good."
+      }
+    ]
+  },
+  "expect": {
+    "exceptions_exclude": [
+      "pipeline_suggestion"
+    ],
+    "proposals_exclude": [
+      {
+        "person": "Bridie Tosh"
+      }
+    ],
+    "message": "none",
+    "max_writes": 0
+  }
+}

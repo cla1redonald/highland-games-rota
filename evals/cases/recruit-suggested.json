@@ -1,0 +1,73 @@
+{
+  "id": "recruit-suggested",
+  "title": "Hamish and Senga each suggest a possible recruit",
+  "rules": [
+    "R10"
+  ],
+  "basedOn": "a candidate is considered and a contact is offered",
+  "now": "2027-06-08T13:00:00+01:00",
+  "mode": "full",
+  "setup": {
+    "previousRunAt": "2027-06-08T08:00:00+01:00"
+  },
+  "evidence": {
+    "sources": {
+      "chat": "ok",
+      "mail": "ok",
+      "minutes": "ok",
+      "calendar": "ok"
+    },
+    "items": [
+      {
+        "id": "a",
+        "source": "chat",
+        "label": "chat #committee",
+        "who": "Hamish",
+        "at": "2027-06-08T09:00:00+01:00",
+        "text": "Bridie Tosh might be up for the children's races, worth asking her."
+      },
+      {
+        "id": "b",
+        "source": "chat",
+        "label": "chat #committee",
+        "who": "Senga",
+        "at": "2027-06-08T09:30:00+01:00",
+        "text": "Wilma Craig at the Young Farmers could help out with the tug-of-war."
+      }
+    ]
+  },
+  "expect": {
+    "proposals_include": [
+      {
+        "person": "Bridie Tosh",
+        "value": "Pipeline"
+      },
+      {
+        "person": "Wilma Craig",
+        "value": "Pipeline"
+      }
+    ],
+    "proposals_exclude": [
+      {
+        "person": "Young Farmers"
+      }
+    ],
+    "exceptions_include": [
+      "pipeline_suggestion"
+    ],
+    "message": "required",
+    "max_writes": 0,
+    "state": {
+      "people": [
+        {
+          "name": "Bridie",
+          "absent": true
+        },
+        {
+          "name": "Wilma",
+          "absent": true
+        }
+      ]
+    }
+  }
+}

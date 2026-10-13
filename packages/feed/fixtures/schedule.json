@@ -1,0 +1,17 @@
+{
+  "firstDay": "2027-06-07",
+  "lastDay": "2027-06-18",
+  "skip": [
+    {
+      "at": "2027-06-16T18:00:00+01:00",
+      "why": "the host was asleep, so the 18:00 run never started"
+    }
+  ],
+  "faults": [
+    {
+      "source": "mail",
+      "at": "2027-06-15T13:00:00+01:00",
+      "kind": "timeout"
+    }
+  ]
+}

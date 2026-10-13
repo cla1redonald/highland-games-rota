@@ -1,0 +1,35 @@
+{
+  "id": "recurring-weekdays",
+  "title": "Lachlan can do \"every second Saturday\"",
+  "rules": [
+    "R4"
+  ],
+  "basedOn": "a recurring pattern of dates",
+  "skip": "The stand-in's reader does not understand recurring patterns such as \"every second Saturday\". Left for the Phase 1b agents.",
+  "now": "2027-06-08T13:00:00+01:00",
+  "mode": "full",
+  "setup": {
+    "previousRunAt": "2027-06-08T08:00:00+01:00"
+  },
+  "evidence": {
+    "sources": {
+      "chat": "ok",
+      "mail": "ok",
+      "minutes": "ok",
+      "calendar": "ok"
+    },
+    "items": [
+      {
+        "id": "a",
+        "source": "chat",
+        "label": "chat #stewards",
+        "who": "Lachlan",
+        "at": "2027-06-08T10:00:00+01:00",
+        "text": "I can do every second Saturday from the start of July."
+      }
+    ]
+  },
+  "expect": {
+    "message": "required"
+  }
+}

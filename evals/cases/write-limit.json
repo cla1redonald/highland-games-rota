@@ -1,0 +1,112 @@
+{
+  "id": "write-limit",
+  "title": "Ten people at once: the run stops at sixty write attempts and says so",
+  "rules": [
+    "R31"
+  ],
+  "basedOn": "a run that would write too much",
+  "now": "2027-06-08T13:00:00+01:00",
+  "mode": "full",
+  "setup": {
+    "previousRunAt": "2027-06-08T08:00:00+01:00"
+  },
+  "evidence": {
+    "sources": {
+      "chat": "ok",
+      "mail": "ok",
+      "minutes": "ok",
+      "calendar": "ok"
+    },
+    "items": [
+      {
+        "id": "w0",
+        "source": "chat",
+        "label": "chat #stewards",
+        "who": "Hamish",
+        "at": "2027-06-08T09:10:00+01:00",
+        "text": "Can't do Glen Dunnock or Kinloch or Balvaig Bridge or Inverallt or Auchterbrae."
+      },
+      {
+        "id": "w1",
+        "source": "chat",
+        "label": "chat #stewards",
+        "who": "Eilidh",
+        "at": "2027-06-08T09:11:00+01:00",
+        "text": "Can't do Glen Dunnock or Kinloch or Balvaig Bridge or Inverallt or Auchterbrae."
+      },
+      {
+        "id": "w2",
+        "source": "chat",
+        "label": "chat #stewards",
+        "who": "Fergus",
+        "at": "2027-06-08T09:12:00+01:00",
+        "text": "Can't do Glen Dunnock or Kinloch or Balvaig Bridge or Inverallt or Auchterbrae."
+      },
+      {
+        "id": "w3",
+        "source": "chat",
+        "label": "chat #stewards",
+        "who": "Dougie",
+        "at": "2027-06-08T09:13:00+01:00",
+        "text": "Can't do Glen Dunnock or Kinloch or Balvaig Bridge or Inverallt or Auchterbrae."
+      },
+      {
+        "id": "w4",
+        "source": "chat",
+        "label": "chat #stewards",
+        "who": "Senga",
+        "at": "2027-06-08T09:14:00+01:00",
+        "text": "Can't do Glen Dunnock or Kinloch or Balvaig Bridge or Inverallt or Auchterbrae."
+      },
+      {
+        "id": "w5",
+        "source": "chat",
+        "label": "chat #stewards",
+        "who": "Netta",
+        "at": "2027-06-08T09:15:00+01:00",
+        "text": "Can't do Glen Dunnock or Kinloch or Balvaig Bridge or Inverallt or Auchterbrae."
+      },
+      {
+        "id": "w6",
+        "source": "chat",
+        "label": "chat #stewards",
+        "who": "Lachlan",
+        "at": "2027-06-08T09:16:00+01:00",
+        "text": "Can't do Glen Dunnock or Kinloch or Balvaig Bridge or Inverallt or Auchterbrae."
+      },
+      {
+        "id": "w7",
+        "source": "chat",
+        "label": "chat #stewards",
+        "who": "Gregor",
+        "at": "2027-06-08T09:17:00+01:00",
+        "text": "Can't do Glen Dunnock or Kinloch or Balvaig Bridge or Inverallt or Auchterbrae."
+      },
+      {
+        "id": "w8",
+        "source": "chat",
+        "label": "chat #stewards",
+        "who": "Kirsty",
+        "at": "2027-06-08T09:18:00+01:00",
+        "text": "Can't do Glen Dunnock or Kinloch or Balvaig Bridge or Inverallt or Auchterbrae."
+      },
+      {
+        "id": "w9",
+        "source": "chat",
+        "label": "chat #stewards",
+        "who": "Ailsa",
+        "at": "2027-06-08T09:19:00+01:00",
+        "text": "Can't do Glen Dunnock or Kinloch or Balvaig Bridge or Inverallt or Auchterbrae."
+      }
+    ]
+  },
+  "expect": {
+    "exceptions_include": [
+      "write_limit"
+    ],
+    "message": "required",
+    "message_contains": [
+      "Stopped after 60 write attempts"
+    ]
+  }
+}

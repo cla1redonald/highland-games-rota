@@ -1,0 +1,57 @@
+{
+  "id": "committed-stays",
+  "title": "Fergus, already stewarding, says Glen Dunnock is still fine",
+  "rules": [
+    "R8",
+    "R15"
+  ],
+  "basedOn": "a booked presenter confirms they are still on",
+  "now": "2027-06-08T13:00:00+01:00",
+  "mode": "full",
+  "setup": {
+    "previousRunAt": "2027-06-08T08:00:00+01:00",
+    "before": {
+      "edits": [
+        {
+          "person": "Fergus",
+          "event": "glen-dunnock",
+          "value": "Stewarding"
+        }
+      ]
+    }
+  },
+  "evidence": {
+    "sources": {
+      "chat": "ok",
+      "mail": "ok",
+      "minutes": "ok",
+      "calendar": "ok"
+    },
+    "items": [
+      {
+        "id": "a",
+        "source": "chat",
+        "label": "chat #stewards",
+        "who": "Fergus",
+        "at": "2027-06-08T10:00:00+01:00",
+        "text": "Glen Dunnock is still fine for me, armband's ready."
+      }
+    ]
+  },
+  "expect": {
+    "exceptions_exclude": [
+      "proposed_decision",
+      "booked_dropout"
+    ],
+    "max_writes": 0,
+    "state": {
+      "cells": [
+        {
+          "person": "Fergus",
+          "event": "glen-dunnock",
+          "value": "Stewarding"
+        }
+      ]
+    }
+  }
+}

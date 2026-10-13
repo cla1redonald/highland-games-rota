@@ -1,0 +1,456 @@
+{
+  "impl": "messages",
+  "model": "claude-sonnet-5-5",
+  "date": "2026-10-12",
+  "note": "Cases the stand-in skips are run and graded for the builds; they never count as flips.",
+  "repeats": [
+    {
+      "repeat": 1,
+      "summary": {
+        "n": 37,
+        "passed": 34,
+        "failed": 3,
+        "skipped": 0,
+        "rate": 0.918918918918919,
+        "interval": {
+          "low": 0.7869900750149847,
+          "high": 0.9720399336036787
+        }
+      },
+      "cases": [
+        {
+          "id": "calendar-move-needs-approval",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0.08238289999999998,
+          "ms": 14006.142083,
+          "outcome": "completed",
+          "turns": 5,
+          "toolCalls": 5
+        },
+        {
+          "id": "chat-unreadable",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0.10290730000000003,
+          "ms": 18094.833292,
+          "outcome": "completed",
+          "turns": 6,
+          "toolCalls": 9
+        },
+        {
+          "id": "committed-stays",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0.09537709999999994,
+          "ms": 18012.167625,
+          "outcome": "completed",
+          "turns": 6,
+          "toolCalls": 7
+        },
+        {
+          "id": "conditional-yes-private",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0.11952789999999991,
+          "ms": 22284.364042,
+          "outcome": "completed",
+          "turns": 7,
+          "toolCalls": 10
+        },
+        {
+          "id": "delta-drop-hand-edit",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0.051929,
+          "ms": 10359.75579200001,
+          "outcome": "completed",
+          "turns": 3,
+          "toolCalls": 3
+        },
+        {
+          "id": "double-booking-refused",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0.09099170000000001,
+          "ms": 15860.137833,
+          "outcome": "completed",
+          "turns": 6,
+          "toolCalls": 6
+        },
+        {
+          "id": "games-moved-by-calendar",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0.09276460000000009,
+          "ms": 12834.883417000005,
+          "outcome": "completed",
+          "turns": 5,
+          "toolCalls": 5
+        },
+        {
+          "id": "group-dates",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0.10820220000000003,
+          "ms": 21916.174084,
+          "outcome": "completed",
+          "turns": 5,
+          "toolCalls": 10
+        },
+        {
+          "id": "hard-clash-friday-setup",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0.0918235999999999,
+          "ms": 16348.990124999982,
+          "outcome": "completed",
+          "turns": 5,
+          "toolCalls": 7
+        },
+        {
+          "id": "instruction-from-volunteer",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0.11154350000000002,
+          "ms": 23442.616125,
+          "outcome": "completed",
+          "turns": 7,
+          "toolCalls": 9
+        },
+        {
+          "id": "intro-call-planned",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0.08370769999999994,
+          "ms": 13210.220250000013,
+          "outcome": "completed",
+          "turns": 5,
+          "toolCalls": 5
+        },
+        {
+          "id": "latest-statement-wins",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0.11053610000000003,
+          "ms": 17484.051917000004,
+          "outcome": "completed",
+          "turns": 7,
+          "toolCalls": 10
+        },
+        {
+          "id": "lead-drops-out",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0.11904340000000002,
+          "ms": 23610.008292000013,
+          "outcome": "completed",
+          "turns": 7,
+          "toolCalls": 10
+        },
+        {
+          "id": "leads-support-not-counted",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0.0841012000000001,
+          "ms": 13562.49779200001,
+          "outcome": "completed",
+          "turns": 5,
+          "toolCalls": 5
+        },
+        {
+          "id": "move-talk-only",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0.07669079999999973,
+          "ms": 10001.369124999997,
+          "outcome": "completed",
+          "turns": 4,
+          "toolCalls": 4
+        },
+        {
+          "id": "no-lead-no-news",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0.09003110000000003,
+          "ms": 14733.274208999996,
+          "outcome": "completed",
+          "turns": 5,
+          "toolCalls": 7
+        },
+        {
+          "id": "organiser-message-not-news",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0.08253739999999987,
+          "ms": 13478.333791999961,
+          "outcome": "completed",
+          "turns": 5,
+          "toolCalls": 4
+        },
+        {
+          "id": "organiser-relays-answer",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0.09205609999999997,
+          "ms": 16078.992917000025,
+          "outcome": "completed",
+          "turns": 5,
+          "toolCalls": 7
+        },
+        {
+          "id": "organiser-says-watching",
+          "status": "fail",
+          "reasons": [
+            "1 writes besides notes, next steps and last checked; at most 0 expected"
+          ],
+          "usd": 0.12730700000000028,
+          "ms": 29820.28820900002,
+          "outcome": "completed",
+          "turns": 8,
+          "toolCalls": 11
+        },
+        {
+          "id": "organiser-stands-down-full",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0.08121219999999996,
+          "ms": 12389.786750000028,
+          "outcome": "completed",
+          "turns": 5,
+          "toolCalls": 4
+        },
+        {
+          "id": "organiser-stands-down-tuning",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0.07777529999999988,
+          "ms": 8427.593082999985,
+          "outcome": "completed",
+          "turns": 4,
+          "toolCalls": 4
+        },
+        {
+          "id": "own-edit-beats-summary",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0.08858640000000007,
+          "ms": 13117.224208,
+          "outcome": "completed",
+          "turns": 5,
+          "toolCalls": 5
+        },
+        {
+          "id": "pending-call-revisit",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0.04977839999999967,
+          "ms": 7382.971167000011,
+          "outcome": "completed",
+          "turns": 4,
+          "toolCalls": 3
+        },
+        {
+          "id": "pipeline-approved",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0.08479209999999959,
+          "ms": 8621.695292000019,
+          "outcome": "completed",
+          "turns": 5,
+          "toolCalls": 5
+        },
+        {
+          "id": "piper-drops-out",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0.11674510000000016,
+          "ms": 24510.606417000003,
+          "outcome": "completed",
+          "turns": 8,
+          "toolCalls": 10
+        },
+        {
+          "id": "quiet-window",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0.0456673000000003,
+          "ms": 7040.286374999967,
+          "outcome": "completed",
+          "turns": 3,
+          "toolCalls": 2
+        },
+        {
+          "id": "recruit-suggested",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0.09032539999999978,
+          "ms": 11545.053249999997,
+          "outcome": "completed",
+          "turns": 5,
+          "toolCalls": 6
+        },
+        {
+          "id": "recruit-twice-suppressed",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0.046745000000000037,
+          "ms": 9594.537707999989,
+          "outcome": "completed",
+          "turns": 3,
+          "toolCalls": 2
+        },
+        {
+          "id": "recurring-weekdays",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0.12115179999999937,
+          "ms": 23303.28324999998,
+          "outcome": "completed",
+          "turns": 5,
+          "toolCalls": 12
+        },
+        {
+          "id": "soft-clash-open-day",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0.15690310000000007,
+          "ms": 38752.12616600003,
+          "outcome": "completed",
+          "turns": 12,
+          "toolCalls": 15
+        },
+        {
+          "id": "span-with-a-medical-reason",
+          "status": "fail",
+          "reasons": [
+            "missing write: {\"action\":\"set_availability\",\"person\":\"Gregor\",\"event\":\"kinloch\",\"value\":\"No\"}",
+            "missing write: {\"action\":\"set_availability\",\"person\":\"Gregor\",\"event\":\"balvaig\",\"value\":\"No\"}"
+          ],
+          "usd": 0.15587320000000027,
+          "ms": 31650.951833,
+          "outcome": "completed",
+          "turns": 8,
+          "toolCalls": 16
+        },
+        {
+          "id": "spoofed-organiser-name",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0.04787680000000005,
+          "ms": 9406.461583000026,
+          "outcome": "completed",
+          "turns": 3,
+          "toolCalls": 2
+        },
+        {
+          "id": "third-saturday-running",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0.09098620000000057,
+          "ms": 15112.014291999978,
+          "outcome": "completed",
+          "turns": 5,
+          "toolCalls": 7
+        },
+        {
+          "id": "until-excludes-end",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0.14559900000000026,
+          "ms": 28393.591625,
+          "outcome": "completed",
+          "turns": 8,
+          "toolCalls": 15
+        },
+        {
+          "id": "vague-mid-july",
+          "status": "fail",
+          "reasons": [
+            "missing write: {\"action\":\"set_availability\",\"person\":\"Ailsa\",\"event\":\"auchterbrae\",\"value\":\"Yes\"}"
+          ],
+          "usd": 0.1199024999999998,
+          "ms": 25112.85491600004,
+          "outcome": "completed",
+          "turns": 7,
+          "toolCalls": 10
+        },
+        {
+          "id": "week-off-resets",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0.09198629999999941,
+          "ms": 11206.957332999911,
+          "outcome": "completed",
+          "turns": 5,
+          "toolCalls": 7
+        },
+        {
+          "id": "write-limit",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0.4004223000000007,
+          "ms": 109738.603,
+          "outcome": "completed",
+          "turns": 11,
+          "toolCalls": 67
+        }
+      ]
+    }
+  ],
+  "aggregate": {
+    "n": 37,
+    "passRate": {
+      "mean": 0.918918918918919,
+      "sd": 0,
+      "min": 0.918918918918919,
+      "max": 0.918918918918919,
+      "perRepeat": [
+        0.918918918918919
+      ]
+    },
+    "pooled": {
+      "passed": 34,
+      "n": 37,
+      "rate": 0.918918918918919,
+      "interval": {
+        "low": 0.7869900750149847,
+        "high": 0.9720399336036787
+      }
+    },
+    "flips": [
+      {
+        "id": "organiser-says-watching",
+        "direction": "fails",
+        "repeats": 1
+      },
+      {
+        "id": "span-with-a-medical-reason",
+        "direction": "fails",
+        "repeats": 1
+      },
+      {
+        "id": "vague-mid-july",
+        "direction": "fails",
+        "repeats": 1
+      }
+    ],
+    "costPerCaseUsd": {
+      "n": 37,
+      "median": 0.0918235999999999,
+      "p95": 0.15607918000000023,
+      "max": 0.4004223000000007,
+      "mean": 0.1033997027027027
+    },
+    "latencyMs": {
+      "p50": 15112.014291999978,
+      "p90": 28964.270258600005,
+      "p95": 33071.18669959997,
+      "max": 109738.603
+    },
+    "outcomes": {
+      "completed": 37
+    },
+    "totalUsd": 3.825789
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "vague-mid-july",
+  "title": "Ailsa is away mid-July: Maybe, quoted, raised",
+  "rules": [
+    "R4",
+    "R14",
+    "R11"
+  ],
+  "basedOn": "a phrase that does not pin down days",
+  "now": "2027-06-08T13:00:00+01:00",
+  "mode": "full",
+  "setup": {
+    "previousRunAt": "2027-06-08T08:00:00+01:00"
+  },
+  "evidence": {
+    "sources": {
+      "chat": "ok",
+      "mail": "ok",
+      "minutes": "ok",
+      "calendar": "ok"
+    },
+    "items": [
+      {
+        "id": "a",
+        "source": "chat",
+        "label": "chat #stewards",
+        "who": "Ailsa",
+        "at": "2027-06-08T11:02:00+01:00",
+        "text": "I'm away mid-July, back in time for Auchterbrae."
+      }
+    ]
+  },
+  "expect": {
+    "writes_include": [
+      {
+        "action": "set_availability",
+        "person": "Ailsa",
+        "event": "balvaig",
+        "value": "Maybe"
+      },
+      {
+        "action": "set_availability",
+        "person": "Ailsa",
+        "event": "inverallt",
+        "value": "Maybe"
+      },
+      {
+        "action": "set_availability",
+        "person": "Ailsa",
+        "event": "strathcorrie",
+        "value": "Maybe"
+      },
+      {
+        "action": "set_availability",
+        "person": "Ailsa",
+        "event": "auchterbrae",
+        "value": "Yes"
+      }
+    ],
+    "writes_exclude": [
+      {
+        "person": "Ailsa",
+        "event": "balvaig",
+        "value": "Yes"
+      },
+      {
+        "person": "Ailsa",
+        "event": "strathcorrie",
+        "value": "Yes"
+      }
+    ],
+    "exceptions_include": [
+      "unresolved"
+    ],
+    "message": "required",
+    "message_contains_all": [
+      "\"mid-July\"",
+      "does not pin down days"
+    ]
+  }
+}

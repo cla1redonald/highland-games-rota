@@ -1,0 +1,537 @@
+{
+ "version": 1,
+ "label": "2027-06-10T18:00:00+01:00",
+ "model": "claude-sonnet-5-5",
+ "recordedAt": "2026-10-12T11:23:15.747Z",
+ "turns": [
+  {
+   "request": "dc56c108e0e8fcb3",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxFtBZ8hwesC1326A3Ly",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "tool_use",
+      "id": "toolu_01XVC7n595Y4pMJTzkyLjLsy",
+      "name": "read_rota",
+      "input": {},
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 4,
+     "cache_creation_input_tokens": 730,
+     "cache_read_input_tokens": 9104,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 730,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 4,
+       "output_tokens": 27,
+       "cache_read_input_tokens": 9104,
+       "cache_creation_input_tokens": 730,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 730,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 27,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "e51d13a21a21cb8d",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxFtLWu1fhDBkninXPw1",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "thinking",
+      "thinking": "",
+      "signature": ""
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_0187umHZ65CeLvxqqF3Qmxfk",
+      "name": "update_event",
+      "input": {
+       "event": "strathcorrie",
+       "fields": {
+        "date": "2027-07-24"
+       },
+       "source": "organiser approval",
+       "evidenceAt": "2027-06-10T13:00:00.000Z"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 11615,
+     "cache_read_input_tokens": 9834,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 11615,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 377,
+       "cache_read_input_tokens": 9834,
+       "cache_creation_input_tokens": 11615,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 11615,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 377,
+     "output_tokens_details": {
+      "thinking_tokens": 224
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "101b581a6e57434d",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxFtdAFwJRCB8dVZgt76",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "tool_use",
+      "id": "toolu_01Pz4hVLVSjGQ9yie6hAz5Nu",
+      "name": "set_availability",
+      "input": {
+       "person": "Lachlan",
+       "event": "strathcorrie",
+       "value": "No",
+       "basis": "answer",
+       "dateWords": [
+        "the 24th"
+       ],
+       "source": "chat #stewards",
+       "evidenceAt": "2027-06-10T14:10:00.000Z",
+       "saidBy": "Lachlan"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 640,
+     "cache_read_input_tokens": 21449,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 640,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 247,
+       "cache_read_input_tokens": 21449,
+       "cache_creation_input_tokens": 640,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 640,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 247,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "3660f62f03144a2f",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxFtqQTXNChDozo5pxMZ",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "tool_use",
+      "id": "toolu_011RRryPH2u7mH5nSMtrDTqa",
+      "name": "update_person",
+      "input": {
+       "person": "Lachlan",
+       "fields": {
+        "statement": {
+         "verdicts": [
+          {
+           "event": "strathcorrie",
+           "value": "No"
+          }
+         ],
+         "dateWords": [
+          "the 24th"
+         ]
+        }
+       },
+       "source": "chat #stewards",
+       "evidenceAt": "2027-06-10T14:10:00.000Z",
+       "saidBy": "Lachlan"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_019ZAt8Z65KRMfskApobpM35",
+      "name": "update_person",
+      "input": {
+       "person": "Lachlan",
+       "fields": {
+        "lastChecked": "2027-06-10"
+       },
+       "source": "run",
+       "evidenceAt": "2027-06-10T18:00:00+01:00",
+       "saidBy": "Ghillie"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01PYVdMUSixjzNpqxgiUeRk6",
+      "name": "read_rota",
+      "input": {},
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 295,
+     "cache_read_input_tokens": 22089,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 295,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 416,
+       "cache_read_input_tokens": 22089,
+       "cache_creation_input_tokens": 295,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 295,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 416,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "010342f204cbe7d6",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxFu3ZwTfwiJMnR1BcR3",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "tool_use",
+      "id": "toolu_01ES97upjLQjGM6osYYancf7",
+      "name": "message_organiser",
+      "input": {
+       "exceptions": [
+        {
+         "type": "event_change",
+         "change": "moved",
+         "event": "strathcorrie",
+         "from": "2027-07-17",
+         "to": "2027-07-24",
+         "previous": [
+          {
+           "person": "Morven",
+           "value": "Yes"
+          },
+          {
+           "person": "Hamish",
+           "value": "Maybe"
+          },
+          {
+           "person": "Eilidh",
+           "value": "Yes"
+          },
+          {
+           "person": "Torquil",
+           "value": "Yes"
+          },
+          {
+           "person": "Dougie",
+           "value": "Yes"
+          },
+          {
+           "person": "Senga",
+           "value": "Yes"
+          },
+          {
+           "person": "Netta",
+           "value": "Yes"
+          },
+          {
+           "person": "Ailsa",
+           "value": "Maybe"
+          },
+          {
+           "person": "Gregor",
+           "value": "Yes"
+          }
+         ]
+        },
+        {
+         "type": "red_or_delta_drop",
+         "saturday": "2027-07-24",
+         "events": [
+          "strathcorrie"
+         ],
+         "delta": -6,
+         "rag": "Red",
+         "causes": [
+          {
+           "person": "Lachlan",
+           "event": "strathcorrie",
+           "value": "No",
+           "source": "chat #stewards",
+           "at": "2027-06-10T14:10:00.000Z"
+          }
+         ],
+         "open": [
+          {
+           "person": "Morven",
+           "value": "Unknown"
+          },
+          {
+           "person": "Hamish",
+           "value": "Unknown"
+          },
+          {
+           "person": "Eilidh",
+           "value": "Unknown"
+          },
+          {
+           "person": "Torquil",
+           "value": "Unknown"
+          }
+         ]
+        }
+       ],
+       "readings": [
+        {
+         "person": "Lachlan",
+         "source": "chat #stewards",
+         "at": "2027-06-10T14:10:00.000Z",
+         "dateWords": [
+          "the 24th"
+         ],
+         "verdicts": [
+          {
+           "event": "strathcorrie",
+           "value": "No"
+          }
+         ]
+        }
+       ]
+      },
+      "caller": {
+       "type": "direct"
+      }
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01RJxVvNPvhYU9ZzH5MFgtcQ",
+      "name": "log_run",
+      "input": {
+       "window": [
+        "2027-06-10T11:00:00.000Z",
+        "2027-06-10T18:00:00+01:00"
+       ],
+       "sources": {
+        "chat": "ok",
+        "mail": "ok",
+        "minutes": "ok",
+        "calendar": "ok"
+       },
+       "sourceWindows": {
+        "chat": [
+         "2027-06-10T11:00:00.000Z",
+         "2027-06-10T18:00:00+01:00"
+        ],
+        "mail": [
+         "2027-06-10T11:00:00.000Z",
+         "2027-06-10T18:00:00+01:00"
+        ],
+        "minutes": [
+         "2027-06-10T11:00:00.000Z",
+         "2027-06-10T18:00:00+01:00"
+        ],
+        "calendar": [
+         "2027-06-10T11:00:00.000Z",
+         "2027-06-10T18:00:00+01:00"
+        ]
+       },
+       "exceptions": 2,
+       "read": [
+        "c92c0520335c2341"
+       ],
+       "toolCalls": 8
+      },
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 14625,
+     "cache_read_input_tokens": 22384,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 14625,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 970,
+       "cache_read_input_tokens": 22384,
+       "cache_creation_input_tokens": 14625,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 14625,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 970,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "666120c77bae3bbd",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxFuVmHsg6puy9dC9uQH",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "text",
+      "text": "I moved Strathcorrie to Sat 24 Jul, as Isla approved, recorded Lachlan's No for it, and sent Isla one message. The run is logged.\n\n- **Move:** the date change reset every answer for Strathcorrie to Unknown, and the event is now unconfirmed. I listed the nine people whose answers were reset so they can be asked again.\n- **Strathcorrie:** the 24 Jul Saturday is now Red, short 6 of 6. Morven, Hamish, Eilidh and Torquil still need to give dates.\n- **Lachlan:** his \"can't do Strathcorrie now it's moved to the 24th\" went in as a No, and I put it in the message as a reading."
+     }
+    ],
+    "container": null,
+    "stop_reason": "end_turn",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 2552,
+     "cache_read_input_tokens": 37009,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 2552,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 234,
+       "cache_read_input_tokens": 37009,
+       "cache_creation_input_tokens": 2552,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 2552,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 234,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  }
+ ]
+}

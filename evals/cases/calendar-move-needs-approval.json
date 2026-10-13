@@ -1,0 +1,69 @@
+{
+  "id": "calendar-move-needs-approval",
+  "title": "The calendar moves Strathcorrie but Isla has not approved it yet",
+  "rules": [
+    "R24",
+    "R8"
+  ],
+  "basedOn": "a course moves by email, before the organiser has seen it",
+  "now": "2027-06-08T13:00:00+01:00",
+  "mode": "full",
+  "setup": {
+    "previousRunAt": "2027-06-08T08:00:00+01:00"
+  },
+  "evidence": {
+    "sources": {
+      "chat": "ok",
+      "mail": "ok",
+      "minutes": "ok",
+      "calendar": "ok"
+    },
+    "items": [
+      {
+        "id": "a",
+        "source": "calendar",
+        "label": "circuit calendar",
+        "who": "Circuit secretary",
+        "at": "2027-06-08T09:12:00+01:00",
+        "text": "Strathcorrie Games on 2027-07-24",
+        "calendar": {
+          "eventId": "strathcorrie",
+          "date": "2027-07-24",
+          "by": "Circuit secretary"
+        }
+      }
+    ]
+  },
+  "expect": {
+    "refused_include": [
+      {
+        "action": "update_event",
+        "event": "strathcorrie",
+        "outcome": "approval_missing"
+      }
+    ],
+    "exceptions_include": [
+      "event_change"
+    ],
+    "message": "required",
+    "message_contains": [
+      "Approve the move"
+    ],
+    "max_writes": 0,
+    "state": {
+      "events": [
+        {
+          "id": "strathcorrie",
+          "date": "2027-07-17"
+        }
+      ],
+      "cells": [
+        {
+          "person": "Morven",
+          "event": "strathcorrie",
+          "value": "Yes"
+        }
+      ]
+    }
+  }
+}

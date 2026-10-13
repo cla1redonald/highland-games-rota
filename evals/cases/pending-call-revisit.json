@@ -1,0 +1,31 @@
+{
+  "id": "pending-call-revisit",
+  "title": "Kirsty's Kinloch answer was pending a call that has now happened",
+  "rules": [
+    "R19"
+  ],
+  "basedOn": "Maybes left pending a call",
+  "now": "2027-06-10T13:00:00+01:00",
+  "mode": "full",
+  "setup": {
+    "previousRunAt": "2027-06-09T18:00:00+01:00"
+  },
+  "evidence": {
+    "sources": {
+      "chat": "ok",
+      "mail": "ok",
+      "minutes": "ok",
+      "calendar": "ok"
+    },
+    "items": []
+  },
+  "expect": {
+    "exceptions_include": [
+      "unresolved"
+    ],
+    "message": "required",
+    "message_contains": [
+      "pending a call on Wed 9 Jun"
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "id": "no-lead-no-news",
+  "title": "Inverallt has no Chief Steward, by choice, before and after",
+  "rules": [
+    "R28",
+    "R15",
+    "R14"
+  ],
+  "basedOn": "no lead confirmed for a location that never had one",
+  "now": "2027-06-08T13:00:00+01:00",
+  "mode": "full",
+  "setup": {
+    "previousRunAt": "2027-06-08T08:00:00+01:00"
+  },
+  "evidence": {
+    "sources": {
+      "chat": "ok",
+      "mail": "ok",
+      "minutes": "ok",
+      "calendar": "ok"
+    },
+    "items": [
+      {
+        "id": "a",
+        "source": "chat",
+        "label": "chat #stewards",
+        "who": "Torquil",
+        "at": "2027-06-08T10:00:00+01:00",
+        "text": "Inverallt is fine for me."
+      }
+    ]
+  },
+  "expect": {
+    "exceptions_exclude": [
+      "lost_lead",
+      "red_or_delta_drop"
+    ],
+    "message": "required",
+    "message_contains": [
+      "Torquil"
+    ],
+    "max_writes": 0
+  }
+}

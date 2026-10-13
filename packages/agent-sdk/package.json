@@ -1,0 +1,25 @@
+{
+  "name": "@ghillie/agent-sdk",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The rota agent on the Agent SDK, deny by default, with hooks, resumable sessions and an audit trail.",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "ghillie-source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "dependencies": {
+    "@ghillie/agent-kit": "0.1.0",
+    "@ghillie/engine": "0.1.0",
+    "@ghillie/ledger": "0.1.0",
+    "@ghillie/stand-in": "0.1.0",
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "@anthropic-ai/claude-agent-sdk": "^0.3.296",
+    "@anthropic-ai/sdk": "^0.133.0",
+    "zod": "^4.6.6"
+  }
+}

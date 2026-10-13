@@ -1,0 +1,321 @@
+{
+ "version": 1,
+ "label": "2027-06-15T13:00:00+01:00",
+ "model": "claude-sonnet-5-5",
+ "recordedAt": "2026-10-12T11:24:53.299Z",
+ "turns": [
+  {
+   "request": "377e6a94ca86cf90",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxG1NfKnwW5FSM4FmN3E",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "tool_use",
+      "id": "toolu_01VdWSEsrMu2z2ngEcZLBjj6",
+      "name": "read_rota",
+      "input": {},
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 4,
+     "cache_creation_input_tokens": 741,
+     "cache_read_input_tokens": 9104,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 741,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 4,
+       "output_tokens": 27,
+       "cache_read_input_tokens": 9104,
+       "cache_creation_input_tokens": 741,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 741,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 27,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "5fb78bdc17d29251",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxG1WDVkEDM79PptyJUa",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "thinking",
+      "thinking": "",
+      "signature": ""
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01PJWh2VQGF3cXBfPk6f8rxZ",
+      "name": "read_rota",
+      "input": {},
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 12653,
+     "cache_read_input_tokens": 9845,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 12653,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 155,
+       "cache_read_input_tokens": 9845,
+       "cache_creation_input_tokens": 12653,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 12653,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 155,
+     "output_tokens_details": {
+      "thinking_tokens": 127
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "913f0e66b12048f6",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxG1gbpX4arY4g3iftEn",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "tool_use",
+      "id": "toolu_01KVZ95tMYPiZ5BymaeTuTQQ",
+      "name": "message_organiser",
+      "input": {
+       "exceptions": [
+        {
+         "type": "source_unreadable",
+         "source": "mail",
+         "status": "timed out"
+        }
+       ],
+       "readings": []
+      },
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 12779,
+     "cache_read_input_tokens": 22498,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 12779,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 102,
+       "cache_read_input_tokens": 22498,
+       "cache_creation_input_tokens": 12779,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 12779,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 102,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "09c13135ea52acd1",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxG1oczRrR1CMJ6H5egA",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "tool_use",
+      "id": "toolu_01LPtcEepH7fq9GUA91ASZTA",
+      "name": "log_run",
+      "input": {
+       "window": [
+        "2027-06-14T16:00:00.000Z",
+        "2027-06-15T13:00:00+01:00"
+       ],
+       "sources": {
+        "chat": "ok",
+        "mail": "timed out after 50 ms",
+        "minutes": "ok",
+        "calendar": "ok"
+       },
+       "sourceWindows": {
+        "chat": [
+         "2027-06-14T16:00:00.000Z",
+         "2027-06-15T13:00:00+01:00"
+        ],
+        "mail": [
+         "2027-06-14T16:00:00.000Z",
+         "2027-06-14T18:00:00+01:00"
+        ],
+        "minutes": [
+         "2027-06-14T16:00:00.000Z",
+         "2027-06-15T13:00:00+01:00"
+        ],
+        "calendar": [
+         "2027-06-14T16:00:00.000Z",
+         "2027-06-15T13:00:00+01:00"
+        ]
+       },
+       "exceptions": 1,
+       "read": [
+        "08800d8b8f53b1a5"
+       ],
+       "toolCalls": 4
+      },
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 200,
+     "cache_read_input_tokens": 35277,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 200,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 416,
+       "cache_read_input_tokens": 35277,
+       "cache_creation_input_tokens": 200,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 200,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 416,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "d44e94723841ffd8",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxG21ZLx85qTnuKZ1HDU",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "text",
+      "text": "Mail timed out this run, so I flagged it to Isla and didn't treat it as an all clear. The only new evidence was Struan's chat about raffle prizes. It has no availability in it, so I made no writes. No grants were ready and the rota showed no changes. The run is logged."
+     }
+    ],
+    "container": null,
+    "stop_reason": "end_turn",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 1548,
+     "cache_read_input_tokens": 35477,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 1548,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 92,
+       "cache_read_input_tokens": 35477,
+       "cache_creation_input_tokens": 1548,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 1548,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 92,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  }
+ ]
+}

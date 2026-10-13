@@ -1,0 +1,66 @@
+{
+  "id": "soft-clash-open-day",
+  "title": "A club open day on the Sunday pack-down that Lachlan could skip",
+  "rules": [
+    "R7",
+    "R30"
+  ],
+  "basedOn": "a soft clash with a conference",
+  "now": "2027-06-08T13:00:00+01:00",
+  "mode": "tuning",
+  "setup": {
+    "previousRunAt": "2027-06-08T08:00:00+01:00"
+  },
+  "evidence": {
+    "sources": {
+      "chat": "ok",
+      "mail": "ok",
+      "minutes": "ok",
+      "calendar": "ok"
+    },
+    "items": [
+      {
+        "id": "a",
+        "source": "chat",
+        "label": "chat #stewards",
+        "who": "Lachlan",
+        "at": "2027-06-08T10:00:00+01:00",
+        "text": "The club open day is Sunday 11 July but I could skip it."
+      }
+    ]
+  },
+  "expect": {
+    "writes_include": [
+      {
+        "action": "set_availability",
+        "person": "Lachlan",
+        "event": "balvaig",
+        "value": "Maybe"
+      },
+      {
+        "action": "set_availability",
+        "person": "Lachlan",
+        "event": "inverallt",
+        "value": "Maybe"
+      }
+    ],
+    "writes_exclude": [
+      {
+        "person": "Lachlan",
+        "value": "Yes"
+      },
+      {
+        "person": "Lachlan",
+        "value": "No"
+      }
+    ],
+    "exceptions_include": [
+      "tuning_write"
+    ],
+    "message": "required",
+    "message_contains": [
+      "soft clash"
+    ],
+    "max_writes": 3
+  }
+}

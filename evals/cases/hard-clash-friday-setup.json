@@ -1,0 +1,54 @@
+{
+  "id": "hard-clash-friday-setup",
+  "title": "Netta works the Friday setup of Kinloch-on-Spey",
+  "rules": [
+    "R7",
+    "R30"
+  ],
+  "basedOn": "a fixed commitment on a travel day",
+  "now": "2027-06-08T13:00:00+01:00",
+  "mode": "tuning",
+  "setup": {
+    "previousRunAt": "2027-06-08T08:00:00+01:00"
+  },
+  "evidence": {
+    "sources": {
+      "chat": "ok",
+      "mail": "ok",
+      "minutes": "ok",
+      "calendar": "ok"
+    },
+    "items": [
+      {
+        "id": "a",
+        "source": "chat",
+        "label": "chat #stewards",
+        "who": "Netta",
+        "at": "2027-06-08T10:00:00+01:00",
+        "text": "I'm working Friday 2 July, no way round it."
+      }
+    ]
+  },
+  "expect": {
+    "writes_include": [
+      {
+        "action": "set_availability",
+        "person": "Netta",
+        "event": "kinloch",
+        "value": "No"
+      }
+    ],
+    "writes_exclude": [
+      {
+        "person": "Netta",
+        "event": "kinloch",
+        "value": "Yes"
+      }
+    ],
+    "exceptions_include": [
+      "tuning_write"
+    ],
+    "message": "required",
+    "max_writes": 2
+  }
+}

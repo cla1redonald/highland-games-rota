@@ -1,0 +1,360 @@
+{
+ "version": 1,
+ "label": "2027-06-10T13:00:00+01:00",
+ "model": "claude-sonnet-5-5",
+ "recordedAt": "2026-10-12T11:22:59.644Z",
+ "turns": [
+  {
+   "request": "1e68ffc3e0294d21",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxFrze2ufXQRzLZvNLoQ",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "tool_use",
+      "id": "toolu_01HaN2nTjRhstgxTeafGsh9n",
+      "name": "read_rota",
+      "input": {},
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 4,
+     "cache_creation_input_tokens": 1180,
+     "cache_read_input_tokens": 9104,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 1180,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 4,
+       "output_tokens": 27,
+       "cache_read_input_tokens": 9104,
+       "cache_creation_input_tokens": 1180,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 1180,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 27,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "d6159ed28403adf6",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxFs9FwnXD5PVKqGYfzX",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "thinking",
+      "thinking": "",
+      "signature": ""
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01CmE6ZSrHFTJHEYW3bF4sBC",
+      "name": "update_event",
+      "input": {
+       "event": "strathcorrie",
+       "fields": {
+        "date": "2027-07-24"
+       },
+       "source": "circuit calendar",
+       "evidenceAt": "2027-06-10T09:12:00+01:00"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01C2RwNxraxEDeQthR13A5S2",
+      "name": "propose_recruit",
+      "input": {
+       "name": "Bridie Tosh",
+       "suggestedBy": "Hamish",
+       "arena": "Children's races",
+       "evidenceFrom": "other",
+       "source": "chat #stewards",
+       "evidenceAt": "2027-06-10T09:05:00.000Z",
+       "saidBy": "Hamish"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 11476,
+     "cache_read_input_tokens": 10284,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 11476,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 625,
+       "cache_read_input_tokens": 10284,
+       "cache_creation_input_tokens": 11476,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 11476,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 625,
+     "output_tokens_details": {
+      "thinking_tokens": 242
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "5ed052bea4c097fd",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxFsWWd3Y5max4AhyRQ8",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "tool_use",
+      "id": "toolu_01StDRLP4TjSmvYtqK35rKwE",
+      "name": "read_rota",
+      "input": {},
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 794,
+     "cache_read_input_tokens": 21760,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 794,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 27,
+       "cache_read_input_tokens": 21760,
+       "cache_creation_input_tokens": 794,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 794,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 27,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "6ac622e15b6af864",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxFsdQsJaUuDBWvGM9tW",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "tool_use",
+      "id": "toolu_01AhZW9hHScm1ggLuhz7Neuu",
+      "name": "message_organiser",
+      "input": {
+       "exceptions": [
+        {
+         "type": "event_change",
+         "change": "proposed_move",
+         "event": "strathcorrie",
+         "to": "2027-07-24",
+         "source": "circuit calendar",
+         "at": "2027-06-10T09:12:00+01:00"
+        }
+       ],
+       "readings": []
+      },
+      "caller": {
+       "type": "direct"
+      }
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_014L7ZaumZjAAGBckvFZw3Bu",
+      "name": "log_run",
+      "input": {
+       "window": [
+        "2027-06-09T16:00:00.000Z",
+        "2027-06-10T13:00:00+01:00"
+       ],
+       "sources": {
+        "chat": "ok",
+        "mail": "ok",
+        "minutes": "ok",
+        "calendar": "ok"
+       },
+       "sourceWindows": {
+        "chat": [
+         "2027-06-09T16:00:00.000Z",
+         "2027-06-10T13:00:00+01:00"
+        ],
+        "mail": [
+         "2027-06-09T16:00:00.000Z",
+         "2027-06-10T13:00:00+01:00"
+        ],
+        "minutes": [
+         "2027-06-09T16:00:00.000Z",
+         "2027-06-10T13:00:00+01:00"
+        ],
+        "calendar": [
+         "2027-06-09T16:00:00.000Z",
+         "2027-06-10T13:00:00+01:00"
+        ]
+       },
+       "exceptions": 1,
+       "read": [
+        "fb56e1c5c6f4fae4",
+        "5f7128a83f240997",
+        "d48bd67c3bd068ae",
+        "863998cfe5927f54"
+       ],
+       "toolCalls": 6
+      },
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 11474,
+     "cache_read_input_tokens": 22554,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 11474,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 586,
+       "cache_read_input_tokens": 22554,
+       "cache_creation_input_tokens": 11474,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 11474,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 586,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "24ce33bed5fa57ea",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxFsvK7PEwvbDtxhdagn",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "text",
+      "text": "The tick is done. I sent Isla one message: the circuit calendar moves Strathcorrie to Sat 24 Jul, and I couldn't make that change without her approval.\n\n- **Strathcorrie move:** The `update_event` call was refused as approval_missing, so I raised it as a proposed move. Nothing on the rota has changed. If she approves it, every answer for Strathcorrie resets to Unknown.\n- **Bridie Tosh:** Hamish's question in #stewards isn't new evidence. She was already proposed on 7 Jun, so `propose_recruit` was refused as already proposed and I raised nothing.\n- **Senga \"all of them\":** Hamish was reporting someone else's dates, so I recorded nothing.\n- **Kinloch field move (Morven's chat):** Already read in an earlier run, so I skipped it.\n\nThe run is logged with 6 tool calls and 0 writes."
+     }
+    ],
+    "container": null,
+    "stop_reason": "end_turn",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 1938,
+     "cache_read_input_tokens": 34028,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 1938,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 301,
+       "cache_read_input_tokens": 34028,
+       "cache_creation_input_tokens": 1938,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 1938,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 301,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  }
+ ]
+}

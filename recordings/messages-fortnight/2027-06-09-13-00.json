@@ -1,0 +1,202 @@
+{
+ "version": 1,
+ "label": "2027-06-09T13:00:00+01:00",
+ "model": "claude-sonnet-5-5",
+ "recordedAt": "2026-10-12T11:22:31.428Z",
+ "turns": [
+  {
+   "request": "93bfc9754776116a",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxFpvZueeEAgq8TMgFd5",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "tool_use",
+      "id": "toolu_019LLtw2vBBUPxQt4LErDv25",
+      "name": "read_rota",
+      "input": {},
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 4,
+     "cache_creation_input_tokens": 626,
+     "cache_read_input_tokens": 9104,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 626,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 4,
+       "output_tokens": 27,
+       "cache_read_input_tokens": 9104,
+       "cache_creation_input_tokens": 626,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 626,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 27,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "b1a827874fa24e75",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxFq4h3is4TsdDpYgqai",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "thinking",
+      "thinking": "",
+      "signature": ""
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01C7KhxLngCiRj8rpcjJrf33",
+      "name": "log_run",
+      "input": {
+       "window": [
+        "2027-06-08T16:00:00.000Z",
+        "2027-06-09T13:00:00+01:00"
+       ],
+       "sources": {
+        "chat": "ok",
+        "mail": "ok",
+        "minutes": "ok",
+        "calendar": "ok"
+       },
+       "sourceWindows": {
+        "chat": [
+         "2027-06-08T16:00:00.000Z",
+         "2027-06-09T13:00:00+01:00"
+        ],
+        "mail": [
+         "2027-06-08T16:00:00.000Z",
+         "2027-06-09T13:00:00+01:00"
+        ],
+        "minutes": [
+         "2027-06-08T16:00:00.000Z",
+         "2027-06-09T13:00:00+01:00"
+        ],
+        "calendar": [
+         "2027-06-08T16:00:00.000Z",
+         "2027-06-09T13:00:00+01:00"
+        ]
+       },
+       "exceptions": 0,
+       "read": [],
+       "toolCalls": 2
+      },
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 11379,
+     "cache_read_input_tokens": 9730,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 11379,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 467,
+       "cache_read_input_tokens": 9730,
+       "cache_creation_input_tokens": 11379,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 11379,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 467,
+     "output_tokens_details": {
+      "thinking_tokens": 70
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "457be82a4aa5d308",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxFqWBEDioR4UCCMPvf4",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "text",
+      "text": "Quiet tick: there was no new evidence, no grants ready to carry out and no changes from the engine. All four sources were readable, so I sent no message and logged the run."
+     }
+    ],
+    "container": null,
+    "stop_reason": "end_turn",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 1567,
+     "cache_read_input_tokens": 21109,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 1567,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 55,
+       "cache_read_input_tokens": 21109,
+       "cache_creation_input_tokens": 1567,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 1567,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 55,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  }
+ ]
+}

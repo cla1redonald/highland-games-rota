@@ -1,0 +1,59 @@
+{
+  "id": "delta-drop-hand-edit",
+  "title": "Two hand edits take Sat 3 Jul below its need",
+  "rules": [
+    "R25",
+    "R29"
+  ],
+  "basedOn": "a person's own edit takes a course below target",
+  "now": "2027-06-08T13:00:00+01:00",
+  "mode": "full",
+  "setup": {
+    "previousRunAt": "2027-06-08T08:00:00+01:00",
+    "after": [
+      {
+        "at": "2027-06-08T09:00:00+01:00",
+        "edits": [
+          {
+            "person": "Hamish",
+            "event": "kinloch",
+            "value": "No"
+          },
+          {
+            "person": "Calum",
+            "event": "kinloch",
+            "value": "No"
+          }
+        ]
+      }
+    ]
+  },
+  "evidence": {
+    "sources": {
+      "chat": "ok",
+      "mail": "ok",
+      "minutes": "ok",
+      "calendar": "ok"
+    },
+    "items": [
+      {
+        "id": "a",
+        "source": "chat",
+        "label": "chat #committee",
+        "who": "Struan",
+        "at": "2027-06-08T10:30:00+01:00",
+        "text": "Raffle prizes need collecting by Friday, folks."
+      }
+    ]
+  },
+  "expect": {
+    "exceptions_include": [
+      "red_or_delta_drop"
+    ],
+    "exceptions_exclude": [
+      "lost_lead"
+    ],
+    "message": "required",
+    "max_writes": 0
+  }
+}

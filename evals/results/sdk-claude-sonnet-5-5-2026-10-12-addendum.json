@@ -1,0 +1,73 @@
+{
+  "impl": "sdk",
+  "model": "claude-sonnet-5-5",
+  "date": "2026-10-12",
+  "note": "Cases the stand-in skips are run and graded for the builds; they never count as flips.",
+  "repeats": [
+    {
+      "repeat": 1,
+      "summary": {
+        "n": 1,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "rate": 1,
+        "interval": {
+          "low": 0.20654329147389294,
+          "high": 1
+        }
+      },
+      "cases": [
+        {
+          "id": "calendar-move-needs-approval",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0.05353290000000044,
+          "ms": 12663.962791000002,
+          "outcome": "completed",
+          "turns": 5,
+          "toolCalls": 4
+        }
+      ]
+    }
+  ],
+  "aggregate": {
+    "n": 1,
+    "passRate": {
+      "mean": 1,
+      "sd": 0,
+      "min": 1,
+      "max": 1,
+      "perRepeat": [
+        1
+      ]
+    },
+    "pooled": {
+      "passed": 1,
+      "n": 1,
+      "rate": 1,
+      "interval": {
+        "low": 0.20654329147389294,
+        "high": 1
+      }
+    },
+    "flips": [],
+    "costPerCaseUsd": {
+      "n": 1,
+      "median": 0.05353290000000044,
+      "p95": 0.05353290000000044,
+      "max": 0.05353290000000044,
+      "mean": 0.05353290000000044
+    },
+    "latencyMs": {
+      "p50": 12663.962791000002,
+      "p90": 12663.962791000002,
+      "p95": 12663.962791000002,
+      "max": 12663.962791000002
+    },
+    "outcomes": {
+      "completed": 1
+    },
+    "totalUsd": 0.05353290000000044
+  }
+}

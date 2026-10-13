@@ -1,0 +1,26 @@
+{
+  "agent": {
+    "id": "agent_01VXakxgYN8oYj61NXzaWAmb",
+    "version": 1
+  },
+  "environment": {
+    "id": "env_01CiShT58cNvKQjX2EwbM5MM"
+  },
+  "deployment": {
+    "id": "depl_01ScChmoigLkqqzSXKZXwXR3",
+    "schedule": {
+      "expression": "0 13,18 * * 1-5",
+      "last_run_at": null,
+      "timezone": "Europe/London",
+      "type": "cron",
+      "upcoming_runs_at": [
+        "2026-10-12T12:00:00Z",
+        "2026-10-12T17:00:00Z",
+        "2026-10-13T12:00:00Z",
+        "2026-10-13T17:00:00Z",
+        "2026-10-14T12:00:00Z"
+      ]
+    },
+    "paused": true
+  }
+}

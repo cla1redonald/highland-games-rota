@@ -1,0 +1,16 @@
+{
+  "name": "@ghillie/feed",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The fictional circuit, its seeded fortnight, and adapters that read it like chat, mail, minutes and a calendar.",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "ghillie-source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "dependencies": { "@ghillie/engine": "0.1.0" }
+}

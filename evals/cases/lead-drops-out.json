@@ -1,0 +1,56 @@
+{
+  "id": "lead-drops-out",
+  "title": "Morven, pencilled as lead, drops Kinloch-on-Spey; Inverallt is led by the partner nominee by choice",
+  "rules": [
+    "R28",
+    "R25"
+  ],
+  "basedOn": "the pencilled lead drops out; a deliberate no-lead location stays quiet",
+  "now": "2027-06-08T13:00:00+01:00",
+  "mode": "full",
+  "setup": {
+    "previousRunAt": "2027-06-08T08:00:00+01:00"
+  },
+  "evidence": {
+    "sources": {
+      "chat": "ok",
+      "mail": "ok",
+      "minutes": "ok",
+      "calendar": "ok"
+    },
+    "items": [
+      {
+        "id": "a",
+        "source": "chat",
+        "label": "chat #stewards",
+        "who": "Morven",
+        "at": "2027-06-08T09:45:00+01:00",
+        "text": "Sorry all, I can't do Kinloch now."
+      }
+    ]
+  },
+  "expect": {
+    "writes_include": [
+      {
+        "action": "set_availability",
+        "person": "Morven",
+        "event": "kinloch",
+        "value": "No"
+      }
+    ],
+    "exceptions_include": [
+      "lost_lead",
+      "booked_dropout"
+    ],
+    "exceptions_exclude": [
+      "event_change"
+    ],
+    "message": "required",
+    "message_contains_all": [
+      "Morven",
+      "Kinloch-on-Spey",
+      "lost its lead"
+    ],
+    "max_writes": 1
+  }
+}

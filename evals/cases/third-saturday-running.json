@@ -1,0 +1,55 @@
+{
+  "id": "third-saturday-running",
+  "title": "Fergus would make three Saturdays in a row: the rota's limit, not his",
+  "rules": [
+    "R23",
+    "R18"
+  ],
+  "basedOn": "over-use on a third trip running",
+  "now": "2027-06-08T13:00:00+01:00",
+  "mode": "full",
+  "setup": {
+    "previousRunAt": "2027-06-08T08:00:00+01:00",
+    "before": {
+      "edits": [
+        {
+          "person": "Fergus",
+          "event": "glen-dunnock",
+          "value": "Stewarding"
+        },
+        {
+          "person": "Fergus",
+          "event": "kinloch",
+          "value": "Stewarding"
+        }
+      ]
+    }
+  },
+  "evidence": {
+    "sources": {
+      "chat": "ok",
+      "mail": "ok",
+      "minutes": "ok",
+      "calendar": "ok"
+    },
+    "items": [
+      {
+        "id": "a",
+        "source": "chat",
+        "label": "chat #stewards",
+        "who": "Fergus",
+        "at": "2027-06-08T10:30:00+01:00",
+        "text": "Count me in for Inverallt."
+      }
+    ]
+  },
+  "expect": {
+    "exceptions_include": [
+      "over_used"
+    ],
+    "message": "required",
+    "message_contains": [
+      "the rota's limit"
+    ]
+  }
+}

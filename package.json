@@ -1,0 +1,54 @@
+{
+  "name": "ghillie",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Keeps a Highland games volunteer rota true from the committee's chat, mail and minutes, and proposes rather than decides.",
+  "author": "Claire Donald",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "workspaces": [
+    "packages/engine",
+    "packages/feed",
+    "packages/mcp-server",
+    "packages/stand-in",
+    "packages/ledger",
+    "packages/agent-kit",
+    "packages/agent-messages",
+    "packages/agent-sdk",
+    "packages/agent-managed",
+    "apps/demo",
+    "evals"
+  ],
+  "scripts": {
+    "build": "tsc -b tsconfig.json",
+    "typecheck": "tsc -b tsconfig.json && tsc -p tsconfig.test.json",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "demo": "npm run build --silent && node apps/demo/dist/main.js",
+    "demo:replay-twice": "npm run build --silent && node apps/demo/dist/main.js --replay-twice",
+    "eval": "npm run build --silent && node evals/dist/run.js",
+    "deny-list": "node --import tsx scripts/deny-list.ts",
+    "deny-list:history": "node --import tsx scripts/deny-list.ts --history",
+    "check": "npm run lint && npm run typecheck && npm test && npm run build && npm run demo && npm run eval && npm run deny-list",
+    "clean": "rm -rf packages/*/dist apps/*/dist evals/dist out data *.tsbuildinfo packages/*/*.tsbuildinfo apps/*/*.tsbuildinfo evals/*.tsbuildinfo",
+    "managed": "node --conditions=ghillie-source --import tsx packages/agent-managed/src/cli.ts",
+    "managed:export": "npm run managed --silent -- export",
+    "eval:live": "npm run build --silent && node evals/dist/live.js",
+    "eval:baseline": "npm run build --silent && node evals/dist/live.js --impl stand-in",
+    "demo:live": "npm run build --silent && node apps/demo/dist/main.js --live"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/better-sqlite3": "^9.6.0",
+    "@types/node": "^22.20.5",
+    "eslint": "^10.12.0",
+    "globals": "^17.13.0",
+    "tsx": "^4.23.15",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.71.1",
+    "vitest": "^5.0.3"
+  }
+}

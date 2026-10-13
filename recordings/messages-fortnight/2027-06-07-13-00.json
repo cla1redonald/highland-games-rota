@@ -1,0 +1,709 @@
+{
+ "version": 1,
+ "label": "2027-06-07T13:00:00+01:00",
+ "model": "claude-sonnet-5-5",
+ "recordedAt": "2026-10-12T11:20:27.921Z",
+ "turns": [
+  {
+   "request": "3ac957ea759f93c7",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxFfpy4DEHgWAaMSctGX",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "tool_use",
+      "id": "toolu_018bAp2Qzdy1gtktCPRp4jTP",
+      "name": "read_rota",
+      "input": {},
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 4,
+     "cache_creation_input_tokens": 10403,
+     "cache_read_input_tokens": 0,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 10403,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 4,
+       "output_tokens": 27,
+       "cache_read_input_tokens": 0,
+       "cache_creation_input_tokens": 10403,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 10403,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 27,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "ce0d37896ddd3b66",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxFfyYzPyz7d9G3ZJuhf",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "thinking",
+      "thinking": "",
+      "signature": ""
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01KY3WiNY9c9grTW5iq3NhsW",
+      "name": "set_decision",
+      "input": {
+       "person": "Fergus",
+       "event": "glen-dunnock",
+       "value": "Stewarding",
+       "source": "organiser approval",
+       "evidenceAt": "2027-06-07T08:08:00.000Z"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01Q9u77b6s3wj7Ex89ECs84Z",
+      "name": "set_decision",
+      "input": {
+       "person": "Fergus",
+       "event": "kinloch",
+       "value": "Stewarding",
+       "source": "organiser approval",
+       "evidenceAt": "2027-06-07T08:08:00.000Z"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01EhiS5yZaERttz63BrUTYuZ",
+      "name": "set_availability",
+      "input": {
+       "person": "Senga",
+       "event": "kinloch",
+       "value": "No",
+       "source": "chat #stewards",
+       "evidenceAt": "2027-06-07T09:02:00.000Z",
+       "saidBy": "Senga"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01WzdtfUaSPUGxmnNVc8SwNz",
+      "name": "set_availability",
+      "input": {
+       "person": "Senga",
+       "event": "glen-dunnock",
+       "value": "Yes",
+       "source": "chat #stewards",
+       "evidenceAt": "2027-06-07T09:02:00.000Z",
+       "saidBy": "Senga"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_017WmrA4oUX5HkPxZavhXVFV",
+      "name": "set_availability",
+      "input": {
+       "person": "Senga",
+       "event": "balvaig",
+       "value": "Yes",
+       "source": "chat #stewards",
+       "evidenceAt": "2027-06-07T09:02:00.000Z",
+       "saidBy": "Senga"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01X8KKv6MEZ8sApis7UgWTsR",
+      "name": "set_availability",
+      "input": {
+       "person": "Senga",
+       "event": "inverallt",
+       "value": "Yes",
+       "source": "chat #stewards",
+       "evidenceAt": "2027-06-07T09:02:00.000Z",
+       "saidBy": "Senga"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01JociA9riDtp45SyareEaC3",
+      "name": "set_availability",
+      "input": {
+       "person": "Senga",
+       "event": "strathcorrie",
+       "value": "Yes",
+       "source": "chat #stewards",
+       "evidenceAt": "2027-06-07T09:02:00.000Z",
+       "saidBy": "Senga"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01Kk6zPkeGY2gCvx9KxxZWss",
+      "name": "set_availability",
+      "input": {
+       "person": "Senga",
+       "event": "auchterbrae",
+       "value": "Yes",
+       "source": "chat #stewards",
+       "evidenceAt": "2027-06-07T09:02:00.000Z",
+       "saidBy": "Senga"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_019MYxx3gdecZPGGf8YTGfAS",
+      "name": "propose_recruit",
+      "input": {
+       "name": "Bridie Tosh",
+       "suggestedBy": "Senga",
+       "arena": "Children's races",
+       "evidenceFrom": "other",
+       "source": "chat #stewards",
+       "evidenceAt": "2027-06-07T10:40:00.000Z",
+       "saidBy": "Senga"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01BAD11P4g5Z6wj1WKygnvPe",
+      "name": "set_availability",
+      "input": {
+       "person": "Fergus",
+       "event": "setup-day",
+       "value": "Yes",
+       "source": "chat #stewards",
+       "evidenceAt": "2027-06-07T11:20:00.000Z",
+       "saidBy": "Fergus"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 9922,
+     "cache_read_input_tokens": 10403,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 9922,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 2427,
+       "cache_read_input_tokens": 10403,
+       "cache_creation_input_tokens": 9922,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 9922,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 2427,
+     "output_tokens_details": {
+      "thinking_tokens": 539
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "a76519600af5b8b2",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxFgxSo38pRAJpAaTUcQ",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "tool_use",
+      "id": "toolu_01Ku9WtBCSeqLcizkKE8aLAm",
+      "name": "update_person",
+      "input": {
+       "person": "Senga",
+       "source": "chat #stewards",
+       "evidenceAt": "2027-06-07T09:02:00.000Z",
+       "saidBy": "Senga"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 3156,
+     "cache_read_input_tokens": 20325,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 3156,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 144,
+       "cache_read_input_tokens": 20325,
+       "cache_creation_input_tokens": 3156,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 3156,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 144,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "c78c637e85cc23a3",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxFh5esrShgDwujr8NzU",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "thinking",
+      "thinking": "",
+      "signature": ""
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01Sp2wsSBZx3KG1ZtQpXDcbn",
+      "name": "update_person",
+      "input": {
+       "person": "Senga",
+       "fields": {
+        "statement": {
+         "verdicts": [
+          {
+           "event": "kinloch",
+           "value": "No"
+          },
+          {
+           "event": "glen-dunnock",
+           "value": "Yes"
+          },
+          {
+           "event": "balvaig",
+           "value": "Yes"
+          },
+          {
+           "event": "inverallt",
+           "value": "Yes"
+          },
+          {
+           "event": "strathcorrie",
+           "value": "Yes"
+          },
+          {
+           "event": "auchterbrae",
+           "value": "Yes"
+          }
+         ],
+         "dateWords": [
+          "every other one"
+         ]
+        }
+       },
+       "source": "chat #stewards",
+       "evidenceAt": "2027-06-07T09:02:00.000Z",
+       "saidBy": "Senga"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01YaojpgSoX4RVTteUmMSokV",
+      "name": "update_person",
+      "input": {
+       "person": "Fergus",
+       "fields": {
+        "statement": {
+         "verdicts": [
+          {
+           "event": "setup-day",
+           "value": "Yes"
+          }
+         ],
+         "dateWords": []
+        }
+       },
+       "source": "chat #stewards",
+       "evidenceAt": "2027-06-07T11:20:00.000Z",
+       "saidBy": "Fergus"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01UTg2LtVPn61tjGgWpa6jkb",
+      "name": "update_person",
+      "input": {
+       "person": "Senga",
+       "fields": {
+        "lastChecked": "2027-06-07"
+       },
+       "source": "run",
+       "evidenceAt": "2027-06-07T13:00:00+01:00",
+       "saidBy": "Ghillie"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01YZn8f624NkfdT4u2MCTjay",
+      "name": "update_person",
+      "input": {
+       "person": "Fergus",
+       "fields": {
+        "lastChecked": "2027-06-07"
+       },
+       "source": "run",
+       "evidenceAt": "2027-06-07T13:00:00+01:00",
+       "saidBy": "Ghillie"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01Shse65fu5jxTx332LWHW8u",
+      "name": "read_rota",
+      "input": {},
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 180,
+     "cache_read_input_tokens": 23481,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 180,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 916,
+       "cache_read_input_tokens": 23481,
+       "cache_creation_input_tokens": 180,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 180,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 916,
+     "output_tokens_details": {
+      "thinking_tokens": 34
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "c8a76e282cfdc968",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxFhTEeuE2QCjRyXhngR",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "thinking",
+      "thinking": "",
+      "signature": ""
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01VsCwtrPS9G4uFagtVoqgAj",
+      "name": "message_organiser",
+      "input": {
+       "exceptions": [
+        {
+         "type": "pipeline_suggestion",
+         "name": "Bridie Tosh",
+         "suggestedBy": "Senga",
+         "arena": "Children's races",
+         "source": "chat #stewards",
+         "at": "2027-06-07T10:40:00.000Z"
+        }
+       ],
+       "readings": [
+        {
+         "person": "Senga",
+         "source": "chat #stewards",
+         "at": "2027-06-07T09:02:00.000Z",
+         "dateWords": [
+          "every other one"
+         ],
+         "verdicts": [
+          {
+           "event": "kinloch",
+           "value": "No"
+          },
+          {
+           "event": "glen-dunnock",
+           "value": "Yes"
+          },
+          {
+           "event": "balvaig",
+           "value": "Yes"
+          },
+          {
+           "event": "inverallt",
+           "value": "Yes"
+          },
+          {
+           "event": "strathcorrie",
+           "value": "Yes"
+          },
+          {
+           "event": "auchterbrae",
+           "value": "Yes"
+          }
+         ]
+        },
+        {
+         "person": "Fergus",
+         "source": "chat #stewards",
+         "at": "2027-06-07T11:20:00.000Z",
+         "dateWords": [],
+         "verdicts": [
+          {
+           "event": "setup-day",
+           "value": "Yes"
+          }
+         ]
+        }
+       ]
+      },
+      "caller": {
+       "type": "direct"
+      }
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01RKStMXoSUqqfME9f9DfkZZ",
+      "name": "log_run",
+      "input": {
+       "window": [
+        "2027-06-04T16:00:00.000Z",
+        "2027-06-07T13:00:00+01:00"
+       ],
+       "sources": {
+        "chat": "ok",
+        "mail": "ok",
+        "minutes": "ok",
+        "calendar": "ok"
+       },
+       "sourceWindows": {
+        "chat": [
+         "2027-06-04T16:00:00.000Z",
+         "2027-06-07T13:00:00+01:00"
+        ],
+        "mail": [
+         "2027-06-04T16:00:00.000Z",
+         "2027-06-07T13:00:00+01:00"
+        ],
+        "minutes": [
+         "2027-06-04T16:00:00.000Z",
+         "2027-06-07T13:00:00+01:00"
+        ],
+        "calendar": [
+         "2027-06-04T16:00:00.000Z",
+         "2027-06-07T13:00:00+01:00"
+        ]
+       },
+       "exceptions": 1,
+       "read": [
+        "42f7f92c98a94f3d",
+        "75858e3352431515",
+        "28cc78efb70dc938",
+        "3697d30af7ccea78",
+        "46f81c77d173a14e"
+       ],
+       "toolCalls": 20
+      },
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 12931,
+     "cache_read_input_tokens": 23661,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 12931,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 890,
+       "cache_read_input_tokens": 23661,
+       "cache_creation_input_tokens": 12931,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 12931,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 890,
+     "output_tokens_details": {
+      "thinking_tokens": 41
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "bd664cc29cb6d0ff",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxFhpV5ruyX59tnAc5YU",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "text",
+      "text": "I've processed all five items. I sent Isla one message and logged the run.\n\n- **Fergus's bookings:** I recorded Fergus as stewarding Glen Dunnock and Kinloch-on-Spey, because Isla had approved both in her console. I didn't record Kirsty's pencilling at Glen Dunnock. Isla had already made that change by hand.\n- **Senga:** She can't do Kinloch-on-Spey, so I recorded a No there and a Yes for the other five games.\n- **Fergus's dates:** He said he'll be at the setup day, which was already a Yes.\n- **Bridie Tosh:** Senga suggested her for the children's races. I proposed her for the Pipeline, and the message asks Isla to approve her in the console.\n- **Briefing mail:** The mail about the 24 June briefing isn't an availability statement, so I made no change for it.\n\nThe Saturday 10 July games (Balvaig Bridge and Inverallt) are still Red, short 2 across the day. Kinloch-on-Spey looks Green with Senga out. There were no engine changes to pass on."
+     }
+    ],
+    "container": null,
+    "stop_reason": "end_turn",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 2401,
+     "cache_read_input_tokens": 36592,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 2401,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 364,
+       "cache_read_input_tokens": 36592,
+       "cache_creation_input_tokens": 2401,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 2401,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 364,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  }
+ ]
+}

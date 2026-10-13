@@ -1,0 +1,69 @@
+{
+  "id": "pipeline-approved",
+  "title": "Isla approves a suggested recruit: add to the Pipeline, nothing else",
+  "rules": [
+    "R10",
+    "R30"
+  ],
+  "basedOn": "the organiser approves a pipeline suggestion",
+  "now": "2027-06-08T13:00:00+01:00",
+  "mode": "tuning",
+  "setup": {
+    "previousRunAt": "2027-06-08T08:00:00+01:00",
+    "before": {
+      "proposals": [
+        {
+          "name": "Bridie Tosh",
+          "suggestedBy": "Senga",
+          "arena": "Children's races"
+        }
+      ]
+    },
+    "after": [
+      {
+        "at": "2027-06-08T09:30:00+01:00",
+        "approvals": [
+          {
+            "recruit": "Bridie Tosh"
+          }
+        ]
+      }
+    ]
+  },
+  "evidence": {
+    "sources": {
+      "chat": "ok",
+      "mail": "ok",
+      "minutes": "ok",
+      "calendar": "ok"
+    },
+    "items": [
+      {
+        "id": "a",
+        "source": "chat",
+        "label": "chat #committee",
+        "who": "Struan",
+        "at": "2027-06-08T10:30:00+01:00",
+        "text": "Raffle prizes need collecting by Friday, folks."
+      }
+    ]
+  },
+  "expect": {
+    "exceptions_include": [
+      "tuning_write"
+    ],
+    "exceptions_exclude": [
+      "pipeline_suggestion"
+    ],
+    "message": "required",
+    "max_writes": 1,
+    "state": {
+      "people": [
+        {
+          "name": "Bridie",
+          "status": "Pipeline"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,507 @@
+{
+ "version": 1,
+ "label": "2027-06-11T18:00:00+01:00",
+ "model": "claude-sonnet-5-5",
+ "recordedAt": "2026-10-12T11:23:56.867Z",
+ "turns": [
+  {
+   "request": "f7f1066f1e82272e",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxFwDFvC3dXmPnWpVYnp",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "tool_use",
+      "id": "toolu_01CWXUWEHwmLR7PvWGbsYdiU",
+      "name": "read_rota",
+      "input": {},
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 4,
+     "cache_creation_input_tokens": 968,
+     "cache_read_input_tokens": 9104,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 968,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 4,
+       "output_tokens": 27,
+       "cache_read_input_tokens": 9104,
+       "cache_creation_input_tokens": 968,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 968,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 27,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "b1a403f66d1041e9",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxFwMWzcEDmsMggjqisc",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "thinking",
+      "thinking": "",
+      "signature": ""
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_012mNaMwFd4c6RLwxm1dkbdT",
+      "name": "set_availability",
+      "input": {
+       "person": "Calum",
+       "event": "glen-dunnock",
+       "value": "Yes",
+       "source": "mail",
+       "evidenceAt": "2027-06-11T16:45:00+01:00",
+       "saidBy": "Calum"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 12173,
+     "cache_read_input_tokens": 10072,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 12173,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 475,
+       "cache_read_input_tokens": 10072,
+       "cache_creation_input_tokens": 12173,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 12173,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 475,
+     "output_tokens_details": {
+      "thinking_tokens": 285
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "949ceebfdb5d3783",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxFwfG6tuKJ9M5zYHMdC",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "tool_use",
+      "id": "toolu_014qjM8EoL3CcNiEPmXyHCGj",
+      "name": "update_person",
+      "input": {
+       "person": "Calum",
+       "source": "mail",
+       "evidenceAt": "2027-06-11T16:45:00+01:00",
+       "saidBy": "Calum"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 531,
+     "cache_read_input_tokens": 22245,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 531,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 140,
+       "cache_read_input_tokens": 22245,
+       "cache_creation_input_tokens": 531,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 531,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 140,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "5b76e465b47f127b",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxFwne73PzYr7W54HghF",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "thinking",
+      "thinking": "",
+      "signature": ""
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01Qfw2s8CYoeRqT2v5MdfV95",
+      "name": "update_person",
+      "input": {
+       "person": "Calum",
+       "fields": {
+        "statement": {
+         "verdicts": [
+          {
+           "event": "glen-dunnock",
+           "value": "Yes"
+          }
+         ],
+         "dateWords": []
+        }
+       },
+       "source": "mail",
+       "evidenceAt": "2027-06-11T16:45:00+01:00",
+       "saidBy": "Calum"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_013wHykp3ZQ4pZGupuYWQoKu",
+      "name": "update_person",
+      "input": {
+       "person": "Calum",
+       "fields": {
+        "lastChecked": "2027-06-11"
+       },
+       "source": "run",
+       "evidenceAt": "2027-06-11T18:00:00+01:00",
+       "saidBy": "Ghillie"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 176,
+     "cache_read_input_tokens": 22776,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 176,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 407,
+       "cache_read_input_tokens": 22776,
+       "cache_creation_input_tokens": 176,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 176,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 407,
+     "output_tokens_details": {
+      "thinking_tokens": 28
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "48dcd87df74e8499",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxFx28i9dNdEVpGQotBZ",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "thinking",
+      "thinking": "",
+      "signature": ""
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01Q1TwkJitBM6TwiR97fuNMs",
+      "name": "read_rota",
+      "input": {},
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 658,
+     "cache_read_input_tokens": 22952,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 658,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 43,
+       "cache_read_input_tokens": 22952,
+       "cache_creation_input_tokens": 658,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 658,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 43,
+     "output_tokens_details": {
+      "thinking_tokens": 15
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "d1e2edab6eab0c21",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxFx93SRURYr1sGcLRSW",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "thinking",
+      "thinking": "",
+      "signature": ""
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_0199Lek7arz7uiH4gCQWuUh8",
+      "name": "message_organiser",
+      "input": {
+       "exceptions": [],
+       "readings": [
+        {
+         "person": "Calum",
+         "source": "mail",
+         "at": "2027-06-11T16:45:00+01:00",
+         "dateWords": [],
+         "verdicts": [
+          {
+           "event": "glen-dunnock",
+           "value": "Yes"
+          }
+         ]
+        }
+       ]
+      },
+      "caller": {
+       "type": "direct"
+      }
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01BksvqMWG1UYHzgk5tKSnt5",
+      "name": "log_run",
+      "input": {
+       "window": [
+        "2027-06-11T11:00:00.000Z",
+        "2027-06-11T18:00:00+01:00"
+       ],
+       "sources": {
+        "chat": "ok",
+        "mail": "ok",
+        "minutes": "ok",
+        "calendar": "ok"
+       },
+       "sourceWindows": {
+        "chat": [
+         "2027-06-11T11:00:00.000Z",
+         "2027-06-11T18:00:00+01:00"
+        ],
+        "mail": [
+         "2027-06-11T11:00:00.000Z",
+         "2027-06-11T18:00:00+01:00"
+        ],
+        "minutes": [
+         "2027-06-11T11:00:00.000Z",
+         "2027-06-11T18:00:00+01:00"
+        ],
+        "calendar": [
+         "2027-06-11T11:00:00.000Z",
+         "2027-06-11T18:00:00+01:00"
+        ]
+       },
+       "exceptions": 0,
+       "read": [
+        "fcc7315479b311f1",
+        "9fab3f5fbb4daadc",
+        "224eeb55123b9844"
+       ],
+       "toolCalls": 9
+      },
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 12431,
+     "cache_read_input_tokens": 23610,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 12431,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 610,
+       "cache_read_input_tokens": 23610,
+       "cache_creation_input_tokens": 12431,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 12431,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 610,
+     "output_tokens_details": {
+      "thinking_tokens": 33
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "5fa48b41fb47ac6e",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxFxVFs3CuEmkyqoGicW",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "text",
+      "text": "I read Calum's mail saying Glen Dunnock is fine and recorded it as a Yes. The rota already has him down as Stewarding there, so nothing changed. Isla got one message with that reading and nothing needing her attention.\n\n- **Calum's note about the pipes:** it gave no dates, so I recorded nothing for it. His Kinloch-on-Spey Maybe stands.\n- **Isla's mail:** it was only a question, so I took nothing from it.\n- **Chat item:** it was already read last run.\n- **Grants:** none were ready to carry out.\n- **Engine changes:** none this tick.\n\nI logged the run. One `update_person` call went out without a statement, so I resent it properly. It changed nothing."
+     }
+    ],
+    "container": null,
+    "stop_reason": "end_turn",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 1914,
+     "cache_read_input_tokens": 36041,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 1914,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 238,
+       "cache_read_input_tokens": 36041,
+       "cache_creation_input_tokens": 1914,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 1914,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 238,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  }
+ ]
+}

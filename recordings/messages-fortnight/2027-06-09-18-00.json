@@ -1,0 +1,438 @@
+{
+ "version": 1,
+ "label": "2027-06-09T18:00:00+01:00",
+ "model": "claude-sonnet-5-5",
+ "recordedAt": "2026-10-12T11:22:41.374Z",
+ "turns": [
+  {
+   "request": "2dc09d49dfd01216",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxFqeghQztPr96kuTFJb",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "tool_use",
+      "id": "toolu_01NwB3LiZ89pc2vdGphqA1Np",
+      "name": "read_rota",
+      "input": {},
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 4,
+     "cache_creation_input_tokens": 907,
+     "cache_read_input_tokens": 9104,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 907,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 4,
+       "output_tokens": 27,
+       "cache_read_input_tokens": 9104,
+       "cache_creation_input_tokens": 907,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 907,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 27,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "efadf4f2f6a331f4",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxFqnpbKteknyxJWxhMK",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "thinking",
+      "thinking": "",
+      "signature": ""
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01NdVFQHDp5iAWnyyq3EWpBT",
+      "name": "set_availability",
+      "input": {
+       "person": "Kirsty",
+       "event": "kinloch",
+       "value": "Yes",
+       "source": "call notes",
+       "evidenceAt": "2027-06-09T14:03:00+01:00",
+       "saidBy": "Kirsty"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_017cx8xKwGSGMbr8uV2mh5Hw",
+      "name": "set_availability",
+      "input": {
+       "person": "Kirsty",
+       "event": "balvaig",
+       "value": "Yes",
+       "source": "call notes",
+       "evidenceAt": "2027-06-09T14:03:00+01:00",
+       "saidBy": "Kirsty"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 11355,
+     "cache_read_input_tokens": 10011,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 11355,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 645,
+       "cache_read_input_tokens": 10011,
+       "cache_creation_input_tokens": 11355,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 11355,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 645,
+     "output_tokens_details": {
+      "thinking_tokens": 263
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "46c208b08b163489",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxFrBxPaZ2WfSYkXtYu1",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "tool_use",
+      "id": "toolu_01JgXX2vPZB96KbQhSDVLDWg",
+      "name": "update_person",
+      "input": {
+       "person": "Kirsty",
+       "fields": {
+        "statement": {
+         "verdicts": [
+          {
+           "event": "kinloch",
+           "value": "Yes"
+          },
+          {
+           "event": "balvaig",
+           "value": "Yes"
+          }
+         ],
+         "dateWords": []
+        }
+       },
+       "source": "call notes",
+       "evidenceAt": "2027-06-09T14:03:00+01:00",
+       "saidBy": "Kirsty"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01RukS7GNK9WJ1dBxi1ggrek",
+      "name": "update_person",
+      "input": {
+       "person": "Kirsty",
+       "fields": {
+        "nextStep": {
+         "action": "clear",
+         "about": "Kinloch call answered"
+        }
+       },
+       "source": "call notes",
+       "evidenceAt": "2027-06-09T14:03:00+01:00",
+       "saidBy": "Kirsty"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01SbqNZWaHFU5ppjVLaTdeyM",
+      "name": "update_person",
+      "input": {
+       "person": "Kirsty",
+       "fields": {
+        "lastChecked": "2027-06-09"
+       },
+       "source": "run",
+       "evidenceAt": "2027-06-09T18:00:00+01:00",
+       "saidBy": "Ghillie"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01Ao3o23KWZY2XLovH3H2FMS",
+      "name": "read_rota",
+      "input": {},
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 791,
+     "cache_read_input_tokens": 21366,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 791,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 614,
+       "cache_read_input_tokens": 21366,
+       "cache_creation_input_tokens": 791,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 791,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 614,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "fc32de8487deaabe",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxFrVf1bui7MBAHnXuPC",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "tool_use",
+      "id": "toolu_0154fsw25whFARE3AZunycMj",
+      "name": "message_organiser",
+      "input": {
+       "exceptions": [
+        {
+         "type": "over_used",
+         "person": "Kirsty",
+         "event": "balvaig",
+         "weeks": 3
+        }
+       ],
+       "readings": [
+        {
+         "person": "Kirsty",
+         "source": "call notes",
+         "at": "2027-06-09T14:03:00+01:00",
+         "dateWords": [],
+         "verdicts": [
+          {
+           "event": "kinloch",
+           "value": "Yes"
+          },
+          {
+           "event": "balvaig",
+           "value": "Yes"
+          }
+         ]
+        }
+       ]
+      },
+      "caller": {
+       "type": "direct"
+      }
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01NH5ZUgv4uBZLPbkhu5d5nn",
+      "name": "log_run",
+      "input": {
+       "window": [
+        "2027-06-09T11:00:00.000Z",
+        "2027-06-09T18:00:00+01:00"
+       ],
+       "sources": {
+        "chat": "ok",
+        "mail": "ok",
+        "minutes": "ok",
+        "calendar": "ok"
+       },
+       "sourceWindows": {
+        "chat": [
+         "2027-06-09T11:00:00.000Z",
+         "2027-06-09T18:00:00+01:00"
+        ],
+        "mail": [
+         "2027-06-09T11:00:00.000Z",
+         "2027-06-09T18:00:00+01:00"
+        ],
+        "minutes": [
+         "2027-06-09T11:00:00.000Z",
+         "2027-06-09T18:00:00+01:00"
+        ],
+        "calendar": [
+         "2027-06-09T11:00:00.000Z",
+         "2027-06-09T18:00:00+01:00"
+        ]
+       },
+       "exceptions": 1,
+       "read": [
+        "84b7176bbd951678",
+        "fb56e1c5c6f4fae4"
+       ],
+       "toolCalls": 10
+      },
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 12971,
+     "cache_read_input_tokens": 22157,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 12971,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 616,
+       "cache_read_input_tokens": 22157,
+       "cache_creation_input_tokens": 12971,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 12971,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 616,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "c296ed6b5f73019b",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxFro3Wm1kxykumuPXKY",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "text",
+      "text": "I recorded Kirsty as Yes for Kinloch-on-Spey and Balvaig Bridge, from the call notes where \"Christy\" maps to her. I sent Isla one message and logged the run.\n\n- **Over-use:** Kirsty would now be on a third Saturday running, which breaks the rota's two-in-a-row limit. Balvaig Bridge has gone from Amber to Green, but the 10 July Saturday as a whole is still Amber.\n- **Refused write:** My next-step \"clear\" for Kirsty was refused as \"unknown_person\", so her next step stays blank. The log shows one refusal.\n- **Morven's chat:** I did nothing with Morven's note about the Kinloch heavy events field moving, since it isn't about dates or availability.\n- **Grants:** There were no ready grants to carry out."
+     }
+    ],
+    "container": null,
+    "stop_reason": "end_turn",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 1994,
+     "cache_read_input_tokens": 35128,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 1994,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 273,
+       "cache_read_input_tokens": 35128,
+       "cache_creation_input_tokens": 1994,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 1994,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 273,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  }
+ ]
+}

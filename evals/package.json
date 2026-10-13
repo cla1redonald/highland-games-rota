@@ -1,0 +1,29 @@
+{
+  "name": "@ghillie/evals",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Eval cases, grader and report.",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "ghillie-source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "dependencies": {
+    "@ghillie/engine": "0.1.0",
+    "@ghillie/feed": "0.1.0",
+    "@ghillie/mcp-server": "0.1.0",
+    "@ghillie/stand-in": "0.1.0",
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "zod": "^4.6.6",
+    "@ghillie/agent-kit": "0.1.0",
+    "@ghillie/agent-messages": "0.1.0",
+    "@ghillie/agent-sdk": "0.1.0",
+    "@ghillie/agent-managed": "0.1.0",
+    "@ghillie/ledger": "0.1.0",
+    "@anthropic-ai/claude-agent-sdk": "^0.3.296"
+  }
+}

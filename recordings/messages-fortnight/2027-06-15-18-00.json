@@ -1,0 +1,458 @@
+{
+ "version": 1,
+ "label": "2027-06-15T18:00:00+01:00",
+ "model": "claude-sonnet-5-5",
+ "recordedAt": "2026-10-12T11:25:03.884Z",
+ "turns": [
+  {
+   "request": "7ba25631526361bc",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxG29rR5sqXNFZiNeXBH",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "tool_use",
+      "id": "toolu_01Xo3R4wKwE8Q6WBaVeWB4JV",
+      "name": "read_rota",
+      "input": {},
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 4,
+     "cache_creation_input_tokens": 851,
+     "cache_read_input_tokens": 9104,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 851,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 4,
+       "output_tokens": 27,
+       "cache_read_input_tokens": 9104,
+       "cache_creation_input_tokens": 851,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 851,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 27,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "88f3ec441a216372",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxG2GZjKpQ1b43nV6Rnu",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "thinking",
+      "thinking": "",
+      "signature": ""
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01BnpZo2vkSCDJyMLyJMz6JC",
+      "name": "set_availability",
+      "input": {
+       "person": "Dougie",
+       "event": "auchterbrae",
+       "value": "Maybe",
+       "basis": "vague",
+       "dateWords": [
+        "Auchterbrae"
+       ],
+       "source": "call notes",
+       "evidenceAt": "2027-06-11T11:00:00+01:00",
+       "saidBy": "Dougie"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01KXsEvL1RVzSyjEXNpqjNom",
+      "name": "set_availability",
+      "input": {
+       "person": "Netta",
+       "event": "balvaig",
+       "value": "Yes",
+       "basis": "answer",
+       "source": "mail",
+       "evidenceAt": "2027-06-15T11:05:00+01:00",
+       "saidBy": "Netta"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 12550,
+     "cache_read_input_tokens": 9955,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 12550,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 815,
+       "cache_read_input_tokens": 9955,
+       "cache_creation_input_tokens": 12550,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 12550,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 815,
+     "output_tokens_details": {
+      "thinking_tokens": 360
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "0ab1b37de2619cc6",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxG2gmXBHsRMPdGwf71v",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "tool_use",
+      "id": "toolu_01N994rbcjCJCnzFWgGDyx1z",
+      "name": "update_person",
+      "input": {
+       "person": "Netta",
+       "fields": {
+        "statement": {
+         "verdicts": [
+          {
+           "event": "balvaig",
+           "value": "Yes"
+          }
+         ],
+         "dateWords": []
+        },
+        "nextStep": {
+         "action": "clear",
+         "about": "Balvaig Bridge lift sorted"
+        }
+       },
+       "source": "mail",
+       "evidenceAt": "2027-06-15T11:05:00+01:00",
+       "saidBy": "Netta"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_015rfPZeD6kBVtZc57bGHyWD",
+      "name": "update_person",
+      "input": {
+       "person": "Netta",
+       "fields": {
+        "lastChecked": "2027-06-15"
+       },
+       "source": "run",
+       "evidenceAt": "2027-06-15T18:00:00+01:00",
+       "saidBy": "Ghillie"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_015T7CcQhaZwzatNXfzY4jHR",
+      "name": "update_person",
+      "input": {
+       "person": "Dougie",
+       "fields": {
+        "lastChecked": "2027-06-15"
+       },
+       "source": "run",
+       "evidenceAt": "2027-06-15T18:00:00+01:00",
+       "saidBy": "Ghillie"
+      },
+      "caller": {
+       "type": "direct"
+      }
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_014CvQqeb3kgdUkgWguVQcc4",
+      "name": "read_rota",
+      "input": {},
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 1020,
+     "cache_read_input_tokens": 22505,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 1020,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 607,
+       "cache_read_input_tokens": 22505,
+       "cache_creation_input_tokens": 1020,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 1020,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 607,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "de1155eea27d8167",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxG2vZjWYgwAq6gLCef3",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "thinking",
+      "thinking": "",
+      "signature": ""
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_013DhLoa1CZibvXV7JUUmoTk",
+      "name": "message_organiser",
+      "input": {
+       "exceptions": [
+        {
+         "type": "no_spare",
+         "saturday": "2027-07-10",
+         "events": [
+          "balvaig",
+          "inverallt"
+         ]
+        }
+       ],
+       "readings": [
+        {
+         "person": "Dougie",
+         "source": "call notes",
+         "at": "2027-06-11T11:00:00+01:00",
+         "dateWords": [
+          "Auchterbrae"
+         ],
+         "verdicts": [
+          {
+           "event": "auchterbrae",
+           "value": "Maybe",
+           "qualifier": "not_written_newer"
+          }
+         ]
+        },
+        {
+         "person": "Netta",
+         "source": "mail",
+         "at": "2027-06-15T11:05:00+01:00",
+         "dateWords": [],
+         "verdicts": [
+          {
+           "event": "balvaig",
+           "value": "Yes"
+          }
+         ]
+        }
+       ]
+      },
+      "caller": {
+       "type": "direct"
+      }
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01K6xsMyh7JiHQ7xfQsMSwGa",
+      "name": "log_run",
+      "input": {
+       "window": [
+        "2027-06-14T16:00:00.000Z",
+        "2027-06-15T18:00:00+01:00"
+       ],
+       "sources": {
+        "chat": "ok",
+        "mail": "ok",
+        "minutes": "ok",
+        "calendar": "ok"
+       },
+       "sourceWindows": {
+        "chat": [
+         "2027-06-15T11:00:00.000Z",
+         "2027-06-15T18:00:00+01:00"
+        ],
+        "mail": [
+         "2027-06-14T16:00:00.000Z",
+         "2027-06-15T18:00:00+01:00"
+        ],
+        "minutes": [
+         "2027-06-15T11:00:00.000Z",
+         "2027-06-15T18:00:00+01:00"
+        ],
+        "calendar": [
+         "2027-06-15T11:00:00.000Z",
+         "2027-06-15T18:00:00+01:00"
+        ]
+       },
+       "exceptions": 1,
+       "read": [
+        "82150a2cc40993f9",
+        "c18e35d789ad3ff1"
+       ],
+       "toolCalls": 10
+      },
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 13871,
+     "cache_read_input_tokens": 23525,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 13871,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 794,
+       "cache_read_input_tokens": 23525,
+       "cache_creation_input_tokens": 13871,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 13871,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 794,
+     "output_tokens_details": {
+      "thinking_tokens": 99
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "f2f495ac480f3cfd",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxG3FfwMRN82oR2yL4DB",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "text",
+      "text": "I read both new items, sent Isla one message and logged the run.\n\n- **Netta (mail):** her lift is sorted, so I set Balvaig Bridge to Yes.\n- **Dougie (call notes):** he said he was \"not sure about Auchterbrae\". The rota already holds a newer Yes for him, so nothing was written. His reading is in the message as not written.\n- **New alert:** Saturday 10 July (Balvaig Bridge and Inverallt) now has no spare.\n\nMy attempt to clear Netta's next step was refused as \"unknown_person\", and I didn't retry it. Her note and last-checked date did update. Ten tool calls in total."
+     }
+    ],
+    "container": null,
+    "stop_reason": "end_turn",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 2221,
+     "cache_read_input_tokens": 37396,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 2221,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 215,
+       "cache_read_input_tokens": 37396,
+       "cache_creation_input_tokens": 2221,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 2221,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 215,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  }
+ ]
+}

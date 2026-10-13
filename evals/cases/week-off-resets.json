@@ -1,0 +1,65 @@
+{
+  "id": "week-off-resets",
+  "title": "Once Strathcorrie moves, a week off resets Eilidh's run",
+  "rules": [
+    "R23"
+  ],
+  "basedOn": "over-use with a week off between",
+  "now": "2027-06-08T13:00:00+01:00",
+  "mode": "full",
+  "setup": {
+    "previousRunAt": "2027-06-08T08:00:00+01:00",
+    "before": {
+      "edits": [
+        {
+          "person": "Eilidh",
+          "event": "kinloch",
+          "value": "Stewarding"
+        },
+        {
+          "person": "Eilidh",
+          "event": "balvaig",
+          "value": "Stewarding"
+        }
+      ],
+      "moves": [
+        {
+          "event": "strathcorrie",
+          "date": "2027-07-24"
+        }
+      ]
+    }
+  },
+  "evidence": {
+    "sources": {
+      "chat": "ok",
+      "mail": "ok",
+      "minutes": "ok",
+      "calendar": "ok"
+    },
+    "items": [
+      {
+        "id": "a",
+        "source": "chat",
+        "label": "chat #stewards",
+        "who": "Eilidh",
+        "at": "2027-06-08T10:00:00+01:00",
+        "text": "Strathcorrie on the 24th is still fine for me."
+      }
+    ]
+  },
+  "expect": {
+    "writes_include": [
+      {
+        "action": "set_availability",
+        "person": "Eilidh",
+        "event": "strathcorrie",
+        "value": "Yes"
+      }
+    ],
+    "exceptions_exclude": [
+      "over_used"
+    ],
+    "message": "required"
+  }
+}

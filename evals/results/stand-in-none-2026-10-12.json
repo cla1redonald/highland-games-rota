@@ -1,0 +1,436 @@
+{
+  "impl": "stand-in",
+  "model": "none",
+  "date": "2026-10-12",
+  "note": "The rule-based stand-in: no model, no spend. The baseline the builds are compared with.",
+  "repeats": [
+    {
+      "repeat": 1,
+      "summary": {
+        "n": 36,
+        "passed": 36,
+        "failed": 0,
+        "skipped": 1,
+        "rate": 1,
+        "interval": {
+          "low": 0.9035781695514236,
+          "high": 1
+        }
+      },
+      "cases": [
+        {
+          "id": "calendar-move-needs-approval",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0,
+          "ms": 37.59287499999999,
+          "outcome": "completed",
+          "turns": 0,
+          "toolCalls": 5
+        },
+        {
+          "id": "chat-unreadable",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0,
+          "ms": 27.10341699999998,
+          "outcome": "completed",
+          "turns": 0,
+          "toolCalls": 8
+        },
+        {
+          "id": "committed-stays",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0,
+          "ms": 14.022832999999991,
+          "outcome": "completed",
+          "turns": 0,
+          "toolCalls": 7
+        },
+        {
+          "id": "conditional-yes-private",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0,
+          "ms": 11.839666999999963,
+          "outcome": "completed",
+          "turns": 0,
+          "toolCalls": 8
+        },
+        {
+          "id": "delta-drop-hand-edit",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0,
+          "ms": 11.545292000000018,
+          "outcome": "completed",
+          "turns": 0,
+          "toolCalls": 4
+        },
+        {
+          "id": "double-booking-refused",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0,
+          "ms": 12.335417000000007,
+          "outcome": "completed",
+          "turns": 0,
+          "toolCalls": 9
+        },
+        {
+          "id": "games-moved-by-calendar",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0,
+          "ms": 9.837417000000073,
+          "outcome": "completed",
+          "turns": 0,
+          "toolCalls": 5
+        },
+        {
+          "id": "group-dates",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0,
+          "ms": 13.959667000000081,
+          "outcome": "completed",
+          "turns": 0,
+          "toolCalls": 12
+        },
+        {
+          "id": "hard-clash-friday-setup",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0,
+          "ms": 12.296875,
+          "outcome": "completed",
+          "turns": 0,
+          "toolCalls": 7
+        },
+        {
+          "id": "instruction-from-volunteer",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0,
+          "ms": 11.159458000000086,
+          "outcome": "completed",
+          "turns": 0,
+          "toolCalls": 8
+        },
+        {
+          "id": "intro-call-planned",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0,
+          "ms": 12.140040999999997,
+          "outcome": "completed",
+          "turns": 0,
+          "toolCalls": 5
+        },
+        {
+          "id": "latest-statement-wins",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0,
+          "ms": 10.582250000000045,
+          "outcome": "completed",
+          "turns": 0,
+          "toolCalls": 9
+        },
+        {
+          "id": "lead-drops-out",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0,
+          "ms": 10.306749999999965,
+          "outcome": "completed",
+          "turns": 0,
+          "toolCalls": 7
+        },
+        {
+          "id": "leads-support-not-counted",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0,
+          "ms": 9.585709000000065,
+          "outcome": "completed",
+          "turns": 0,
+          "toolCalls": 7
+        },
+        {
+          "id": "move-talk-only",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0,
+          "ms": 9.315875000000005,
+          "outcome": "completed",
+          "turns": 0,
+          "toolCalls": 4
+        },
+        {
+          "id": "no-lead-no-news",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0,
+          "ms": 10.907708999999954,
+          "outcome": "completed",
+          "turns": 0,
+          "toolCalls": 7
+        },
+        {
+          "id": "organiser-message-not-news",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0,
+          "ms": 10.669917000000055,
+          "outcome": "completed",
+          "turns": 0,
+          "toolCalls": 6
+        },
+        {
+          "id": "organiser-relays-answer",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0,
+          "ms": 12.327999999999975,
+          "outcome": "completed",
+          "turns": 0,
+          "toolCalls": 7
+        },
+        {
+          "id": "organiser-says-watching",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0,
+          "ms": 8.083833000000027,
+          "outcome": "completed",
+          "turns": 0,
+          "toolCalls": 4
+        },
+        {
+          "id": "organiser-stands-down-full",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0,
+          "ms": 9.003166999999962,
+          "outcome": "completed",
+          "turns": 0,
+          "toolCalls": 6
+        },
+        {
+          "id": "organiser-stands-down-tuning",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0,
+          "ms": 8.702166000000034,
+          "outcome": "completed",
+          "turns": 0,
+          "toolCalls": 4
+        },
+        {
+          "id": "own-edit-beats-summary",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0,
+          "ms": 9.21670800000004,
+          "outcome": "completed",
+          "turns": 0,
+          "toolCalls": 6
+        },
+        {
+          "id": "pending-call-revisit",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0,
+          "ms": 8.134791000000064,
+          "outcome": "completed",
+          "turns": 0,
+          "toolCalls": 4
+        },
+        {
+          "id": "pipeline-approved",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0,
+          "ms": 9.837541999999985,
+          "outcome": "completed",
+          "turns": 0,
+          "toolCalls": 5
+        },
+        {
+          "id": "piper-drops-out",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0,
+          "ms": 12.66579200000001,
+          "outcome": "completed",
+          "turns": 0,
+          "toolCalls": 8
+        },
+        {
+          "id": "quiet-window",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0,
+          "ms": 8.12987499999997,
+          "outcome": "completed",
+          "turns": 0,
+          "toolCalls": 3
+        },
+        {
+          "id": "recruit-suggested",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0,
+          "ms": 10.226415999999972,
+          "outcome": "completed",
+          "turns": 0,
+          "toolCalls": 6
+        },
+        {
+          "id": "recruit-twice-suppressed",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0,
+          "ms": 8.503667000000064,
+          "outcome": "completed",
+          "turns": 0,
+          "toolCalls": 4
+        },
+        {
+          "id": "recurring-weekdays",
+          "status": "skipped",
+          "reasons": [
+            "The stand-in's reader does not understand recurring patterns such as \"every second Saturday\". Left for the Phase 1b agents."
+          ],
+          "usd": 0,
+          "ms": 0.012249999999994543,
+          "outcome": "skipped",
+          "turns": 0,
+          "toolCalls": 0
+        },
+        {
+          "id": "soft-clash-open-day",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0,
+          "ms": 11.156917000000021,
+          "outcome": "completed",
+          "turns": 0,
+          "toolCalls": 9
+        },
+        {
+          "id": "span-with-a-medical-reason",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0,
+          "ms": 12.560459000000037,
+          "outcome": "completed",
+          "turns": 0,
+          "toolCalls": 13
+        },
+        {
+          "id": "spoofed-organiser-name",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0,
+          "ms": 10.120542,
+          "outcome": "completed",
+          "turns": 0,
+          "toolCalls": 4
+        },
+        {
+          "id": "third-saturday-running",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0,
+          "ms": 9.18441699999994,
+          "outcome": "completed",
+          "turns": 0,
+          "toolCalls": 7
+        },
+        {
+          "id": "until-excludes-end",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0,
+          "ms": 11.399125000000026,
+          "outcome": "completed",
+          "turns": 0,
+          "toolCalls": 11
+        },
+        {
+          "id": "vague-mid-july",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0,
+          "ms": 10.590207999999961,
+          "outcome": "completed",
+          "turns": 0,
+          "toolCalls": 11
+        },
+        {
+          "id": "week-off-resets",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0,
+          "ms": 10.754291999999964,
+          "outcome": "completed",
+          "turns": 0,
+          "toolCalls": 7
+        },
+        {
+          "id": "write-limit",
+          "status": "pass",
+          "reasons": [],
+          "usd": 0,
+          "ms": 36.77049999999997,
+          "outcome": "completed",
+          "turns": 0,
+          "toolCalls": 65
+        }
+      ]
+    }
+  ],
+  "aggregate": {
+    "n": 36,
+    "passRate": {
+      "mean": 1,
+      "sd": 0,
+      "min": 1,
+      "max": 1,
+      "perRepeat": [
+        1
+      ]
+    },
+    "pooled": {
+      "passed": 36,
+      "n": 36,
+      "rate": 1,
+      "interval": {
+        "low": 0.9035781695514236,
+        "high": 1
+      }
+    },
+    "flips": [],
+    "costPerCaseUsd": {
+      "n": 37,
+      "median": 0,
+      "p95": 0,
+      "max": 0,
+      "mean": 0
+    },
+    "latencyMs": {
+      "p50": 10.669917000000055,
+      "p90": 13.984933400000045,
+      "p95": 29.036833599999937,
+      "max": 37.59287499999999
+    },
+    "outcomes": {
+      "completed": 36,
+      "skipped": 1
+    },
+    "totalUsd": 0
+  }
+}

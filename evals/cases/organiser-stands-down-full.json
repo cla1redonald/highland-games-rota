@@ -1,0 +1,62 @@
+{
+  "id": "organiser-stands-down-full",
+  "title": "Isla stands Kirsty down at Kinloch-on-Spey, approved in the console",
+  "rules": [
+    "R8",
+    "R15"
+  ],
+  "basedOn": "the organiser says someone is not ready (full mode)",
+  "now": "2027-06-08T13:00:00+01:00",
+  "mode": "full",
+  "setup": {
+    "previousRunAt": "2027-06-08T08:00:00+01:00",
+    "after": [
+      {
+        "at": "2027-06-08T09:50:00+01:00",
+        "approvals": [
+          {
+            "decision": {
+              "person": "Kirsty",
+              "event": "kinloch",
+              "value": "Not going"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "evidence": {
+    "sources": {
+      "chat": "ok",
+      "mail": "ok",
+      "minutes": "ok",
+      "calendar": "ok"
+    },
+    "items": [
+      {
+        "id": "a",
+        "source": "chat",
+        "label": "chat DM",
+        "who": "Isla",
+        "at": "2027-06-08T10:00:00+01:00",
+        "text": "Kirsty's not ready to steward at Kinloch yet, so she's not going this time.",
+        "trusted": true
+      }
+    ]
+  },
+  "expect": {
+    "exceptions_exclude": [
+      "tuning_write",
+      "proposed_decision"
+    ],
+    "state": {
+      "cells": [
+        {
+          "person": "Kirsty",
+          "event": "kinloch",
+          "value": "Not going"
+        }
+      ]
+    }
+  }
+}

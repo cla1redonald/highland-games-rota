@@ -1,0 +1,204 @@
+{
+ "version": 1,
+ "label": "2027-06-18T13:00:00+01:00",
+ "model": "claude-sonnet-5-5",
+ "recordedAt": "2026-10-12T11:26:29.640Z",
+ "turns": [
+  {
+   "request": "596b00ca1e0c004e",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxG8UU1wHY79H6nhaxdf",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "tool_use",
+      "id": "toolu_0111zmzZfJB3CH1Vu4LHECMk",
+      "name": "read_rota",
+      "input": {},
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 4,
+     "cache_creation_input_tokens": 733,
+     "cache_read_input_tokens": 9104,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 733,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 4,
+       "output_tokens": 27,
+       "cache_read_input_tokens": 9104,
+       "cache_creation_input_tokens": 733,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 733,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 27,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "ba4f49f932449203",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxG8coK98NUMg8N732GT",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "thinking",
+      "thinking": "",
+      "signature": ""
+     },
+     {
+      "type": "tool_use",
+      "id": "toolu_01PddLUjgTCBgo67aUASnh1h",
+      "name": "log_run",
+      "input": {
+       "window": [
+        "2027-06-17T16:00:00.000Z",
+        "2027-06-18T13:00:00+01:00"
+       ],
+       "sources": {
+        "chat": "ok",
+        "mail": "ok",
+        "minutes": "ok",
+        "calendar": "ok"
+       },
+       "sourceWindows": {
+        "chat": [
+         "2027-06-17T16:00:00.000Z",
+         "2027-06-18T13:00:00+01:00"
+        ],
+        "mail": [
+         "2027-06-17T16:00:00.000Z",
+         "2027-06-18T13:00:00+01:00"
+        ],
+        "minutes": [
+         "2027-06-17T16:00:00.000Z",
+         "2027-06-18T13:00:00+01:00"
+        ],
+        "calendar": [
+         "2027-06-17T16:00:00.000Z",
+         "2027-06-18T13:00:00+01:00"
+        ]
+       },
+       "exceptions": 0,
+       "read": [
+        "cdd76b3fa3616baa"
+       ],
+       "toolCalls": 2
+      },
+      "caller": {
+       "type": "direct"
+      }
+     }
+    ],
+    "container": null,
+    "stop_reason": "tool_use",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 13037,
+     "cache_read_input_tokens": 9837,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 13037,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 601,
+       "cache_read_input_tokens": 9837,
+       "cache_creation_input_tokens": 13037,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 13037,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 601,
+     "output_tokens_details": {
+      "thinking_tokens": 191
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  },
+  {
+   "request": "b01d9c32c3da0065",
+   "reply": {
+    "model": "claude-sonnet-5-5",
+    "id": "msg_011CfxG8zBSubZtGRx8ndXSu",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "text",
+      "text": "Nothing needed doing this tick, so I wrote nothing and sent no message to Isla. The only evidence item was Isla's own DM saying she'll sort Kinloch's lead herself at the weekend. That gives no availability, booking or event change to record.\n\nI did not carry out the ready grant for Dougie at Balvaig Bridge. It was granted at 12:55 UTC on 17 June, before the 16:00 UTC window start, so my rules say it is not mine to action this tick.\n\nThe second `read_rota` was skipped because there were no writes to compare against. The run is logged with 0 exceptions and 2 tool calls."
+     }
+    ],
+    "container": null,
+    "stop_reason": "end_turn",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+     "input_tokens": 2,
+     "cache_creation_input_tokens": 1736,
+     "cache_read_input_tokens": 22874,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 1736,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "iterations": [
+      {
+       "input_tokens": 2,
+       "output_tokens": 206,
+       "cache_read_input_tokens": 22874,
+       "cache_creation_input_tokens": 1736,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 1736,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "type": "message",
+       "model": null
+      }
+     ],
+     "output_tokens": 206,
+     "output_tokens_details": {
+      "thinking_tokens": 0
+     },
+     "service_tier": "standard",
+     "inference_geo": "global"
+    },
+    "diagnostics": null
+   }
+  }
+ ]
+}

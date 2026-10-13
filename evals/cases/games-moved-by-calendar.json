@@ -1,0 +1,95 @@
+{
+  "id": "games-moved-by-calendar",
+  "title": "The circuit calendar moves Strathcorrie a week and Isla approves",
+  "rules": [
+    "R24",
+    "R25"
+  ],
+  "basedOn": "the client moves a course by email",
+  "now": "2027-06-08T13:00:00+01:00",
+  "mode": "full",
+  "setup": {
+    "previousRunAt": "2027-06-08T08:00:00+01:00",
+    "after": [
+      {
+        "at": "2027-06-08T09:30:00+01:00",
+        "approvals": [
+          {
+            "event": {
+              "id": "strathcorrie",
+              "fields": {
+                "date": "2027-07-24"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "evidence": {
+    "sources": {
+      "chat": "ok",
+      "mail": "ok",
+      "minutes": "ok",
+      "calendar": "ok"
+    },
+    "items": [
+      {
+        "id": "a",
+        "source": "calendar",
+        "label": "circuit calendar",
+        "who": "Circuit secretary",
+        "at": "2027-06-08T09:12:00+01:00",
+        "text": "Strathcorrie Games on 2027-07-24",
+        "calendar": {
+          "eventId": "strathcorrie",
+          "date": "2027-07-24",
+          "by": "Circuit secretary"
+        }
+      }
+    ]
+  },
+  "expect": {
+    "writes_include": [
+      {
+        "action": "update_event",
+        "event": "strathcorrie",
+        "field": "date"
+      }
+    ],
+    "exceptions_include": [
+      "event_change"
+    ],
+    "message": "required",
+    "message_contains_all": [
+      "moved from Sat 17 Jul to Sat 24 Jul",
+      "Morven",
+      "Hamish",
+      "Eilidh",
+      "Torquil",
+      "Dougie",
+      "Senga",
+      "Netta"
+    ],
+    "state": {
+      "events": [
+        {
+          "id": "strathcorrie",
+          "date": "2027-07-24"
+        }
+      ],
+      "cells": [
+        {
+          "person": "Morven",
+          "event": "strathcorrie",
+          "value": "Unknown"
+        },
+        {
+          "person": "Dougie",
+          "event": "strathcorrie",
+          "value": "Unknown"
+        }
+      ]
+    }
+  }
+}
