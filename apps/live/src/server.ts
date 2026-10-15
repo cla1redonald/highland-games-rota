@@ -43,6 +43,8 @@ export function createLiveServer(o: LiveServerOptions): Server {
     rows: o.show.rows(),
     plan: o.show.plan(),
     previousPlan: o.show.previousPlan,
+    grid: o.show.grid(),
+    previousCells: o.show.previousCells,
     spent: o.show.results.reduce((s, r) => s + r.usd, 0),
     ledger: o.ledger ? { total: o.ledger.total, cap: HARD_CAP_USD } : null,
   });

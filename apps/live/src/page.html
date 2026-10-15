@@ -33,7 +33,7 @@
   button { font: inherit; cursor: pointer; }
   button:disabled { cursor: not-allowed; opacity: .45; }
 
-  header { display: grid; grid-template-columns: auto 1fr auto; gap: 24px; align-items: center; padding: 14px 24px; background: var(--moss); color: #f5f2ea; }
+  header { display: grid; grid-template-columns: auto 1fr auto; gap: 24px; align-items: center; padding: 12px 24px; background: var(--moss); color: #f5f2ea; }
   .brand b { font-family: var(--serif); font-size: 30px; letter-spacing: .5px; }
   .brand span { display: block; font-size: 14px; opacity: .8; }
   .clock { text-align: center; font-family: var(--serif); font-size: 30px; }
@@ -74,6 +74,7 @@
   .panel .body { padding: 10px 14px; overflow-y: auto; flex: 1; }
   .empty { color: var(--muted); font-style: italic; }
 
+  /* What came in */
   .ev { border-left: 4px solid var(--line); padding: 6px 10px; margin-bottom: 10px; background: #faf7f0; border-radius: 0 8px 8px 0; }
   .ev .meta { font-size: 13px; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; }
   .ev .meta b { color: var(--ink); }
@@ -88,23 +89,48 @@
   .isla { padding: 6px 10px; margin-bottom: 10px; border-radius: 8px; background: var(--heather-soft); color: #43305a; }
   .isla::before { content: "Isla, in her console: "; font-weight: 600; }
 
-  .step { padding: 8px 10px; margin-bottom: 8px; border-radius: 8px; background: #faf7f0; border: 1px solid var(--line); animation: arrive .35s ease-out; }
-  @keyframes arrive { from { transform: translateY(6px); opacity: 0; } to { transform: none; opacity: 1; } }
-  .step .what { font-weight: 600; }
-  .step .args { font-family: var(--mono); font-size: 14px; color: var(--muted); margin-top: 2px; word-break: break-word; }
-  .step .verdicts { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+  /* Ghillie at work: a strip for the whole session, then a timeline of steps */
+  .strip-wrap { padding: 10px 14px 6px; border-bottom: 1px solid var(--line); }
+  .strip { position: relative; height: 14px; border-radius: 4px; background: #d9d2c3; overflow: hidden; }
+  .seg-bar { position: absolute; top: 0; bottom: 0; }
+  .seg-bar.model { background: var(--heather); }
+  .seg-bar.tool { background: var(--slate); }
+  .seg-bar.refused { background: var(--red); }
+  .legend { display: flex; gap: 14px; font-size: 12px; color: var(--muted); margin-top: 5px; flex-wrap: wrap; font-variant-numeric: tabular-nums; }
+  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 4px; vertical-align: -1px; }
+  .legend .totals { margin-left: auto; }
+
+  .steps { position: relative; }
+  .row { display: grid; grid-template-columns: 40px 18px 1fr; gap: 6px; position: relative; padding-bottom: 10px; animation: arrive .3s ease-out; }
+  .row::before { content: ""; position: absolute; left: 54px; top: 14px; bottom: -2px; border-left: 2px solid var(--line); }
+  .row:last-child::before { display: none; }
+  @keyframes arrive { from { transform: translateY(4px); opacity: .2; } to { transform: none; opacity: 1; } }
+  .row .t { font-family: var(--mono); font-size: 12px; color: var(--muted); padding-top: 3px; text-align: right; font-variant-numeric: tabular-nums; }
+  .row .dot { width: 12px; height: 12px; border-radius: 50%; margin: 5px 0 0 1px; background: var(--line); position: relative; z-index: 1; }
+  .row.model .dot { background: var(--heather); }
+  .row.tool .dot { background: var(--slate); }
+  .row.note .dot { background: var(--moss); }
+  .row.bad .dot { background: var(--red); }
+  .row.active .dot { animation: pulse 1s infinite; }
+  @keyframes pulse { 50% { opacity: .25; } }
+  .line { display: flex; gap: 8px; align-items: baseline; }
+  .line .kind { font-size: 11px; font-weight: 700; letter-spacing: .08em; color: var(--muted); }
+  .row.model .kind { color: var(--heather); }
+  .row.tool .kind { color: var(--slate); }
+  .line b { font-weight: 600; }
+  .line .dur { margin-left: auto; font-family: var(--mono); font-size: 12px; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .row.model .line { font-size: 14px; color: var(--muted); }
+  .row.status .line { font-size: 13px; color: var(--muted); }
+  .args { font-family: var(--mono); font-size: 14px; color: var(--muted); margin-top: 1px; word-break: break-word; }
+  .verdicts { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 5px; }
   .pill { font-size: 13px; padding: 2px 8px; border-radius: 999px; background: #ece7dc; color: var(--muted); }
   .pill.ok { background: var(--green-soft); color: var(--green); }
   .pill.no { background: var(--red-soft); color: var(--red); font-weight: 600; }
   .pill.wait { background: var(--amber-soft); color: var(--amber); }
-  .model { font-size: 13px; color: var(--muted); margin: 0 0 8px 4px; font-variant-numeric: tabular-nums; }
-  .note { padding: 10px 12px; border-radius: 8px; background: var(--moss-soft); border-left: 4px solid var(--moss); margin-bottom: 8px; white-space: pre-wrap; }
-  .note::before { content: "Ghillie's own note"; display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--moss); margin-bottom: 2px; }
-  .status { font-size: 13px; color: var(--muted); }
-  .working { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--heather); margin-right: 6px; animation: pulse 1s infinite; }
-  @keyframes pulse { 50% { opacity: .25; } }
+  .notebox { padding: 8px 10px; border-radius: 8px; background: var(--moss-soft); white-space: pre-wrap; margin-top: 3px; }
   .foot { padding: 8px 14px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; font-variant-numeric: tabular-nums; }
 
+  /* Isla's phone */
   .phone { margin: 4px auto; max-width: 420px; border: 10px solid #22282a; border-radius: 28px; background: #eef1f0; min-height: 220px; padding: 14px 12px; }
   .phone .who { text-align: center; font-size: 12px; color: var(--muted); margin-bottom: 10px; }
   .bubble { background: #fff; border-radius: 16px 16px 16px 4px; padding: 10px 12px; margin-bottom: 10px; box-shadow: 0 1px 0 rgba(0,0,0,.06); white-space: pre-wrap; font-size: 15px; animation: arrive .4s ease-out; }
@@ -112,30 +138,45 @@
   .bubble.quiet { background: transparent; box-shadow: none; color: var(--muted); font-style: italic; text-align: center; }
   .tally { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
 
+  /* The rota: people down the side, games across the top, a coverage row, one cell each */
   .rota { padding: 0 24px 24px; }
-  .rota h3 { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 4px 0 8px; display: flex; justify-content: space-between; }
-  .sats { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; }
-  .sat { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; }
-  .sat .head { display: flex; justify-content: space-between; align-items: baseline; gap: 6px; }
-  .sat .date { font-family: var(--serif); font-size: 19px; font-weight: 600; }
+  .rota h3 { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 4px 0 8px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .grid-wrap { background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow-x: auto; }
+  table.grid { border-collapse: separate; border-spacing: 0; width: 100%; font-size: 14px; }
+  .grid th, .grid td { padding: 3px 6px; border-bottom: 1px solid #ece6da; text-align: center; white-space: nowrap; }
+  .grid thead th { position: sticky; top: 0; background: var(--card); font-weight: 600; vertical-align: bottom; padding-top: 8px; }
+  .grid thead th small { display: block; font-weight: 400; color: var(--muted); font-size: 12px; }
+  .grid th.who, .grid td.who { text-align: left; padding-left: 12px; position: sticky; left: 0; background: var(--card); }
+  .grid td.who small { color: var(--muted); font-size: 12px; margin-left: 6px; display: inline-block; max-width: 150px; overflow: hidden; text-overflow: ellipsis; vertical-align: bottom; }
+  .grid tr.pipeline td.who { color: var(--muted); font-style: italic; }
+  .grid tr.cover td, .grid tr.cover th { background: #f8f4ec; border-bottom: 2px solid var(--line); }
+  .grid .col-touch { box-shadow: inset 0 -3px 0 var(--heather); }
+  .v { display: inline-block; min-width: 72px; padding: 1px 6px; border-radius: 6px; font-size: 13px; position: relative; }
+  .v-stew { background: var(--moss); color: #fff; font-weight: 600; }
+  .v-sup { border: 1.5px solid var(--moss); color: var(--moss); font-weight: 600; }
+  .v-yes { background: var(--green-soft); color: var(--green); }
+  .v-maybe { border: 1.5px dashed #c49a3c; color: var(--amber); }
+  .v-no { color: #a2463f; }
+  .v-unk { color: #b9b09e; }
+  .v.pen::after { content: "P"; position: absolute; top: -6px; right: -6px; width: 15px; height: 15px; border-radius: 50%; background: var(--slate); color: #fff; font-size: 10px; line-height: 15px; font-weight: 700; }
+  td.cell { transition: background .3s; }
+  td.cell.changed { animation: glow 2.6s ease-out; }
+  @keyframes glow { 0%, 45% { background: var(--flash); } 100% { background: transparent; } }
+  td.cell.touch { outline: 3px solid var(--heather); outline-offset: -3px; animation: touch 1s infinite; }
+  @keyframes touch { 50% { background: var(--heather-soft); } }
+  td.cell.refused { animation: shake .5s; background: var(--red-soft); }
+  @keyframes shake { 20%, 60% { transform: translateX(-3px); } 40%, 80% { transform: translateX(3px); } }
   .rag { font-size: 13px; font-weight: 700; padding: 1px 8px; border-radius: 6px; }
   .rag.Green { background: var(--green-soft); color: var(--green); }
   .rag.Amber { background: var(--amber-soft); color: var(--amber); }
   .rag.Red { background: var(--red-soft); color: var(--red); }
-  .game { margin-top: 8px; padding-top: 6px; border-top: 1px dashed var(--line); font-size: 14px; }
-  .game .name { font-weight: 600; display: flex; justify-content: space-between; gap: 6px; }
-  .game .lead { color: var(--muted); font-size: 13px; }
-  .people { margin-top: 3px; }
-  .p { display: inline-block; padding: 0 6px; margin: 2px 2px 0 0; border-radius: 6px; background: #efeadf; font-size: 13px; }
-  .p.stew { background: var(--moss); color: #fff; }
-  .p.pen { background: var(--slate-soft); color: var(--slate); }
-  .p.maybe { background: transparent; border: 1px dashed #b9b09e; color: var(--muted); }
-  .p.new { background: var(--flash); color: var(--ink); outline: 2px solid #e2c84a; }
-  .gone { font-size: 13px; color: var(--red); margin-top: 3px; }
-  .changed { animation: glow 2.4s ease-out; }
-  @keyframes glow { 0%, 40% { background: var(--flash); } 100% { background: var(--card); } }
-  .problem { font-size: 13px; color: var(--red); margin-top: 3px; }
+  .rag.changed { outline: 3px solid #e2c84a; }
+  .keys { font-weight: 400; text-transform: none; letter-spacing: 0; }
 
+  @media (min-height: 950px) and (min-width: 1500px) {
+    section.panel { max-height: 36vh; }
+    .grid th, .grid td { padding-top: 2px; padding-bottom: 2px; }
+  }
   @media (max-width: 1100px) {
     main { grid-template-columns: 1fr; }
     section.panel { max-height: none; }
@@ -180,7 +221,11 @@
   </section>
   <section class="panel">
     <h3><span>Ghillie at work</span><span id="where"></span></h3>
-    <div class="body" id="steps"><p class="empty">Each model request, each tool call, the guard's answer on every write, and what the service did.</p></div>
+    <div class="strip-wrap">
+      <div class="strip" id="strip"></div>
+      <div class="legend"><span><i style="background:var(--heather)"></i>model</span><span><i style="background:var(--slate)"></i>repo answering a tool call</span><span><i style="background:#d9d2c3"></i>platform between steps</span><span><i style="background:var(--red)"></i>refused</span><span class="totals" id="totals"></span></div>
+    </div>
+    <div class="body"><div class="steps" id="steps"><p class="empty">Each model request, each tool call, the guard's answer on every write, and what the service did.</p></div></div>
     <div class="foot"><span id="session"></span><span id="timer"></span></div>
   </section>
   <section class="panel">
@@ -193,8 +238,8 @@
 </main>
 
 <div class="rota">
-  <h3><span>The rota: a suggested split, never a booking</span><span><span id="asat"></span> · keys: → run, F next ★, R rota, 1 2 3 mode</span></h3>
-  <div class="sats" id="sats"></div>
+  <h3><span>The rota: a suggested split, never a booking</span><span><span id="asat"></span> · <span class="keys">keys: → run, F next ★, R rota, 1 2 3 mode</span></span></h3>
+  <div class="grid-wrap"><table class="grid" id="grid"></table></div>
 </div>
 
 <script>
@@ -206,14 +251,19 @@
   const fmtShort = (iso) => new Date(iso).toLocaleString('en-GB', { timeZone: tz, weekday: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
   const fmtDay = (d) => new Date(`${d}T12:00:00Z`).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
   const money = (n) => `$${(n ?? 0).toFixed(n && n < 1 ? 3 : 2)}`;
+  const clockOf = (ms) => { const s = Math.max(0, Math.floor(ms / 1000)); return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`; };
+  const secs = (ms) => `${(ms / 1000).toFixed(ms < 10000 ? 1 : 0)} s`;
 
   let state = null;
   let mode = null;
   let labels = {};
   let tickStarted = 0;
+  let tickEnded = 0;
   let timer = null;
-  let tickUsd = 0;
   let requests = 0;
+  let tickUsd = 0;
+  let segments = [];
+  let modelRow = null;
   const calls = new Map();
 
   const toolWords = {
@@ -228,6 +278,7 @@
     gather_evidence: 'Asks for the evidence',
   };
   const sourceWords = { chat: 'chat', mail: 'mail', minutes: 'call notes', calendar: 'circuit calendar' };
+  const now = () => performance.now() - tickStarted;
 
   function setMode(m) {
     mode = m;
@@ -235,16 +286,13 @@
     $('speed').style.display = m === 'replay' ? '' : 'none';
     renderControls();
   }
-
-  function nextRow() { return state && state.rows[state.index]; }
+  const nextRow = () => state && state.rows[state.index];
 
   function renderControls() {
     if (!state) return;
     const row = nextRow();
-    const liveBtn = document.querySelector('[data-mode="live"]');
-    const replayBtn = document.querySelector('[data-mode="replay"]');
-    liveBtn.disabled = !state.live;
-    replayBtn.disabled = !(row && row.recorded);
+    document.querySelector('[data-mode="live"]').disabled = !state.live;
+    document.querySelector('[data-mode="replay"]').disabled = !(row && row.recorded);
     if (mode === 'live' && !state.live) mode = null;
     if (mode === 'replay' && !(row && row.recorded)) mode = null;
     if (!mode) { setMode(state.live && row && row.scene && !row.scene.free ? 'live' : row && row.recorded && row.scene ? 'replay' : 'stand-in'); return; }
@@ -277,50 +325,45 @@
 
   function renderMoney() {
     $('spent').textContent = money(state.spent);
-    $('ledger').textContent = state.ledger ? `Ledger ${money(state.ledger.total)} of the $${state.ledger.cap} cap · ${state.model}` : `No API key: replays and the stand-in only`;
+    $('ledger').textContent = state.ledger ? `Ledger ${money(state.ledger.total)} of the $${state.ledger.cap} cap · ${state.model}` : 'No API key: replays and the stand-in only';
   }
 
-  function placesOf(game) {
-    const out = [];
-    for (const n of game.booked) out.push({ n, c: 'stew' });
-    for (const n of game.supporting) out.push({ n, c: 'stew' });
-    for (const n of game.placed) if (!out.some((o) => o.n === n)) out.push({ n, c: game.pencilled.includes(n) ? 'pen' : '' });
-    return out;
-  }
+  // The rota grid
+  const valueClass = { Stewarding: 'v-stew', Supporting: 'v-sup', Watching: 'v-sup', 'Not going': 'v-no', Yes: 'v-yes', Maybe: 'v-maybe', No: 'v-no', Unknown: 'v-unk', '': 'v-unk' };
+  const valueText = (v) => (v === 'Stewarding' ? 'Steward' : v === 'Supporting' ? 'Support' : v === 'Unknown' || !v ? '·' : v);
+  const chip = (v, pen) => `<span class="v ${valueClass[v] || 'v-unk'} ${pen ? 'pen' : ''}" title="${esc(v || 'Unknown')}${pen ? ', pencilled by Isla' : ''}">${esc(valueText(v))}</span>`;
+  const key = (p, e) => `${p}|${e}`;
+  const cellEl = (p, e) => document.querySelector(`td.cell[data-k="${CSS.escape(key(p, e))}"]`);
 
   function renderRota() {
-    const plan = state.plan;
-    const prev = state.previousPlan;
-    labels = Object.fromEntries(plan.games.map((g) => [g.id, g.label]));
+    const { grid, plan } = state;
+    labels = Object.fromEntries(grid.events.map((e) => [e.id, e.label]));
     $('asat').textContent = `as at ${fmtDay(plan.today)}`;
-    const old = new Map((prev ? prev.games : []).map((g) => [g.id, g]));
-    const oldSat = new Map((prev ? prev.saturdays : []).map((s) => [s.date, s]));
-    $('sats').innerHTML = plan.saturdays.map((sat) => {
-      const games = plan.games.filter((g) => g.date === sat.date);
-      const was = oldSat.get(sat.date);
-      const satChanged = prev && was && (was.rag !== sat.rag || was.counted !== sat.counted || was.maybe !== sat.maybe);
-      const delta = sat.deltaNow > 0 ? `+${sat.deltaNow}` : String(sat.deltaNow);
-      return `<div class="sat ${satChanged ? 'changed' : ''}">
-        <div class="head"><span class="date">${esc(fmtDay(sat.date))}</span><span class="rag ${esc(sat.rag)}">${esc(sat.rag)} ${esc(delta)}</span></div>
-        <div class="status">need ${sat.need}, counted ${sat.counted}${sat.maybe ? `, maybe ${sat.maybe}` : ''}</div>
-        ${games.map((g) => {
-          const w = old.get(g.id);
-          const before = w ? new Set([...placesOf(w).map((p) => p.n), ...w.maybes, ...w.spare]) : null;
-          const now = placesOf(g);
-          const nowAll = new Set([...now.map((p) => p.n), ...g.maybes, ...g.spare]);
-          const gone = before ? [...before].filter((n) => !nowAll.has(n)) : [];
-          const fresh = (n) => before && !before.has(n);
-          const moved = !w && prev;
-          return `<div class="game ${moved ? 'changed' : ''}">
-            <div class="name"><span>${esc(g.label)}</span><span class="rag ${esc(g.rag)}">${g.counted}/${g.target}</span></div>
-            <div class="lead">Lead: ${esc(g.lead || g.partnerLead || 'none')}</div>
-            <div class="people">${now.map((p) => `<span class="p ${p.c} ${fresh(p.n) ? 'new' : ''}">${esc(p.n)}</span>`).join('')}${g.spare.map((n) => `<span class="p ${fresh(n) ? 'new' : ''}" title="spare">${esc(n)} (spare)</span>`).join('')}${g.maybes.map((n) => `<span class="p maybe ${fresh(n) ? 'new' : ''}">${esc(n)}?</span>`).join('')}</div>
-            ${gone.length ? `<div class="gone">Out: ${gone.map(esc).join(', ')}</div>` : ''}
-            ${g.problems ? `<div class="problem">${esc(g.problems)}</div>` : ''}
-          </div>`;
-        }).join('')}
-      </div>`;
+    const cells = new Map(grid.cells.map((c) => [key(c.person, c.event), c]));
+    const before = state.previousCells ? new Map(state.previousCells.map((c) => [key(c.person, c.event), c])) : null;
+    const games = new Map(plan.games.map((g) => [g.id, g]));
+    const prevGames = new Map((state.previousPlan ? state.previousPlan.games : []).map((g) => [g.id, g]));
+    const head = `<thead><tr><th class="who">${grid.people.length} people</th>${grid.events.map((e) => `<th data-e="${esc(e.id)}">${esc(e.label.replace(/ Games$/, ''))}<small>${esc(e.type === 'Setup day' ? 'Setup, ' : '')}${esc(fmtDay(e.date))}</small></th>`).join('')}</tr></thead>`;
+    const cover = `<tr class="cover"><td class="who"><b>Cover</b> <small>counted / needed</small></td>${grid.events.map((e) => {
+      const g = games.get(e.id);
+      if (!g) {
+        const yes = grid.cells.filter((c) => c.event === e.id && ['Yes', 'Stewarding', 'Supporting'].includes(c.value)).length;
+        return `<td><span class="status">${yes} yes</span></td>`;
+      }
+      const was = prevGames.get(e.id);
+      const moved = state.previousPlan && was && (was.rag !== g.rag || was.counted !== g.counted);
+      return `<td><span class="rag ${esc(g.rag)} ${moved ? 'changed' : ''}" title="${esc(g.problems || '')}">${g.counted}/${g.target}</span></td>`;
+    }).join('')}</tr>`;
+    const body = grid.people.map((p) => {
+      const role = p.role && p.role !== 'Steward' ? p.role : p.status === 'Pipeline' ? 'pipeline' : '';
+      return `<tr class="${p.status === 'Pipeline' ? 'pipeline' : ''}"><td class="who">${esc(p.name)}${role ? `<small title="${esc(role)}">${esc(role)}</small>` : ''}</td>${grid.events.map((e) => {
+        const c = cells.get(key(p.name, e.id));
+        const b = before ? before.get(key(p.name, e.id)) : undefined;
+        const changed = before && ((c?.value || '') !== (b?.value || '') || Boolean(c?.pencilled) !== Boolean(b?.pencilled));
+        return `<td class="cell ${changed ? 'changed' : ''}" data-k="${esc(key(p.name, e.id))}">${chip(c ? c.value : '', c && c.pencilled)}</td>`;
+      }).join('')}</tr>`;
     }).join('');
+    $('grid').innerHTML = `${head}<tbody>${cover}${body}</tbody>`;
   }
 
   function renderState() {
@@ -331,15 +374,15 @@
     renderControls();
   }
 
+  // Ghillie at work
   const withLabels = (text) => text.replace(/\b([a-z]+(?:-[a-z]+)*)\b/g, (w) => labels[w] || w);
-
   function writeText(w) {
     if (w.action === 'update_event') return `${labels[w.event] || w.event}: ${Object.entries(w.fields || {}).map(([k, v]) => `${k} ${v}`).join(', ')}`;
     if (w.action === 'update_person') return `${w.person}: ${Object.keys(w.fields || {}).join(', ')}`;
     return `${w.person} ${w.value} at ${labels[w.event] || w.event}`;
   }
-
   function argText(name, input) {
+    if (name === 'message_organiser' || name === 'log_run' || name === 'read_rota') return '';
     const parts = [];
     if (input.person) parts.push(input.person);
     if (input.value) parts.push(input.value);
@@ -348,137 +391,171 @@
     if (input.fields) parts.push(JSON.stringify(input.fields));
     if (Array.isArray(input.dateWords) && input.dateWords.length) parts.push(`date words: ${input.dateWords.map((w) => `"${w}"`).join(', ')}`);
     if (input.source) parts.push(`[${input.source}]`);
-    if (name === 'message_organiser' || name === 'log_run' || name === 'read_rota') return '';
     return parts.join(' · ');
   }
-
-  function resultPill(name, text, isError) {
+  function outcomeOf(name, text, isError) {
     if (isError) {
       const m = /not confirmed: [a-z_]+: ([a-z_]+)/.exec(text);
-      return `<span class="pill no">${m ? `Stopped before it ran: ${esc(m[1].replace(/_/g, ' '))}` : `Error: ${esc(text.slice(0, 120))}`}</span>`;
+      return { bad: true, html: `<span class="pill no">${m ? `Stopped before it ran: ${esc(m[1].replace(/_/g, ' '))}` : `Error: ${esc(text.slice(0, 120))}`}</span>` };
     }
     let r = null;
-    try { r = JSON.parse(text); } catch { return '<span class="pill ok">done</span>'; }
-    if (r.ok === false) return `<span class="pill no">The service refused: ${esc(String(r.refusal || 'refused').replace(/_/g, ' '))}</span>`;
-    if (name === 'read_rota') return '<span class="pill">read</span>';
-    if (name === 'message_organiser') return '<span class="pill ok">sent to Isla</span>';
-    if (name === 'log_run') return '<span class="pill ok">logged</span>';
-    if (r.changed === true || r.added === true || (Array.isArray(r.changed) && r.changed.length)) return '<span class="pill ok">written</span>';
-    if (r.changed === false || (Array.isArray(r.changed) && !r.changed.length)) return `<span class="pill">${r.noteUpdated ? 'note added' : 'no change: already so'}</span>`;
-    if (r.proposed || r.proposal) return '<span class="pill ok">proposed to Isla</span>';
-    return '<span class="pill ok">done</span>';
+    try { r = JSON.parse(text); } catch { return { html: '<span class="pill ok">done</span>' }; }
+    if (r.ok === false) return { bad: true, html: `<span class="pill no">The service refused: ${esc(String(r.refusal || 'refused').replace(/_/g, ' '))}</span>` };
+    if (name === 'read_rota') return { html: '<span class="pill">read</span>' };
+    if (name === 'message_organiser') return { html: '<span class="pill ok">sent to Isla</span>' };
+    if (name === 'log_run') return { html: '<span class="pill ok">logged</span>' };
+    if (r.changed === true || r.added === true || (Array.isArray(r.changed) && r.changed.length)) return { written: true, html: '<span class="pill ok">written</span>' };
+    if (r.changed === false || (Array.isArray(r.changed) && !r.changed.length)) return { html: `<span class="pill">${r.noteUpdated ? 'note added' : 'no change: already so'}</span>` };
+    return { html: '<span class="pill ok">done</span>' };
   }
 
-  function stepsEl() {
+  function addRow(cls, inner, t) {
     const el = $('steps');
-    const empty = el.querySelector('.empty');
-    if (empty) el.innerHTML = '';
-    return el;
+    if (el.querySelector('.empty')) el.innerHTML = '';
+    const row = document.createElement('div');
+    row.className = `row ${cls}`;
+    row.innerHTML = `<span class="t">${clockOf(t ?? now())}</span><span class="dot"></span><div class="c">${inner}</div>`;
+    el.appendChild(row);
+    const body = el.parentElement;
+    body.scrollTop = body.scrollHeight;
+    return row;
   }
-  const scroll = (el) => { el.scrollTop = el.scrollHeight; };
+  const setDur = (row, ms) => { const d = row.querySelector('.dur'); if (d) d.textContent = secs(ms); };
+
+  function renderStrip() {
+    const total = Math.max(1, (tickEnded || now()));
+    $('strip').innerHTML = segments.map((s) => {
+      const end = s.t1 ?? (tickEnded || now());
+      return `<span class="seg-bar ${s.kind}" style="left:${(s.t0 / total) * 100}%;width:${Math.max(0.4, ((end - s.t0) / total) * 100)}%"></span>`;
+    }).join('');
+    const sum = (k) => segments.filter((s) => s.kind === k || (k === 'tool' && s.kind === 'refused')).reduce((a, s) => a + ((s.t1 ?? (tickEnded || now())) - s.t0), 0);
+    $('totals').textContent = segments.length ? `model ${secs(sum('model'))} · repo ${secs(sum('tool'))} · platform ${secs(Math.max(0, total - sum('model') - sum('tool')))}` : '';
+  }
+
+  function startTimer() {
+    clearInterval(timer);
+    timer = setInterval(() => {
+      $('timer').textContent = clockOf(now());
+      renderStrip();
+      for (const row of document.querySelectorAll('.row.active')) setDur(row, now() - Number(row.dataset.t0));
+    }, 200);
+  }
 
   function onStart(m) {
-    tickUsd = 0; requests = 0; calls.clear();
+    requests = 0; tickUsd = 0; segments = []; modelRow = null; tickEnded = 0; calls.clear();
     $('notice').classList.remove('on');
     $('clock').innerHTML = `<small>In the story</small>${esc(fmtTick(m.at))}`;
     const ev = [];
     for (const c of m.console) ev.push(`<div class="isla">${esc(withLabels(c))}</div>`);
     for (const it of m.items) {
+      const src = sourceWords[it.source] || it.source;
       ev.push(`<div class="ev ${esc(it.source)} ${it.alreadyRead ? 'read' : ''}">
-        <div class="meta"><b>${esc(it.who || 'unknown')}</b><span>${esc(sourceWords[it.source] || it.source)}${it.label && it.label !== (sourceWords[it.source] || it.source) ? ` · ${esc(it.label)}` : ''}</span><span>${esc(fmtShort(it.at))}</span>${it.trusted ? '<span class="tag">Isla\'s own channel</span>' : ''}${it.alreadyRead ? '<span class="tag">read before</span>' : ''}</div>
+        <div class="meta"><b>${esc(it.who || 'unknown')}</b><span>${esc(src)}${it.label && it.label !== src ? ` · ${esc(it.label)}` : ''}</span><span>${esc(fmtShort(it.at))}</span>${it.trusted ? '<span class="tag">Isla\'s own channel</span>' : ''}${it.alreadyRead ? '<span class="tag">read before</span>' : ''}</div>
         <div class="text">${esc(it.text)}</div></div>`);
     }
     $('evidence').innerHTML = ev.length ? ev.join('') : '<p class="empty">Nothing new since the last run.</p>';
     const bad = Object.entries(m.sources || {}).filter(([, v]) => v !== 'ok');
     $('sources').innerHTML = bad.length ? bad.map(([k, v]) => `<span class="tag warn">${esc(sourceWords[k] || k)}: ${esc(v)}</span>`).join(' ') : '';
     $('where').textContent = m.mode === 'live' ? 'live on Managed Agents' : m.mode === 'replay' ? 'replay of a recorded session' : m.mode === 'stand-in' ? 'rule-based stand-in, no model' : '';
-    $('steps').innerHTML = m.mode === 'stand-in' ? '<p class="empty">The stand-in runs in milliseconds and calls no model.</p>' : m.items.length || m.console.length ? '<p class="status"><span class="working"></span>Starting a session…</p>' : '<p class="empty">No run this slot.</p>';
+    $('steps').innerHTML = m.mode === 'stand-in' ? '<p class="empty">The stand-in runs in milliseconds and calls no model.</p>' : m.items.length || m.console.length ? '' : '<p class="empty">No run this slot.</p>';
+    $('strip').innerHTML = '';
+    $('totals').textContent = '';
     $('inbox').innerHTML = '<div class="bubble quiet">…</div>';
     $('tally').innerHTML = '';
     $('session').textContent = '';
     tickStarted = performance.now();
-    clearInterval(timer);
-    timer = setInterval(() => { $('timer').textContent = `${((performance.now() - tickStarted) / 1000).toFixed(0)} s`; }, 250);
-  }
-
-  function setStatus(text) {
-    const el = stepsEl();
-    let s = el.querySelector('.live-status');
-    if (!s) { s = document.createElement('p'); s.className = 'status live-status'; }
-    s.innerHTML = `<span class="working"></span>${esc(text)}`;
-    el.appendChild(s);
-    scroll(el);
+    if (m.mode !== 'stand-in' && (m.items.length || m.console.length)) addRow('status', '<div class="line">Starting a session</div>', 0);
+    startTimer();
   }
 
   function onStep(s) {
-    const el = stepsEl();
     if (s.kind === 'session') {
       $('session').textContent = s.replayOf ? `Replaying ${s.sessionId}, recorded ${new Date(s.replayOf).toLocaleDateString('en-GB')}` : `Session ${s.sessionId}`;
-      setStatus('session created, sending the brief');
       return;
     }
-    if (s.kind === 'status') { setStatus(s.text); return; }
+    if (s.kind === 'status') {
+      if (s.text === 'asking the model') {
+        const t0 = now();
+        segments.push({ kind: 'model', t0 });
+        modelRow = addRow('model active', '<div class="line"><span class="kind">MODEL</span><span>thinking</span><span class="dur"></span></div>');
+        modelRow.dataset.t0 = String(t0);
+      } else if (s.text !== 'thinking') {
+        addRow('status', `<div class="line">${esc(s.text)}</div>`);
+      }
+      return;
+    }
     if (s.kind === 'model') {
-      tickUsd += s.usd; requests = s.request;
-      const p = document.createElement('div');
-      p.className = 'model';
-      p.textContent = `Model request ${s.request}: ${s.cacheRead.toLocaleString()} tokens from cache, ${s.output.toLocaleString()} written · ${money(s.usd)}`;
-      el.insertBefore(p, el.querySelector('.live-status'));
-      $('session').dataset.cost = '';
+      requests = s.request; tickUsd += s.usd;
+      const seg = [...segments].reverse().find((x) => x.kind === 'model' && x.t1 === undefined);
+      if (seg) seg.t1 = now();
+      const row = modelRow || addRow('model', '<div class="line"><span class="kind">MODEL</span><span></span><span class="dur"></span></div>');
+      row.classList.remove('active');
+      row.querySelector('.line span:nth-child(2)').textContent = `request ${s.request}: ${s.cacheRead.toLocaleString()} from cache, ${s.output.toLocaleString()} written, ${money(s.usd)}`;
+      if (seg) setDur(row, seg.t1 - seg.t0);
+      modelRow = null;
       return;
     }
     if (s.kind === 'call') {
-      const card = document.createElement('div');
-      card.className = 'step';
+      const t0 = now();
       const args = argText(s.name, s.input);
-      card.innerHTML = `<div class="what">${esc(toolWords[s.name] || s.name)} <span class="status">${esc(s.name)}</span></div>${args ? `<div class="args">${esc(args)}</div>` : ''}<div class="verdicts"><span class="pill wait">session paused, waiting on the repo</span></div>`;
-      calls.set(s.id, card);
-      calls.set('last', card);
-      el.insertBefore(card, el.querySelector('.live-status'));
-      scroll(el);
+      const row = addRow('tool active', `<div class="line"><span class="kind">TOOL</span><b>${esc(toolWords[s.name] || s.name)}</b><span class="dur"></span></div>${args ? `<div class="args">${esc(args)}</div>` : ''}<div class="verdicts"><span class="pill wait">session paused, waiting on the repo</span></div>`);
+      row.dataset.t0 = String(t0);
+      const seg = { kind: 'tool', t0 };
+      segments.push(seg);
+      calls.set(s.id, { row, name: s.name, input: s.input, seg });
+      calls.set('last', calls.get(s.id));
+      if (s.input && s.input.person && s.input.event) { const td = cellEl(s.input.person, s.input.event); if (td) td.classList.add('touch'); }
+      if (s.name === 'update_event' && s.input && s.input.event) { const th = document.querySelector(`th[data-e="${CSS.escape(s.input.event)}"]`); if (th) th.classList.add('col-touch'); }
       return;
     }
     if (s.kind === 'verdict') {
-      const card = calls.get('last');
-      if (!card) return;
-      const v = card.querySelector('.verdicts');
-      v.innerHTML = s.allow ? '<span class="pill ok">Guard: allowed</span>' : `<span class="pill no">Guard refused</span>`;
+      const c = calls.get('last');
+      if (!c) return;
+      c.row.querySelector('.verdicts').insertAdjacentHTML('afterbegin', s.allow ? '<span class="pill ok">Guard: allowed</span>' : '<span class="pill no">Guard refused</span>');
       return;
     }
     if (s.kind === 'result') {
-      const card = calls.get(s.id);
-      if (!card) return;
-      const v = card.querySelector('.verdicts');
-      const wait = v.querySelector('.wait');
+      const c = calls.get(s.id);
+      if (!c) return;
+      c.seg.t1 = now();
+      const out = outcomeOf(c.name, s.text, s.isError);
+      if (out.bad) c.seg.kind = 'refused';
+      const wait = c.row.querySelector('.wait');
       if (wait) wait.remove();
-      const name = card.querySelector('.status').textContent;
-      v.insertAdjacentHTML('beforeend', resultPill(name, s.text, s.isError));
-      scroll(el);
+      c.row.querySelector('.verdicts').insertAdjacentHTML('beforeend', out.html);
+      c.row.classList.remove('active');
+      if (out.bad) c.row.classList.add('bad');
+      setDur(c.row, c.seg.t1 - c.seg.t0);
+      const td = c.input && c.input.person && c.input.event ? cellEl(c.input.person, c.input.event) : null;
+      if (td) {
+        td.classList.remove('touch');
+        if (out.written && c.input.value) { td.innerHTML = chip(c.input.value, td.querySelector('.pen')); td.classList.remove('changed'); void td.offsetWidth; td.classList.add('changed'); }
+        if (out.bad) { td.classList.add('refused'); setTimeout(() => td.classList.remove('refused'), 1600); }
+      }
+      for (const th of document.querySelectorAll('.col-touch')) th.classList.remove('col-touch');
       return;
     }
     if (s.kind === 'note') {
-      const n = document.createElement('div');
-      n.className = 'note';
-      n.textContent = s.text;
-      el.insertBefore(n, el.querySelector('.live-status'));
-      scroll(el);
+      addRow('note', `<div class="line"><span class="kind" style="color:var(--moss)">GHILLIE</span><b>its own note</b></div><div class="notebox">${esc(s.text)}</div>`);
     }
   }
 
   function onEnd(m) {
     clearInterval(timer);
-    $('timer').textContent = `${(m.durationMs / 1000).toFixed(m.durationMs < 1000 ? 2 : 0)} s${m.usd ? ` · ${money(m.usd)}` : ''}${requests ? ` · ${requests} model requests` : ''}`;
-    const st = $('steps').querySelector('.live-status');
-    if (st) st.remove();
+    tickEnded = now();
+    for (const seg of segments) if (seg.t1 === undefined) seg.t1 = tickEnded;
+    for (const row of document.querySelectorAll('.row.active')) row.classList.remove('active');
+    renderStrip();
+    $('timer').textContent = `${m.durationMs < 1000 ? `${(m.durationMs / 1000).toFixed(2)} s` : clockOf(m.durationMs)}${m.usd ? ` · ${money(m.usd)}` : ''}${requests ? ` · ${requests} model requests` : ''}`;
     const bubbles = [];
     if (m.skipped) bubbles.push(`<div class="bubble quiet">No run: ${esc(m.skipped)}.</div>`);
     if (m.run && m.mode === 'stand-in') {
-      const rows = [
-        ...m.mainWrites.map((w) => `<div class="step"><div class="what">${esc(writeText(w))}</div><div class="args">${esc(w.source)}${w.saidBy ? `, ${esc(w.saidBy)}` : ''}</div><div class="verdicts"><span class="pill ok">written</span></div></div>`),
-        ...m.run.refused.map((w) => `<div class="step"><div class="what">${esc(writeText(w))}</div><div class="args">${esc(w.source)}</div><div class="verdicts"><span class="pill no">The service refused: ${esc(String(w.outcome).replace(/_/g, ' '))}</span></div></div>`),
-        ...m.run.proposals.map((p) => `<div class="step"><div class="what">Proposed to Isla: ${esc(p.person)}</div><div class="args">${esc(p.why)}</div><div class="verdicts"><span class="pill">not written</span></div></div>`),
-      ];
-      $('steps').innerHTML = `<p class="status">Rule-based stand-in: no model, no session. What it did:</p>${rows.join('') || '<p class="empty">Nothing to write.</p>'}`;
+      const el = $('steps');
+      el.innerHTML = '';
+      addRow('status', '<div class="line">Rule-based stand-in: no model, no session. What it did:</div>', 0);
+      for (const w of m.mainWrites) addRow('tool', `<div class="line"><span class="kind">WRITE</span><b>${esc(writeText(w))}</b></div><div class="args">${esc(w.source)}${w.saidBy ? `, ${esc(w.saidBy)}` : ''}</div><div class="verdicts"><span class="pill ok">written</span></div>`, 0);
+      for (const w of m.run.refused) addRow('tool bad', `<div class="line"><span class="kind">WRITE</span><b>${esc(writeText(w))}</b></div><div class="args">${esc(w.source)}</div><div class="verdicts"><span class="pill no">The service refused: ${esc(String(w.outcome).replace(/_/g, ' '))}</span></div>`, 0);
+      for (const p of m.run.proposals) addRow('note', `<div class="line"><span class="kind" style="color:var(--moss)">PROPOSE</span><b>${esc(p.person)} to Isla</b></div><div class="args">${esc(p.why)}</div><div class="verdicts"><span class="pill">not written</span></div>`, 0);
     }
     if (m.run) {
       bubbles.push(m.run.message ? `<div class="bubble">${esc(m.run.message)}</div>` : '<div class="bubble quiet">No message. Nothing needs her.</div>');

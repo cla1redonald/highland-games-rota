@@ -10,7 +10,7 @@
  */
 import { gatherTick, prepareTick, type TickInput } from '@ghillie/agent-kit';
 import { applyConsole, createDemoWorld, fortnightTicks, standInAgent, type DemoWorld, type Tick } from '@ghillie/demo';
-import { compareInstants, config, londonInstant, watchdogProblems, type RotaPlan } from '@ghillie/engine';
+import { compareInstants, config, londonInstant, watchdogProblems, type Cell, type RotaPlan } from '@ghillie/engine';
 import { consoleActions, type ConsoleAction } from '@ghillie/feed';
 import type { ManagedMeter } from '@ghillie/agent-managed';
 import type { DryRun } from '@ghillie/stand-in';
@@ -43,6 +43,15 @@ export interface TickRow {
   done: RunMode | 'skipped' | null;
 }
 
+/** What the page draws the rota grid from: people down the side, events across the top, one cell each. No notes. */
+export interface Grid {
+  people: { name: string; role: string; status: string }[];
+  events: { id: string; label: string; date: string; type: string }[];
+  cells: { person: string; event: string; value: string; pencilled: boolean }[];
+}
+
+const gridCells = (cells: Cell[]): Grid['cells'] => cells.map((c) => ({ person: c.person, event: c.event, value: c.value, pencilled: c.pencilled }));
+
 export interface ShowOptions {
   dbPath?: string;
   /** Live ticks need it; without one, live is not offered. */
@@ -59,6 +68,7 @@ export class Show {
   index = 0;
   results: TickSummary[] = [];
   previousPlan: RotaPlan | null = null;
+  previousCells: Grid['cells'] | null = null;
   private pending: ConsoleAction[] = [];
   private readonly model: string;
 
@@ -78,6 +88,7 @@ export class Show {
     this.index = 0;
     this.results = [];
     this.previousPlan = null;
+    this.previousCells = null;
     this.pending = [...consoleActions()].sort((a, b) => compareInstants(a.at, b.at));
   }
 
@@ -91,6 +102,15 @@ export class Show {
 
   plan(): RotaPlan {
     return this.world.service.read().plan;
+  }
+
+  grid(): Grid {
+    const view = this.world.service.read();
+    return {
+      people: view.people.map((p) => ({ name: p.name, role: p.role, status: p.status })),
+      events: view.events.filter((e) => e.type !== 'Superseded').sort((a, b) => a.date.localeCompare(b.date) || a.label.localeCompare(b.label)).map((e) => ({ id: e.id, label: e.label, date: e.date, type: e.type })),
+      cells: gridCells(view.cells),
+    };
   }
 
   rows(): TickRow[] {
@@ -108,6 +128,7 @@ export class Show {
     const tick = this.ticks[this.index];
     if (!tick) throw new Error('the fortnight is over');
     this.previousPlan = this.plan();
+    this.previousCells = gridCells(this.world.store.cells());
     const consoleLines: string[] = [];
     while (this.pending[0] && compareInstants(this.pending[0].at, tick.at) <= 0) {
       const action = this.pending.shift();
