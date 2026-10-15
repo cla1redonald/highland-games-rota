@@ -388,7 +388,12 @@
     if (input.value) parts.push(input.value);
     if (input.event) parts.push(`at ${labels[input.event] || input.event}`);
     if (input.name) parts.push(input.name);
-    if (input.fields) parts.push(JSON.stringify(input.fields));
+    if (input.fields) {
+      const words = { statement: 'notes what they said', nextStep: 'sets the next step', lastChecked: 'marks last checked', status: 'status', create: 'adds them', date: 'date', target: 'target', confirmed: 'confirmed', type: 'type' };
+      parts.push(Object.entries(input.fields).map(([k, v]) => (name === 'update_event' || k === 'status' ? `${words[k] || k} ${typeof v === 'object' ? JSON.stringify(v) : v}` : words[k] || k)).join(', '));
+      const dw = input.fields.statement && input.fields.statement.dateWords;
+      if (Array.isArray(dw) && dw.length) parts.push(`date words: ${dw.map((w) => `"${w}"`).join(', ')}`);
+    }
     if (Array.isArray(input.dateWords) && input.dateWords.length) parts.push(`date words: ${input.dateWords.map((w) => `"${w}"`).join(', ')}`);
     if (input.source) parts.push(`[${input.source}]`);
     return parts.join(' · ');

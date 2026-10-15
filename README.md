@@ -50,7 +50,7 @@ A page for showing the Managed Agents build to people, one tick at a time. It sh
 
 Each tick runs one of three ways, chosen on the page:
 
-- **Live**: a real session on the agent and environment in `packages/agent-managed/resources/ids.json`, under the ledger and the $2 session budget. About 80 seconds and about $0.10 a tick. Each live session is recorded to `recordings/managed-live/`.
+- **Live**: a real session on the agent and environment in `packages/agent-managed/resources/ids.json`, under the ledger and the $2 session budget. Each live session is recorded to `recordings/managed-live/`. In the rehearsal on 15 October 2026 the seven scenes took 10 to 98 seconds each (median 31) and $0.06 to $0.19 each, $0.84 in all; those seven recordings are in the repo, so every scene can be replayed for nothing.
 - **Replay**: a recorded session played back at its own pace or faster. Nothing is spent, the tool calls still run against the real server, and every write still goes through the guard. It is also the fallback if the room's network fails: a live tick that fails is not counted, so it can be run again as a replay.
 - **Stand-in**: the rule-based stand-in, free and instant, for the ticks between the scenes.
 
