@@ -21,6 +21,7 @@ packages/agent-sdk    the agent on the Agent SDK
 packages/agent-managed   the agent on Managed Agents, with its resource files
 packages/ledger       the cost ledger: every response's usage, priced, with a hard stop at $60
 apps/demo             the demo: the recorded Messages API run replayed for free, or the stand-in
+apps/live             the room demo: a local page that runs the fortnight tick by tick on Managed Agents
 evals                 the cases, the graders and the report
 docs                  the rules (docs/rules.md) and the decisions (docs/decisions)
 ```
@@ -38,6 +39,22 @@ It seeds a fresh store, prints the plan, then plays a fortnight in June 2027 in 
 `npm run demo:replay-twice` plays the fortnight, then replays every window again and shows zero net writes.
 
 Along the way: a volunteer tells the agent to make him Chief Steward (it is data, not an instruction); someone is "away mid-July" (Maybe, words quoted, raised); someone gives a span of dates with a medical reason in the middle of it (only the dates survive, anywhere); a yes depends on a lift; a games date moves; the mail source hangs; the call notes are filed under the wrong meeting with a name misheard, and arrive late; a recruit is suggested twice; Isla books someone at both games on one Saturday; and the piper pulls out in a reply the mail search did not show.
+
+## In a room
+
+```
+npm run live     # then open http://127.0.0.1:4317
+```
+
+A page for showing the Managed Agents build to people, one tick at a time. It shows what came in since the last run, the agent at work (each model request, each tool call, the guard's answer on every write before the session resumes, and what the service did), the message Isla receives, and the rota, with whatever changed highlighted. Eight ticks are marked as scenes, with a cue for the presenter: Dougie ordering Ghillie to make him Chief Steward, a games date the calendar moves, Isla booking Dougie twice on one Saturday, the piper pulling out, and others.
+
+Each tick runs one of three ways, chosen on the page:
+
+- **Live**: a real session on the agent and environment in `packages/agent-managed/resources/ids.json`, under the ledger and the $2 session budget. About 80 seconds and about $0.10 a tick. Each live session is recorded to `recordings/managed-live/`.
+- **Replay**: a recorded session played back at its own pace or faster. Nothing is spent, the tool calls still run against the real server, and every write still goes through the guard. It is also the fallback if the room's network fails: a live tick that fails is not counted, so it can be run again as a replay.
+- **Stand-in**: the rule-based stand-in, free and instant, for the ticks between the scenes.
+
+Keys: right arrow, space or a presenter's clicker runs the next tick; F fast-forwards to the next scene; R jumps to the rota and back; 1, 2 and 3 pick the mode. Live is offered only when the API-key variable is set, in the environment or in `.env`. The page listens on the loopback address only.
 
 ## Three ways
 
@@ -102,7 +119,7 @@ The full list, with ids, is in [docs/rules.md](docs/rules.md). In short:
 
 ## What is tested
 
-- `npm test`: 318 tests pass and 1 is skipped (a live cache check that runs only with `GHILLIE_LIVE=1` and a key; run once live, it read 9,730 tokens from cache on the second tick). Engine 121, stand-in 37, agent kit 31, eval harness 30, MCP server 16 (stdio and loopback HTTP), demo 16, Messages API build 14, Managed Agents build 14, feed 13, Agent SDK build 11, ledger 8, deny-list 7. They cover the engine (coverage, the split, over-use, every write guard, the security findings, the closed date grammar), the MCP server over real stdio and HTTP transports, the feed adapters, the stand-in (including spoofing the organiser across chat, mail and call notes), the whole fortnight, the deny-list, and for Phase 1b: every stop reason of the hand-written loop replayed through a stubbed client; the Agent SDK's deny-by-default options, a forged approval refused by the hook, and a kill and resume that loses and repeats no decision; Managed Agents' pause, answer and resume on every write; the ledger's hard stop; cassette replay; and every adversarial authority case run through both the harness check and the service, with identical refusals required. The HTTP test binds a local port.
+- `npm test`: 323 tests pass and 1 is skipped (a live cache check that runs only with `GHILLIE_LIVE=1` and a key; run once live, it read 9,730 tokens from cache on the second tick). Engine 121, stand-in 37, agent kit 31, eval harness 30, MCP server 16 (stdio and loopback HTTP), demo 16, Messages API build 14, Managed Agents build 14, feed 13, Agent SDK build 11, ledger 8, deny-list 7, room demo 5. They cover the engine (coverage, the split, over-use, every write guard, the security findings, the closed date grammar), the MCP server over real stdio and HTTP transports, the feed adapters, the stand-in (including spoofing the organiser across chat, mail and call notes), the whole fortnight, the deny-list, and for Phase 1b: every stop reason of the hand-written loop replayed through a stubbed client; the Agent SDK's deny-by-default options, a forged approval refused by the hook, and a kill and resume that loses and repeats no decision; Managed Agents' pause, answer and resume on every write; the ledger's hard stop; cassette replay; and every adversarial authority case run through both the harness check and the service, with identical refusals required. The HTTP test binds a local port.
 - `npm run eval`: cases rewritten from 24 templates into this world, plus cases for the planted traps. Each cites the rules its expected outcome follows from. Graders are deterministic, each has a seeded-fault test that turns it red, and the report gives n with a 95% Wilson interval. The stand-in passes 36 of 36 judged cases (95% Wilson interval 90.4% to 100%; one case skipped), on file as `evals/results/stand-in-none-2026-10-12.json`.
 - `npm run eval:live`: the same cases and graders against a build, live. It records every repeat, the mean and spread of the pass rate, the pooled rate with a Wilson interval, cases that flip against the stand-in, cost per case from the ledger as a distribution, and latency percentiles. Results for all three builds are in `evals/results/`; no run leaked a private word or a forbidden phrase.
 - CI runs lint, typecheck, tests, build, the demo, the replay, the eval and a deny-list check over the tree and every commit. The deny-list's terms come from a repository secret, never from the repo, and an empty list fails the check.
