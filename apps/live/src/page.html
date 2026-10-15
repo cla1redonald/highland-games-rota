@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ghillie, live</title>
+<style>
+  :root {
+    --paper: #f5f2ea;
+    --card: #fffdf8;
+    --ink: #1c2320;
+    --muted: #5d6762;
+    --line: #ddd6c8;
+    --moss: #2f5d50;
+    --moss-soft: #dcebe4;
+    --heather: #6b4c8a;
+    --heather-soft: #ece4f4;
+    --slate: #3d5a80;
+    --slate-soft: #e1e9f3;
+    --red: #a3271f;
+    --red-soft: #f8dcd8;
+    --amber: #8a5a00;
+    --amber-soft: #fbecc8;
+    --green: #1f6b3a;
+    --green-soft: #d5efdd;
+    --flash: #fff1a8;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 17px; line-height: 1.4; }
+  button { font: inherit; cursor: pointer; }
+  button:disabled { cursor: not-allowed; opacity: .45; }
+
+  header { display: grid; grid-template-columns: auto 1fr auto; gap: 24px; align-items: center; padding: 12px 24px; background: var(--moss); color: #f5f2ea; }
+  .brand b { font-family: var(--serif); font-size: 30px; letter-spacing: .5px; }
+  .brand span { display: block; font-size: 14px; opacity: .8; }
+  .clock { text-align: center; font-family: var(--serif); font-size: 30px; }
+  .clock small { display: block; font-family: var(--sans); font-size: 13px; opacity: .75; letter-spacing: .08em; text-transform: uppercase; }
+  .money { text-align: right; font-size: 14px; }
+  .money b { font-size: 22px; font-variant-numeric: tabular-nums; }
+
+  .timeline { display: flex; gap: 6px; padding: 12px 24px 0; overflow-x: auto; }
+  .chip { flex: 1 0 52px; min-width: 52px; white-space: nowrap; border: 1px solid var(--line); border-radius: 8px; padding: 4px 3px; background: var(--card); font-size: 12px; text-align: center; color: var(--muted); position: relative; }
+  .chip b { display: block; color: var(--ink); font-size: 12px; }
+  .chip.scene::after { content: "★"; position: absolute; top: -9px; right: 4px; color: var(--heather); font-size: 15px; }
+  .chip.next { outline: 3px solid var(--heather); outline-offset: 1px; }
+  .chip.done-live { background: var(--heather); border-color: var(--heather); color: #f2ecf8; }
+  .chip.done-live b { color: #fff; }
+  .chip.done-replay { background: var(--slate); border-color: var(--slate); color: #e6edf6; }
+  .chip.done-replay b { color: #fff; }
+  .chip.done-stand-in { background: #e9e4d8; }
+  .chip.done-skipped { background: repeating-linear-gradient(135deg, #eee8dc 0 6px, #f8f4ec 6px 12px); }
+  .chip.recorded:not([class*="done-"]) { border-color: var(--slate); }
+
+  .bar { display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: center; margin: 12px 24px 0; padding: 12px 16px; background: var(--card); border: 1px solid var(--line); border-radius: 12px; }
+  .cue h2 { margin: 0; font-family: var(--serif); font-size: 24px; font-weight: 600; }
+  .cue p { margin: 2px 0 0; color: var(--muted); font-size: 16px; max-width: 70ch; }
+  .controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+  .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+  .seg button { border: 0; background: var(--card); padding: 8px 12px; color: var(--muted); }
+  .seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+  select { font: inherit; padding: 7px; border-radius: 8px; border: 1px solid var(--line); background: var(--card); }
+  .go { background: var(--heather); color: #fff; border: 0; border-radius: 10px; padding: 10px 18px; font-weight: 600; font-size: 18px; }
+  .ghost { background: transparent; border: 1px solid var(--line); border-radius: 10px; padding: 9px 12px; color: var(--ink); }
+
+  .notice { margin: 10px 24px 0; padding: 10px 14px; border-radius: 10px; background: var(--red-soft); color: var(--red); display: none; }
+  .notice.on { display: block; }
+
+  main { display: grid; grid-template-columns: 1fr 1.25fr 1fr; gap: 16px; padding: 14px 24px; }
+  section.panel { background: var(--card); border: 1px solid var(--line); border-radius: 12px; display: flex; flex-direction: column; min-height: 0; max-height: 58vh; }
+  .panel h3 { margin: 0; padding: 10px 14px; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 8px; }
+  .panel .body { padding: 10px 14px; overflow-y: auto; flex: 1; }
+  .empty { color: var(--muted); font-style: italic; }
+
+  /* What came in */
+  .ev { border-left: 4px solid var(--line); padding: 6px 10px; margin-bottom: 10px; background: #faf7f0; border-radius: 0 8px 8px 0; }
+  .ev .meta { font-size: 13px; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; }
+  .ev .meta b { color: var(--ink); }
+  .ev .text { margin-top: 2px; }
+  .ev.chat { border-left-color: var(--moss); }
+  .ev.mail { border-left-color: var(--slate); }
+  .ev.minutes { border-left-color: var(--amber); }
+  .ev.calendar { border-left-color: var(--heather); }
+  .ev.read { opacity: .55; }
+  .tag { display: inline-block; font-size: 12px; padding: 0 6px; border-radius: 6px; background: var(--moss-soft); color: var(--moss); font-weight: 600; }
+  .tag.warn { background: var(--red-soft); color: var(--red); }
+  .isla { padding: 6px 10px; margin-bottom: 10px; border-radius: 8px; background: var(--heather-soft); color: #43305a; }
+  .isla::before { content: "Isla, in her console: "; font-weight: 600; }
+
+  /* Ghillie at work: a strip for the whole session, then a timeline of steps */
+  .strip-wrap { padding: 10px 14px 6px; border-bottom: 1px solid var(--line); }
+  .strip { position: relative; height: 14px; border-radius: 4px; background: #d9d2c3; overflow: hidden; }
+  .seg-bar { position: absolute; top: 0; bottom: 0; }
+  .seg-bar.model { background: var(--heather); }
+  .seg-bar.tool { background: var(--slate); }
+  .seg-bar.refused { background: var(--red); }
+  .legend { display: flex; gap: 14px; font-size: 12px; color: var(--muted); margin-top: 5px; flex-wrap: wrap; font-variant-numeric: tabular-nums; }
+  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 4px; vertical-align: -1px; }
+  .legend .totals { margin-left: auto; }
+
+  .steps { position: relative; }
+  .row { display: grid; grid-template-columns: 40px 18px 1fr; gap: 6px; position: relative; padding-bottom: 10px; animation: arrive .3s ease-out; }
+  .row::before { content: ""; position: absolute; left: 54px; top: 14px; bottom: -2px; border-left: 2px solid var(--line); }
+  .row:last-child::before { display: none; }
+  @keyframes arrive { from { transform: translateY(4px); opacity: .2; } to { transform: none; opacity: 1; } }
+  .row .t { font-family: var(--mono); font-size: 12px; color: var(--muted); padding-top: 3px; text-align: right; font-variant-numeric: tabular-nums; }
+  .row .dot { width: 12px; height: 12px; border-radius: 50%; margin: 5px 0 0 1px; background: var(--line); position: relative; z-index: 1; }
+  .row.model .dot { background: var(--heather); }
+  .row.tool .dot { background: var(--slate); }
+  .row.note .dot { background: var(--moss); }
+  .row.bad .dot { background: var(--red); }
+  .row.active .dot { animation: pulse 1s infinite; }
+  @keyframes pulse { 50% { opacity: .25; } }
+  .line { display: flex; gap: 8px; align-items: baseline; }
+  .line .kind { font-size: 11px; font-weight: 700; letter-spacing: .08em; color: var(--muted); }
+  .row.model .kind { color: var(--heather); }
+  .row.tool .kind { color: var(--slate); }
+  .line b { font-weight: 600; }
+  .line .dur { margin-left: auto; font-family: var(--mono); font-size: 12px; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .row.model .line { font-size: 14px; color: var(--muted); }
+  .row.status .line { font-size: 13px; color: var(--muted); }
+  .args { font-family: var(--mono); font-size: 14px; color: var(--muted); margin-top: 1px; word-break: break-word; }
+  .verdicts { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 5px; }
+  .pill { font-size: 13px; padding: 2px 8px; border-radius: 999px; background: #ece7dc; color: var(--muted); }
+  .pill.ok { background: var(--green-soft); color: var(--green); }
+  .pill.no { background: var(--red-soft); color: var(--red); font-weight: 600; }
+  .pill.wait { background: var(--amber-soft); color: var(--amber); }
+  .notebox { padding: 8px 10px; border-radius: 8px; background: var(--moss-soft); white-space: pre-wrap; margin-top: 3px; }
+  .foot { padding: 8px 14px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; font-variant-numeric: tabular-nums; }
+
+  /* Isla's phone */
+  .phone { margin: 4px auto; max-width: 420px; border: 10px solid #22282a; border-radius: 28px; background: #eef1f0; min-height: 220px; padding: 14px 12px; }
+  .phone .who { text-align: center; font-size: 12px; color: var(--muted); margin-bottom: 10px; }
+  .bubble { background: #fff; border-radius: 16px 16px 16px 4px; padding: 10px 12px; margin-bottom: 10px; box-shadow: 0 1px 0 rgba(0,0,0,.06); white-space: pre-wrap; font-size: 15px; animation: arrive .4s ease-out; }
+  .bubble.alarm { background: var(--red-soft); color: var(--red); }
+  .bubble.quiet { background: transparent; box-shadow: none; color: var(--muted); font-style: italic; text-align: center; }
+  .tally { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+
+  /* The rota: people down the side, games across the top, a coverage row, one cell each */
+  .rota { padding: 0 24px 24px; }
+  .rota h3 { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 4px 0 8px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .grid-wrap { background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow-x: auto; }
+  table.grid { border-collapse: separate; border-spacing: 0; width: 100%; font-size: 14px; }
+  .grid th, .grid td { padding: 3px 6px; border-bottom: 1px solid #ece6da; text-align: center; white-space: nowrap; }
+  .grid thead th { position: sticky; top: 0; background: var(--card); font-weight: 600; vertical-align: bottom; padding-top: 8px; }
+  .grid thead th small { display: block; font-weight: 400; color: var(--muted); font-size: 12px; }
+  .grid th.who, .grid td.who { text-align: left; padding-left: 12px; position: sticky; left: 0; background: var(--card); }
+  .grid td.who small { color: var(--muted); font-size: 12px; margin-left: 6px; display: inline-block; max-width: 150px; overflow: hidden; text-overflow: ellipsis; vertical-align: bottom; }
+  .grid tr.pipeline td.who { color: var(--muted); font-style: italic; }
+  .grid tr.cover td, .grid tr.cover th { background: #f8f4ec; border-bottom: 2px solid var(--line); }
+  .grid .col-touch { box-shadow: inset 0 -3px 0 var(--heather); }
+  .v { display: inline-block; min-width: 72px; padding: 1px 6px; border-radius: 6px; font-size: 13px; position: relative; }
+  .v-stew { background: var(--moss); color: #fff; font-weight: 600; }
+  .v-sup { border: 1.5px solid var(--moss); color: var(--moss); font-weight: 600; }
+  .v-yes { background: var(--green-soft); color: var(--green); }
+  .v-maybe { border: 1.5px dashed #c49a3c; color: var(--amber); }
+  .v-no { color: #a2463f; }
+  .v-unk { color: #b9b09e; }
+  .v.pen::after { content: "P"; position: absolute; top: -6px; right: -6px; width: 15px; height: 15px; border-radius: 50%; background: var(--slate); color: #fff; font-size: 10px; line-height: 15px; font-weight: 700; }
+  td.cell { transition: background .3s; }
+  td.cell.changed { animation: glow 2.6s ease-out; }
+  @keyframes glow { 0%, 45% { background: var(--flash); } 100% { background: transparent; } }
+  td.cell.touch { outline: 3px solid var(--heather); outline-offset: -3px; animation: touch 1s infinite; }
+  @keyframes touch { 50% { background: var(--heather-soft); } }
+  td.cell.refused { animation: shake .5s; background: var(--red-soft); }
+  @keyframes shake { 20%, 60% { transform: translateX(-3px); } 40%, 80% { transform: translateX(3px); } }
+  .rag { font-size: 13px; font-weight: 700; padding: 1px 8px; border-radius: 6px; }
+  .rag.Green { background: var(--green-soft); color: var(--green); }
+  .rag.Amber { background: var(--amber-soft); color: var(--amber); }
+  .rag.Red { background: var(--red-soft); color: var(--red); }
+  .rag.changed { outline: 3px solid #e2c84a; }
+  .keys { font-weight: 400; text-transform: none; letter-spacing: 0; }
+
+  @media (min-height: 950px) and (min-width: 1500px) {
+    section.panel { max-height: 36vh; }
+    .grid th, .grid td { padding-top: 2px; padding-bottom: 2px; }
+  }
+  @media (max-width: 1100px) {
+    main { grid-template-columns: 1fr; }
+    section.panel { max-height: none; }
+    header { grid-template-columns: 1fr; text-align: left; }
+    .clock, .money { text-align: left; }
+    .bar { grid-template-columns: 1fr; }
+    .controls { justify-content: flex-start; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><b>Ghillie</b><span>keeps the Highland games rota true, and proposes rather than decides</span></div>
+  <div class="clock" id="clock"><small>In the story</small>Before the fortnight</div>
+  <div class="money"><div>This demo <b id="spent">$0.00</b></div><div id="ledger"></div></div>
+</header>
+
+<div class="timeline" id="timeline"></div>
+
+<div class="bar">
+  <div class="cue" id="cue"></div>
+  <div class="controls">
+    <div class="seg" role="group" aria-label="How the next tick runs">
+      <button data-mode="live" title="A real Managed Agents session (key 1)">Live</button>
+      <button data-mode="replay" title="A recorded session, played back for free (key 2)">Replay</button>
+      <button data-mode="stand-in" title="The rule-based stand-in, free and instant (key 3)">Stand-in</button>
+    </div>
+    <select id="speed" aria-label="Replay speed" title="Replay speed">
+      <option value="1">1×</option><option value="2">2×</option><option value="4">4×</option>
+    </select>
+    <button class="go" id="go">Run</button>
+    <button class="ghost" id="skip" title="Stand-in up to the next ★ (key F)">Next ★</button>
+    <button class="ghost" id="reset" title="Start the fortnight again">Start again</button>
+  </div>
+</div>
+<div class="notice" id="notice"></div>
+
+<main>
+  <section class="panel">
+    <h3><span>What came in</span><span id="sources"></span></h3>
+    <div class="body" id="evidence"><p class="empty">Run a tick to see what the committee said since the last run.</p></div>
+  </section>
+  <section class="panel">
+    <h3><span>Ghillie at work</span><span id="where"></span></h3>
+    <div class="strip-wrap">
+      <div class="strip" id="strip"></div>
+      <div class="legend"><span><i style="background:var(--heather)"></i>model</span><span><i style="background:var(--slate)"></i>repo answering a tool call</span><span><i style="background:#d9d2c3"></i>platform between steps</span><span><i style="background:var(--red)"></i>refused</span><span class="totals" id="totals"></span></div>
+    </div>
+    <div class="body"><div class="steps" id="steps"><p class="empty">Each model request, each tool call, the guard's answer on every write, and what the service did.</p></div></div>
+    <div class="foot"><span id="session"></span><span id="timer"></span></div>
+  </section>
+  <section class="panel">
+    <h3><span>Isla's phone</span><span></span></h3>
+    <div class="body">
+      <div class="phone"><div class="who">Ghillie → Isla</div><div id="inbox"><div class="bubble quiet">Nothing yet.</div></div></div>
+      <div class="tally" id="tally"></div>
+    </div>
+  </section>
+</main>
+
+<div class="rota">
+  <h3><span>The rota: a suggested split, never a booking</span><span><span id="asat"></span> · <span class="keys">keys: → run, F next ★, R rota, 1 2 3 mode</span></span></h3>
+  <div class="grid-wrap"><table class="grid" id="grid"></table></div>
+</div>
+
+<script>
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+  const tz = 'Europe/London';
+  const fmtTick = (iso) => new Date(iso).toLocaleString('en-GB', { timeZone: tz, weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' }).replace(' at ', ', ');
+  const fmtShort = (iso) => new Date(iso).toLocaleString('en-GB', { timeZone: tz, weekday: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+  const fmtDay = (d) => new Date(`${d}T12:00:00Z`).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+  const money = (n) => `$${(n ?? 0).toFixed(n && n < 1 ? 3 : 2)}`;
+  const clockOf = (ms) => { const s = Math.max(0, Math.floor(ms / 1000)); return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`; };
+  const secs = (ms) => `${(ms / 1000).toFixed(ms < 10000 ? 1 : 0)} s`;
+
+  let state = null;
+  let mode = null;
+  let labels = {};
+  let tickStarted = 0;
+  let tickEnded = 0;
+  let timer = null;
+  let requests = 0;
+  let tickUsd = 0;
+  let segments = [];
+  let modelRow = null;
+  const calls = new Map();
+
+  const toolWords = {
+    read_rota: 'Reads the rota',
+    set_availability: 'Records an answer',
+    set_decision: 'Writes a booking',
+    update_event: 'Changes a games',
+    update_person: 'Updates a person',
+    propose_recruit: 'Proposes a recruit to Isla',
+    message_organiser: 'Messages Isla',
+    log_run: 'Logs the run',
+    gather_evidence: 'Asks for the evidence',
+  };
+  const sourceWords = { chat: 'chat', mail: 'mail', minutes: 'call notes', calendar: 'circuit calendar' };
+  const now = () => performance.now() - tickStarted;
+
+  function setMode(m) {
+    mode = m;
+    for (const b of document.querySelectorAll('.seg button')) b.setAttribute('aria-pressed', String(b.dataset.mode === m));
+    $('speed').style.display = m === 'replay' ? '' : 'none';
+    renderControls();
+  }
+  const nextRow = () => state && state.rows[state.index];
+
+  function renderControls() {
+    if (!state) return;
+    const row = nextRow();
+    document.querySelector('[data-mode="live"]').disabled = !state.live;
+    document.querySelector('[data-mode="replay"]').disabled = !(row && row.recorded);
+    if (mode === 'live' && !state.live) mode = null;
+    if (mode === 'replay' && !(row && row.recorded)) mode = null;
+    if (!mode) { setMode(state.live && row && row.scene && !row.scene.free ? 'live' : row && row.recorded && row.scene ? 'replay' : 'stand-in'); return; }
+    const go = $('go');
+    go.disabled = state.busy || state.finished;
+    go.textContent = state.finished ? 'Fortnight over' : state.busy ? 'Running…' : `Run ${row ? fmtShort(row.at) : ''} ▸`;
+    $('skip').disabled = state.busy || state.finished;
+    $('reset').disabled = state.busy;
+  }
+
+  function renderTimeline() {
+    $('timeline').innerHTML = state.rows.map((r, i) => {
+      const cls = ['chip', r.scene ? 'scene' : '', i === state.index ? 'next' : '', r.done ? `done-${r.done}` : '', r.recorded ? 'recorded' : ''].join(' ');
+      const d = new Date(r.at);
+      const day = d.toLocaleDateString('en-GB', { timeZone: tz, weekday: 'short', day: 'numeric' });
+      const hour = d.toLocaleTimeString('en-GB', { timeZone: tz, hour: '2-digit', minute: '2-digit' });
+      return `<div class="${cls}" title="${esc(r.scene ? r.scene.title : '')}${r.recorded ? ' (recorded)' : ''}"><b>${esc(day)}</b>${esc(hour)}</div>`;
+    }).join('');
+  }
+
+  function renderCue() {
+    const row = nextRow();
+    if (!row) { $('cue').innerHTML = '<h2>The fortnight is over</h2><p>Start again to replay it, or look over the rota below.</p>'; return; }
+    const s = row.scene;
+    const when = fmtTick(row.at);
+    $('cue').innerHTML = s
+      ? `<h2>★ ${esc(s.title)}</h2><p><b>Next: ${esc(when)}.</b> ${esc(s.watch)}</p>`
+      : `<h2>${esc(when)}</h2><p>${row.skipped ? esc(row.skipped) : 'A routine tick. Fast-forward with the stand-in, or run it.'}</p>`;
+  }
+
+  function renderMoney() {
+    $('spent').textContent = money(state.spent);
+    $('ledger').textContent = state.ledger ? `Ledger ${money(state.ledger.total)} of the $${state.ledger.cap} cap · ${state.model}` : 'No API key: replays and the stand-in only';
+  }
+
+  // The rota grid
+  const valueClass = { Stewarding: 'v-stew', Supporting: 'v-sup', Watching: 'v-sup', 'Not going': 'v-no', Yes: 'v-yes', Maybe: 'v-maybe', No: 'v-no', Unknown: 'v-unk', '': 'v-unk' };
+  const valueText = (v) => (v === 'Stewarding' ? 'Steward' : v === 'Supporting' ? 'Support' : v === 'Unknown' || !v ? '·' : v);
+  const chip = (v, pen) => `<span class="v ${valueClass[v] || 'v-unk'} ${pen ? 'pen' : ''}" title="${esc(v || 'Unknown')}${pen ? ', pencilled by Isla' : ''}">${esc(valueText(v))}</span>`;
+  const key = (p, e) => `${p}|${e}`;
+  const cellEl = (p, e) => document.querySelector(`td.cell[data-k="${CSS.escape(key(p, e))}"]`);
+
+  function renderRota() {
+    const { grid, plan } = state;
+    labels = Object.fromEntries(grid.events.map((e) => [e.id, e.label]));
+    $('asat').textContent = `as at ${fmtDay(plan.today)}`;
+    const cells = new Map(grid.cells.map((c) => [key(c.person, c.event), c]));
+    const before = state.previousCells ? new Map(state.previousCells.map((c) => [key(c.person, c.event), c])) : null;
+    const games = new Map(plan.games.map((g) => [g.id, g]));
+    const prevGames = new Map((state.previousPlan ? state.previousPlan.games : []).map((g) => [g.id, g]));
+    const head = `<thead><tr><th class="who">${grid.people.length} people</th>${grid.events.map((e) => `<th data-e="${esc(e.id)}">${esc(e.label.replace(/ Games$/, ''))}<small>${esc(e.type === 'Setup day' ? 'Setup, ' : '')}${esc(fmtDay(e.date))}</small></th>`).join('')}</tr></thead>`;
+    const cover = `<tr class="cover"><td class="who"><b>Cover</b> <small>counted / needed</small></td>${grid.events.map((e) => {
+      const g = games.get(e.id);
+      if (!g) {
+        const yes = grid.cells.filter((c) => c.event === e.id && ['Yes', 'Stewarding', 'Supporting'].includes(c.value)).length;
+        return `<td><span class="status">${yes} yes</span></td>`;
+      }
+      const was = prevGames.get(e.id);
+      const moved = state.previousPlan && was && (was.rag !== g.rag || was.counted !== g.counted);
+      return `<td><span class="rag ${esc(g.rag)} ${moved ? 'changed' : ''}" title="${esc(g.problems || '')}">${g.counted}/${g.target}</span></td>`;
+    }).join('')}</tr>`;
+    const body = grid.people.map((p) => {
+      const role = p.role && p.role !== 'Steward' ? p.role : p.status === 'Pipeline' ? 'pipeline' : '';
+      return `<tr class="${p.status === 'Pipeline' ? 'pipeline' : ''}"><td class="who">${esc(p.name)}${role ? `<small title="${esc(role)}">${esc(role)}</small>` : ''}</td>${grid.events.map((e) => {
+        const c = cells.get(key(p.name, e.id));
+        const b = before ? before.get(key(p.name, e.id)) : undefined;
+        const changed = before && ((c?.value || '') !== (b?.value || '') || Boolean(c?.pencilled) !== Boolean(b?.pencilled));
+        return `<td class="cell ${changed ? 'changed' : ''}" data-k="${esc(key(p.name, e.id))}">${chip(c ? c.value : '', c && c.pencilled)}</td>`;
+      }).join('')}</tr>`;
+    }).join('');
+    $('grid').innerHTML = `${head}<tbody>${cover}${body}</tbody>`;
+  }
+
+  function renderState() {
+    renderTimeline();
+    renderCue();
+    renderMoney();
+    renderRota();
+    renderControls();
+  }
+
+  // Ghillie at work
+  const withLabels = (text) => text.replace(/\b([a-z]+(?:-[a-z]+)*)\b/g, (w) => labels[w] || w);
+  function writeText(w) {
+    if (w.action === 'update_event') return `${labels[w.event] || w.event}: ${Object.entries(w.fields || {}).map(([k, v]) => `${k} ${v}`).join(', ')}`;
+    if (w.action === 'update_person') return `${w.person}: ${Object.keys(w.fields || {}).join(', ')}`;
+    return `${w.person} ${w.value} at ${labels[w.event] || w.event}`;
+  }
+  function argText(name, input) {
+    if (name === 'message_organiser' || name === 'log_run' || name === 'read_rota') return '';
+    const parts = [];
+    if (input.person) parts.push(input.person);
+    if (input.value) parts.push(input.value);
+    if (input.event) parts.push(`at ${labels[input.event] || input.event}`);
+    if (input.name) parts.push(input.name);
+    if (input.fields) {
+      const words = { statement: 'notes what they said', nextStep: 'sets the next step', lastChecked: 'marks last checked', status: 'status', create: 'adds them', date: 'date', target: 'target', confirmed: 'confirmed', type: 'type' };
+      parts.push(Object.entries(input.fields).map(([k, v]) => (name === 'update_event' || k === 'status' ? `${words[k] || k} ${typeof v === 'object' ? JSON.stringify(v) : v}` : words[k] || k)).join(', '));
+      const dw = input.fields.statement && input.fields.statement.dateWords;
+      if (Array.isArray(dw) && dw.length) parts.push(`date words: ${dw.map((w) => `"${w}"`).join(', ')}`);
+    }
+    if (Array.isArray(input.dateWords) && input.dateWords.length) parts.push(`date words: ${input.dateWords.map((w) => `"${w}"`).join(', ')}`);
+    if (input.source) parts.push(`[${input.source}]`);
+    return parts.join(' · ');
+  }
+  function outcomeOf(name, text, isError) {
+    if (isError) {
+      const m = /not confirmed: [a-z_]+: ([a-z_]+)/.exec(text);
+      return { bad: true, html: `<span class="pill no">${m ? `Stopped before it ran: ${esc(m[1].replace(/_/g, ' '))}` : `Error: ${esc(text.slice(0, 120))}`}</span>` };
+    }
+    let r = null;
+    try { r = JSON.parse(text); } catch { return { html: '<span class="pill ok">done</span>' }; }
+    if (r.ok === false) return { bad: true, html: `<span class="pill no">The service refused: ${esc(String(r.refusal || 'refused').replace(/_/g, ' '))}</span>` };
+    if (name === 'read_rota') return { html: '<span class="pill">read</span>' };
+    if (name === 'message_organiser') return { html: '<span class="pill ok">sent to Isla</span>' };
+    if (name === 'log_run') return { html: '<span class="pill ok">logged</span>' };
+    if (r.changed === true || r.added === true || (Array.isArray(r.changed) && r.changed.length)) return { written: true, html: '<span class="pill ok">written</span>' };
+    if (r.changed === false || (Array.isArray(r.changed) && !r.changed.length)) return { html: `<span class="pill">${r.noteUpdated ? 'note added' : 'no change: already so'}</span>` };
+    return { html: '<span class="pill ok">done</span>' };
+  }
+
+  function addRow(cls, inner, t) {
+    const el = $('steps');
+    if (el.querySelector('.empty')) el.innerHTML = '';
+    const row = document.createElement('div');
+    row.className = `row ${cls}`;
+    row.innerHTML = `<span class="t">${clockOf(t ?? now())}</span><span class="dot"></span><div class="c">${inner}</div>`;
+    el.appendChild(row);
+    const body = el.parentElement;
+    body.scrollTop = body.scrollHeight;
+    return row;
+  }
+  const setDur = (row, ms) => { const d = row.querySelector('.dur'); if (d) d.textContent = secs(ms); };
+
+  function renderStrip() {
+    const total = Math.max(1, (tickEnded || now()));
+    $('strip').innerHTML = segments.map((s) => {
+      const end = s.t1 ?? (tickEnded || now());
+      return `<span class="seg-bar ${s.kind}" style="left:${(s.t0 / total) * 100}%;width:${Math.max(0.4, ((end - s.t0) / total) * 100)}%"></span>`;
+    }).join('');
+    const sum = (k) => segments.filter((s) => s.kind === k || (k === 'tool' && s.kind === 'refused')).reduce((a, s) => a + ((s.t1 ?? (tickEnded || now())) - s.t0), 0);
+    $('totals').textContent = segments.length ? `model ${secs(sum('model'))} · repo ${secs(sum('tool'))} · platform ${secs(Math.max(0, total - sum('model') - sum('tool')))}` : '';
+  }
+
+  function startTimer() {
+    clearInterval(timer);
+    timer = setInterval(() => {
+      $('timer').textContent = clockOf(now());
+      renderStrip();
+      for (const row of document.querySelectorAll('.row.active')) setDur(row, now() - Number(row.dataset.t0));
+    }, 200);
+  }
+
+  function onStart(m) {
+    requests = 0; tickUsd = 0; segments = []; modelRow = null; tickEnded = 0; calls.clear();
+    $('notice').classList.remove('on');
+    $('clock').innerHTML = `<small>In the story</small>${esc(fmtTick(m.at))}`;
+    const ev = [];
+    for (const c of m.console) ev.push(`<div class="isla">${esc(withLabels(c))}</div>`);
+    for (const it of m.items) {
+      const src = sourceWords[it.source] || it.source;
+      ev.push(`<div class="ev ${esc(it.source)} ${it.alreadyRead ? 'read' : ''}">
+        <div class="meta"><b>${esc(it.who || 'unknown')}</b><span>${esc(src)}${it.label && it.label !== src ? ` · ${esc(it.label)}` : ''}</span><span>${esc(fmtShort(it.at))}</span>${it.trusted ? '<span class="tag">Isla\'s own channel</span>' : ''}${it.alreadyRead ? '<span class="tag">read before</span>' : ''}</div>
+        <div class="text">${esc(it.text)}</div></div>`);
+    }
+    $('evidence').innerHTML = ev.length ? ev.join('') : '<p class="empty">Nothing new since the last run.</p>';
+    const bad = Object.entries(m.sources || {}).filter(([, v]) => v !== 'ok');
+    $('sources').innerHTML = bad.length ? bad.map(([k, v]) => `<span class="tag warn">${esc(sourceWords[k] || k)}: ${esc(v)}</span>`).join(' ') : '';
+    $('where').textContent = m.mode === 'live' ? 'live on Managed Agents' : m.mode === 'replay' ? 'replay of a recorded session' : m.mode === 'stand-in' ? 'rule-based stand-in, no model' : '';
+    $('steps').innerHTML = m.mode === 'stand-in' ? '<p class="empty">The stand-in runs in milliseconds and calls no model.</p>' : m.items.length || m.console.length ? '' : '<p class="empty">No run this slot.</p>';
+    $('strip').innerHTML = '';
+    $('totals').textContent = '';
+    $('inbox').innerHTML = '<div class="bubble quiet">…</div>';
+    $('tally').innerHTML = '';
+    $('session').textContent = '';
+    tickStarted = performance.now();
+    if (m.mode !== 'stand-in' && (m.items.length || m.console.length)) addRow('status', '<div class="line">Starting a session</div>', 0);
+    startTimer();
+  }
+
+  function onStep(s) {
+    if (s.kind === 'session') {
+      $('session').textContent = s.replayOf ? `Replaying ${s.sessionId}, recorded ${new Date(s.replayOf).toLocaleDateString('en-GB')}` : `Session ${s.sessionId}`;
+      return;
+    }
+    if (s.kind === 'status') {
+      if (s.text === 'asking the model') {
+        const t0 = now();
+        segments.push({ kind: 'model', t0 });
+        modelRow = addRow('model active', '<div class="line"><span class="kind">MODEL</span><span>thinking</span><span class="dur"></span></div>');
+        modelRow.dataset.t0 = String(t0);
+      } else if (s.text !== 'thinking') {
+        addRow('status', `<div class="line">${esc(s.text)}</div>`);
+      }
+      return;
+    }
+    if (s.kind === 'model') {
+      requests = s.request; tickUsd += s.usd;
+      const seg = [...segments].reverse().find((x) => x.kind === 'model' && x.t1 === undefined);
+      if (seg) seg.t1 = now();
+      const row = modelRow || addRow('model', '<div class="line"><span class="kind">MODEL</span><span></span><span class="dur"></span></div>');
+      row.classList.remove('active');
+      row.querySelector('.line span:nth-child(2)').textContent = `request ${s.request}: ${s.cacheRead.toLocaleString()} from cache, ${s.output.toLocaleString()} written, ${money(s.usd)}`;
+      if (seg) setDur(row, seg.t1 - seg.t0);
+      modelRow = null;
+      return;
+    }
+    if (s.kind === 'call') {
+      const t0 = now();
+      const args = argText(s.name, s.input);
+      const row = addRow('tool active', `<div class="line"><span class="kind">TOOL</span><b>${esc(toolWords[s.name] || s.name)}</b><span class="dur"></span></div>${args ? `<div class="args">${esc(args)}</div>` : ''}<div class="verdicts"><span class="pill wait">session paused, waiting on the repo</span></div>`);
+      row.dataset.t0 = String(t0);
+      const seg = { kind: 'tool', t0 };
+      segments.push(seg);
+      calls.set(s.id, { row, name: s.name, input: s.input, seg });
+      calls.set('last', calls.get(s.id));
+      if (s.input && s.input.person && s.input.event) { const td = cellEl(s.input.person, s.input.event); if (td) td.classList.add('touch'); }
+      if (s.name === 'update_event' && s.input && s.input.event) { const th = document.querySelector(`th[data-e="${CSS.escape(s.input.event)}"]`); if (th) th.classList.add('col-touch'); }
+      return;
+    }
+    if (s.kind === 'verdict') {
+      const c = calls.get('last');
+      if (!c) return;
+      c.row.querySelector('.verdicts').insertAdjacentHTML('afterbegin', s.allow ? '<span class="pill ok">Guard: allowed</span>' : '<span class="pill no">Guard refused</span>');
+      return;
+    }
+    if (s.kind === 'result') {
+      const c = calls.get(s.id);
+      if (!c) return;
+      c.seg.t1 = now();
+      const out = outcomeOf(c.name, s.text, s.isError);
+      if (out.bad) c.seg.kind = 'refused';
+      const wait = c.row.querySelector('.wait');
+      if (wait) wait.remove();
+      c.row.querySelector('.verdicts').insertAdjacentHTML('beforeend', out.html);
+      c.row.classList.remove('active');
+      if (out.bad) c.row.classList.add('bad');
+      setDur(c.row, c.seg.t1 - c.seg.t0);
+      const td = c.input && c.input.person && c.input.event ? cellEl(c.input.person, c.input.event) : null;
+      if (td) {
+        td.classList.remove('touch');
+        if (out.written && c.input.value) { td.innerHTML = chip(c.input.value, td.querySelector('.pen')); td.classList.remove('changed'); void td.offsetWidth; td.classList.add('changed'); }
+        if (out.bad) { td.classList.add('refused'); setTimeout(() => td.classList.remove('refused'), 1600); }
+      }
+      for (const th of document.querySelectorAll('.col-touch')) th.classList.remove('col-touch');
+      return;
+    }
+    if (s.kind === 'note') {
+      addRow('note', `<div class="line"><span class="kind" style="color:var(--moss)">GHILLIE</span><b>its own note</b></div><div class="notebox">${esc(s.text)}</div>`);
+    }
+  }
+
+  function onEnd(m) {
+    clearInterval(timer);
+    tickEnded = now();
+    for (const seg of segments) if (seg.t1 === undefined) seg.t1 = tickEnded;
+    for (const row of document.querySelectorAll('.row.active')) row.classList.remove('active');
+    renderStrip();
+    $('timer').textContent = `${m.durationMs < 1000 ? `${(m.durationMs / 1000).toFixed(2)} s` : clockOf(m.durationMs)}${m.usd ? ` · ${money(m.usd)}` : ''}${requests ? ` · ${requests} model requests` : ''}`;
+    const bubbles = [];
+    if (m.skipped) bubbles.push(`<div class="bubble quiet">No run: ${esc(m.skipped)}.</div>`);
+    if (m.run && m.mode === 'stand-in') {
+      const el = $('steps');
+      el.innerHTML = '';
+      addRow('status', '<div class="line">Rule-based stand-in: no model, no session. What it did:</div>', 0);
+      for (const w of m.mainWrites) addRow('tool', `<div class="line"><span class="kind">WRITE</span><b>${esc(writeText(w))}</b></div><div class="args">${esc(w.source)}${w.saidBy ? `, ${esc(w.saidBy)}` : ''}</div><div class="verdicts"><span class="pill ok">written</span></div>`, 0);
+      for (const w of m.run.refused) addRow('tool bad', `<div class="line"><span class="kind">WRITE</span><b>${esc(writeText(w))}</b></div><div class="args">${esc(w.source)}</div><div class="verdicts"><span class="pill no">The service refused: ${esc(String(w.outcome).replace(/_/g, ' '))}</span></div>`, 0);
+      for (const p of m.run.proposals) addRow('note', `<div class="line"><span class="kind" style="color:var(--moss)">PROPOSE</span><b>${esc(p.person)} to Isla</b></div><div class="args">${esc(p.why)}</div><div class="verdicts"><span class="pill">not written</span></div>`, 0);
+    }
+    if (m.run) {
+      bubbles.push(m.run.message ? `<div class="bubble">${esc(m.run.message)}</div>` : '<div class="bubble quiet">No message. Nothing needs her.</div>');
+      $('tally').innerHTML = [
+        `<span class="pill ok">${m.mainWrites.length} written</span>`,
+        `<span class="pill ${m.run.refused.length ? 'no' : ''}">${m.run.refused.length} refused by the service</span>`,
+        `<span class="pill">${m.run.proposals.length} proposed to Isla</span>`,
+        `<span class="pill">${m.run.toolCalls} tool calls</span>`,
+      ].join('');
+    }
+    for (const w of m.watchdog || []) bubbles.push(`<div class="bubble alarm"><b>Watchdog, 20:00.</b> ${esc(w)}</div>`);
+    if (m.error) {
+      $('notice').innerHTML = `<b>This tick did not finish:</b> ${esc(m.error)}${m.run ? '' : ' It has not been counted. Run it again, or switch to Replay.'}`;
+      $('notice').classList.add('on');
+    }
+    $('inbox').innerHTML = bubbles.join('') || '<div class="bubble quiet">Nothing.</div>';
+  }
+
+  async function post(path, body) {
+    const res = await fetch(`/api/${path}`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body || {}) });
+    const out = await res.json().catch(() => ({}));
+    if (!res.ok && out.error) { $('notice').innerHTML = esc(out.error); $('notice').classList.add('on'); }
+    return out;
+  }
+
+  const run = () => { if (state && !state.busy && !state.finished) post('step', { mode, speed: Number($('speed').value) }); };
+  const skip = () => { if (state && !state.busy && !state.finished) post('skip'); };
+  $('go').addEventListener('click', run);
+  $('skip').addEventListener('click', skip);
+  $('reset').addEventListener('click', () => { if (confirm('Start the fortnight again from a fresh rota?')) post('reset').then(() => location.reload()); });
+  for (const b of document.querySelectorAll('.seg button')) b.addEventListener('click', () => setMode(b.dataset.mode));
+  document.addEventListener('keydown', (e) => {
+    if (e.target instanceof HTMLSelectElement) return;
+    if (['ArrowRight', 'PageDown', ' ', 'Enter'].includes(e.key)) { e.preventDefault(); run(); }
+    else if (e.key === 'f' || e.key === 'F') skip();
+    else if (e.key === '1' && state && state.live) setMode('live');
+    else if (e.key === '2') { const r = nextRow(); if (r && r.recorded) setMode('replay'); }
+    else if (e.key === '3') setMode('stand-in');
+    else if (e.key === 'r' || e.key === 'R') {
+      const rota = document.querySelector('.rota');
+      const below = rota.getBoundingClientRect().top > window.innerHeight / 2;
+      window.scrollTo({ top: below ? rota.offsetTop - 8 : 0, behavior: 'smooth' });
+    }
+  });
+
+  const source = new EventSource('/events');
+  source.onmessage = (e) => {
+    const m = JSON.parse(e.data);
+    if (m.type === 'state') {
+      const advanced = state && state.index !== m.index;
+      state = m;
+      if (advanced) mode = null;
+      renderState();
+    } else if (m.type === 'tick-start') onStart(m);
+    else if (m.type === 'step') onStep(m);
+    else if (m.type === 'tick-end') onEnd(m);
+  };
+})();
+</script>
+</body>
+</html>

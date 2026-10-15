@@ -11,6 +11,7 @@
     { "path": "packages/agent-sdk" },
     { "path": "packages/agent-managed" },
     { "path": "apps/demo" },
+    { "path": "apps/live" },
     { "path": "evals" }
   ]
 }
