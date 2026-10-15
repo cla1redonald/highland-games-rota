@@ -112,9 +112,16 @@ export function createLiveServer(o: LiveServerOptions): Server {
     }
   };
 
-  const readBody = async (req: IncomingMessage): Promise<Record<string, unknown>> => {
+  /** The actions take a few bytes of JSON. Anything larger is refused without being read. */
+  const maxBody = 4096;
+  const readBody = async (req: IncomingMessage): Promise<Record<string, unknown> | null> => {
     const chunks: Buffer[] = [];
-    for await (const chunk of req) chunks.push(chunk as Buffer);
+    let size = 0;
+    for await (const chunk of req) {
+      size += (chunk as Buffer).length;
+      if (size > maxBody) return null;
+      chunks.push(chunk as Buffer);
+    }
     if (!chunks.length) return {};
     try {
       return JSON.parse(Buffer.concat(chunks).toString('utf8')) as Record<string, unknown>;
@@ -123,7 +130,16 @@ export function createLiveServer(o: LiveServerOptions): Server {
     }
   };
 
-  return createServer((req, res) => {
+  const server = createServer((req, res) => {
+    // Only this machine, by name: a Host header that is not the loopback address stops DNS rebinding.
+    const address = server.address();
+    const port = address && typeof address === 'object' ? address.port : 0;
+    const host = req.headers.host ?? '';
+    if (![`127.0.0.1:${port}`, `localhost:${port}`].includes(host)) {
+      res.writeHead(421, { 'content-type': 'text/plain' });
+      res.end('wrong host');
+      return;
+    }
     const url = new URL(req.url ?? '/', 'http://localhost');
     if (req.method === 'GET' && url.pathname === '/') {
       res.writeHead(200, { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store' });
@@ -142,7 +158,27 @@ export function createLiveServer(o: LiveServerOptions): Server {
       return;
     }
     if (req.method === 'POST' && url.pathname.startsWith('/api/')) {
+      // A live tick spends money, so another site must not be able to start one. JSON only (a cross-site form or
+      // fetch cannot send it without a preflight, which is never answered), and from this page's own origin only.
+      const origin = req.headers.origin;
+      if (!(req.headers['content-type'] ?? '').startsWith('application/json') || (origin !== undefined && origin !== `http://${host}`)) {
+        res.writeHead(403, { 'content-type': 'text/plain' });
+        res.end('forbidden');
+        return;
+      }
+      if (Number(req.headers['content-length'] ?? 0) > maxBody) {
+        res.writeHead(413, { 'content-type': 'text/plain', connection: 'close' });
+        res.end('too large');
+        req.destroy();
+        return;
+      }
       void readBody(req).then(async (body) => {
+        if (!body) {
+          res.writeHead(413, { 'content-type': 'text/plain', connection: 'close' });
+          res.end('too large');
+          req.destroy();
+          return;
+        }
         const result = await action(url.pathname.slice(5), body);
         res.writeHead(result.status, { 'content-type': 'application/json' });
         res.end(JSON.stringify(result.body));
@@ -152,4 +188,5 @@ export function createLiveServer(o: LiveServerOptions): Server {
     res.writeHead(404, { 'content-type': 'text/plain' });
     res.end('not found');
   });
+  return server;
 }

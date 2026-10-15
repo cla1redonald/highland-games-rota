@@ -6,6 +6,7 @@ import { describe, expect, it } from 'vitest';
 import { existsSync, mkdtempSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { request } from 'node:http';
 import type { AddressInfo } from 'node:net';
 import { createDemoWorld, fortnightTicks, playTicks } from '@ghillie/demo';
 import { renderPlanText } from '@ghillie/engine';
@@ -201,10 +202,23 @@ describe('the server', () => {
       const first = new TextDecoder().decode(chunk.value);
       expect(first).toContain('"type":"state"');
 
-      const step = await fetch(`${base}/api/step`, { method: 'POST', body: JSON.stringify({ mode: 'stand-in' }) });
+      const json = { 'content-type': 'application/json' };
+      // Another site cannot start a tick: not as a simple form post, not from its own origin, not by rebinding a name.
+      expect((await fetch(`${base}/api/step`, { method: 'POST', headers: { 'content-type': 'text/plain' }, body: JSON.stringify({ mode: 'live' }) })).status).toBe(403);
+      expect((await fetch(`${base}/api/step`, { method: 'POST', headers: { ...json, origin: 'https://evil.example' }, body: '{}' })).status).toBe(403);
+      const rebound = await new Promise<number>((resolve, reject) => {
+        const r = request(`${base}/api/step`, { method: 'POST', headers: { ...json, host: `attacker.example:${new URL(base).port}` } }, (res) => resolve(res.statusCode ?? 0));
+        r.on('error', reject);
+        r.end('{}');
+      });
+      expect(rebound).toBe(421);
+      expect((await fetch(`${base}/api/step`, { method: 'POST', headers: json, body: `{"x":"${'a'.repeat(10_000)}"}` })).status).toBe(413);
+      expect(show.index).toBe(0);
+
+      const step = await fetch(`${base}/api/step`, { method: 'POST', headers: { ...json, origin: base }, body: JSON.stringify({ mode: 'stand-in' }) });
       expect(step.status).toBe(200);
       expect(show.index).toBe(1);
-      const skip = (await (await fetch(`${base}/api/skip`, { method: 'POST' })).json()) as { ran: number };
+      const skip = (await (await fetch(`${base}/api/skip`, { method: 'POST', headers: json })).json()) as { ran: number };
       expect(skip.ran).toBeGreaterThan(0);
       expect(show.rows()[show.index]?.scene).toBeTruthy();
       controller.abort();
