@@ -30,6 +30,10 @@ const schema = [
     basis text not null,
     entry text not null
   )`,
+  `create table if not exists leases (
+    name text primary key,
+    busy_until integer not null default 0
+  )`,
   `create table if not exists recordings (
     at text primary key,
     recorded_at text not null,

@@ -183,12 +183,34 @@ export async function begin(id: string, action: Action, visitor: Visitor): Promi
   const run = await getRun(id);
   if (!run) throw new Refused(404, 'no such run: start a new one');
   if (run.view.finished) throw new Refused(400, 'the fortnight is over');
-  const live = await liveFor(visitor);
-  if (action.kind === 'step' && action.mode === 'live' && !live.open) {
-    throw new Refused(403, !live.configured ? 'live ticks are not set up on this server' : !live.unlocked ? 'live ticks need the password' : `live ticks are closed: $${live.total.toFixed(2)} of the $${live.cap} cap is spent`);
+  const isLive = action.kind === 'step' && action.mode === 'live';
+  // One live tick at a time across every visitor, and the cap read only once it is held: the ledger file each tick
+  // carries is seeded from the Turso total, so two at once would each see room under the cap that only one has.
+  if (isLive && !(await claimLease('live'))) throw new Refused(409, 'someone else is running a live tick: replay this one, or try again in a minute');
+  try {
+    const live = await liveFor(visitor);
+    if (isLive && !live.open) {
+      throw new Refused(403, !live.configured ? 'live ticks are not set up on this server' : !live.unlocked ? 'live ticks need the password' : `live ticks are closed: $${live.total.toFixed(2)} of the $${live.cap} cap is spent`);
+    }
+    if (!(await claim(id))) throw new Refused(409, 'a tick is already running on this run');
+    return (emit) => work(run, action, visitor, live, emit).finally(() => (isLive ? releaseLease('live') : undefined));
+  } catch (error) {
+    if (isLive) await releaseLease('live');
+    throw error;
   }
-  if (!(await claim(id))) throw new Refused(409, 'a tick is already running on this run');
-  return (emit) => work(run, action, visitor, live, emit);
+}
+
+/** A deployment-wide lease, held at most leaseMs, so one that outlives a dead function frees itself. */
+async function claimLease(name: string): Promise<boolean> {
+  const client = await db();
+  const now = Date.now();
+  await client.execute({ sql: 'insert into leases (name, busy_until) values (?, 0) on conflict(name) do nothing', args: [name] });
+  const result = await client.execute({ sql: 'update leases set busy_until = ? where name = ? and busy_until < ?', args: [now + leaseMs, name, now] });
+  return result.rowsAffected === 1;
+}
+
+async function releaseLease(name: string): Promise<void> {
+  await (await db()).execute({ sql: 'update leases set busy_until = 0 where name = ?', args: [name] });
 }
 
 async function work(run: RunRow, action: Action, visitor: Visitor, live: State['live'], emit: (m: Message) => void): Promise<void> {
