@@ -1,0 +1,19 @@
+# What a CLI deploy must never upload. Secrets live in Vercel's environment variables, not in files.
+.env
+**/.env
+**/.env*.local
+.denylist
+*.db
+*.db-*
+
+# Local state and build output: Vercel installs and builds from the sources.
+node_modules
+**/node_modules
+**/dist
+**/.next
+**/*.tsbuildinfo
+data
+ledger
+out
+coverage
+.git
