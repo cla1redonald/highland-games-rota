@@ -186,12 +186,13 @@ export async function begin(id: string, action: Action, visitor: Visitor): Promi
   const isLive = action.kind === 'step' && action.mode === 'live';
   // One live tick at a time across every visitor, and the cap read only once it is held: the ledger file each tick
   // carries is seeded from the Turso total, so two at once would each see room under the cap that only one has.
+  // Who may run one is checked first, so a visitor without the password never holds the lease, even briefly.
+  if (isLive && !hasCredentials()) throw new Refused(403, 'live ticks are not set up on this server');
+  if (isLive && !visitor.unlocked) throw new Refused(403, 'live ticks need the password');
   if (isLive && !(await claimLease('live'))) throw new Refused(409, 'someone else is running a live tick: replay this one, or try again in a minute');
   try {
     const live = await liveFor(visitor);
-    if (isLive && !live.open) {
-      throw new Refused(403, !live.configured ? 'live ticks are not set up on this server' : !live.unlocked ? 'live ticks need the password' : `live ticks are closed: $${live.total.toFixed(2)} of the $${live.cap} cap is spent`);
-    }
+    if (isLive && !live.open) throw new Refused(403, `live ticks are closed: $${live.total.toFixed(2)} of the $${live.cap} cap is spent`);
     if (!(await claim(id))) throw new Refused(409, 'a tick is already running on this run');
     return (emit) => work(run, action, visitor, live, emit).finally(() => (isLive ? releaseLease('live') : undefined));
   } catch (error) {
