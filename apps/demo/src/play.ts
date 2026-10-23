@@ -41,6 +41,25 @@ export async function createDemoWorld(dbPath = ':memory:'): Promise<DemoWorld> {
   const clock = (): Date => new Date(now);
   const { service, console: organiser } = seedWorld(store, clock);
   logSeedRun(service);
+  return connectWorld(dbPath, store, service, organiser, (iso) => {
+    now = iso;
+  });
+}
+
+/**
+ * Opens a store a fresh world was already seeded into, as it was left: nothing is wiped and nothing is seeded again.
+ * The hosted demo keeps each visitor's store between ticks this way. The clock starts at `now`.
+ */
+export async function openDemoWorld(dbPath: string, now: string): Promise<DemoWorld> {
+  const store = new Store({ path: dbPath });
+  let current = now;
+  const clock = (): Date => new Date(current);
+  return connectWorld(dbPath, store, new RotaService({ store, clock }), new OrganiserConsole(store, clock), (iso) => {
+    current = iso;
+  });
+}
+
+async function connectWorld(dbPath: string, store: Store, service: RotaService, organiser: OrganiserConsole, setNow: (iso: string) => void): Promise<DemoWorld> {
   const client = await connectInMemory(service);
   return {
     dbPath,
@@ -49,9 +68,7 @@ export async function createDemoWorld(dbPath = ':memory:'): Promise<DemoWorld> {
     console: organiser,
     client,
     feed: feedSources(),
-    setNow: (iso: string) => {
-      now = iso;
-    },
+    setNow,
     close: async () => {
       await client.close();
       store.close();

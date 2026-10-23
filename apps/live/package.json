@@ -20,6 +20,7 @@
     "@ghillie/engine": "0.1.0",
     "@ghillie/feed": "0.1.0",
     "@ghillie/ledger": "0.1.0",
-    "@ghillie/stand-in": "0.1.0"
+    "@ghillie/stand-in": "0.1.0",
+    "@modelcontextprotocol/sdk": "^1.32.1"
   }
 }

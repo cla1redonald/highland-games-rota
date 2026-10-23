@@ -11,6 +11,7 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { performance } from 'node:perf_hooks';
+import type { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { CallGuard, SchemaValidator, loadCatalogue, rotaTools, spawnRotaServer, type AgentTick, type TickInput } from '@ghillie/agent-kit';
 import { guardConfirmer, liveManagedPort, readIds, runManagedTick, type Confirmer, type ManagedEvent, type ManagedMeter, type ManagedPort, type ManagedSession } from '@ghillie/agent-managed';
 import { priceTokens, tokenCounts, type ApiUsage } from '@ghillie/ledger';
@@ -166,9 +167,17 @@ export interface ManagedTickArgs {
   meter?: ManagedMeter;
   /** Replay only: how much faster than recorded. */
   speed?: number;
-  /** Tests stand a stub in for the platform. */
+  /** Tests stand a stub in for the platform; the hosted demo wraps the live port. */
   port?: ManagedPort;
   dir?: string;
+  /** Where the agent and environment ids are. Defaults to the repo's file, from the repo root. */
+  idsPath?: string;
+  /**
+   * An MCP client already connected to this world's service, in the same process. Without one the tick starts the
+   * Phase 1a server as a subprocess over the store file, as the terminal builds do. A host that cannot start
+   * processes passes the world's own client: the same server, the same store, the same clock.
+   */
+  client?: Client;
 }
 
 /** Wraps the confirmer so the page sees each verdict on a write before the session resumes. */
@@ -184,9 +193,9 @@ function watchedConfirmer(inner: Confirmer, onStep: (step: Step) => void): Confi
 
 export async function runManagedDemoTick(a: ManagedTickArgs): Promise<AgentTick> {
   const dir = a.dir ?? liveRecordingDir;
-  const ids = readIds(idsPath);
-  if (!ids.agent || !ids.environment) throw new Error(`no agent or environment id in ${idsPath}: run npm run managed -- setup first`);
-  const { client, close } = await spawnRotaServer({ dbPath: a.dbPath, clock: a.tick.now });
+  const ids = readIds(a.idsPath ?? idsPath);
+  if (!ids.agent || !ids.environment) throw new Error(`no agent or environment id in ${a.idsPath ?? idsPath}: run npm run managed -- setup first`);
+  const { client, close } = a.client ? { client: a.client, close: (): Promise<void> => Promise.resolve() } : await spawnRotaServer({ dbPath: a.dbPath, clock: a.tick.now });
   try {
     const validator = new SchemaValidator((await loadCatalogue(client)).filter((t) => (rotaTools as readonly string[]).includes(t.name)));
     const confirmer = watchedConfirmer(guardConfirmer(new CallGuard({ validator, allowed: rotaTools, store: () => a.store })), a.onStep);

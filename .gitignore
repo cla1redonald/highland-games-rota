@@ -11,3 +11,9 @@ data/
 coverage/
 .DS_Store
 .denylist
+
+# Next.js
+.next/
+next-env.d.ts
+.env*.local
+.vercel

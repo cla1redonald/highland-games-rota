@@ -9,13 +9,16 @@
  * after each evening slot, exactly as in the terminal demo.
  */
 import { gatherTick, prepareTick, type TickInput } from '@ghillie/agent-kit';
-import { applyConsole, createDemoWorld, fortnightTicks, standInAgent, type DemoWorld, type Tick } from '@ghillie/demo';
+import { applyConsole, createDemoWorld, fortnightTicks, openDemoWorld, standInAgent, type DemoWorld, type Tick } from '@ghillie/demo';
 import { compareInstants, config, londonInstant, watchdogProblems, type Cell, type RotaPlan } from '@ghillie/engine';
-import { consoleActions, type ConsoleAction } from '@ghillie/feed';
-import type { ManagedMeter } from '@ghillie/agent-managed';
+import { consoleActions, seedRun, type ConsoleAction } from '@ghillie/feed';
+import type { ManagedMeter, ManagedPort } from '@ghillie/agent-managed';
 import type { DryRun } from '@ghillie/stand-in';
 import { readRecording, runManagedDemoTick, type Step } from './managed.js';
 import { sceneAt } from './scenes.js';
+
+export { liveRecordingDir, readRecording, recordingFile, type Recording, type Step } from './managed.js';
+export { sceneAt, type Scene } from './scenes.js';
 
 export type RunMode = 'live' | 'replay' | 'stand-in';
 
@@ -60,6 +63,22 @@ export interface ShowOptions {
   recordingDir?: string;
   /** Tests stand a stub agent in for Managed Agents. */
   managed?: typeof runManagedDemoTick;
+  /** Wraps the live Managed Agents port (the hosted demo uses it); tests pass a stub. */
+  port?: ManagedPort;
+  idsPath?: string;
+  /** Answer the agent's tool calls in this process, over the world's own MCP client, instead of a subprocess. */
+  inProcess?: boolean;
+}
+
+/**
+ * Everything about a show that is not in its store: how far it has got and what each tick did. With the store file,
+ * it is enough to carry on later, in another process. The console actions still to come follow from the index.
+ */
+export interface SavedShow {
+  index: number;
+  results: TickSummary[];
+  previousPlan: RotaPlan | null;
+  previousCells: Grid['cells'] | null;
 }
 
 export class Show {
@@ -82,6 +101,23 @@ export class Show {
     return show;
   }
 
+  /** Carries on a saved show over its store file, which must be the one it was saved with. */
+  static async resume(options: ShowOptions & { dbPath: string }, saved: SavedShow): Promise<Show> {
+    const show = new Show(options);
+    const last = show.ticks[saved.index - 1];
+    show.world = await openDemoWorld(options.dbPath, last?.at ?? seedRun.loggedAt);
+    show.index = saved.index;
+    show.results = saved.results;
+    show.previousPlan = saved.previousPlan;
+    show.previousCells = saved.previousCells;
+    show.pending = show.pendingAfter(last?.at);
+    return show;
+  }
+
+  save(): SavedShow {
+    return { index: this.index, results: this.results, previousPlan: this.previousPlan, previousCells: this.previousCells };
+  }
+
   async reset(): Promise<void> {
     if (this.world) await this.world.close();
     this.world = await createDemoWorld(this.options.dbPath ?? 'data/live.db');
@@ -89,7 +125,13 @@ export class Show {
     this.results = [];
     this.previousPlan = null;
     this.previousCells = null;
-    this.pending = [...consoleActions()].sort((a, b) => compareInstants(a.at, b.at));
+    this.pending = this.pendingAfter(undefined);
+  }
+
+  /** Isla's console actions not yet applied once the show has run up to `at`: each tick applies those at or before it. */
+  private pendingAfter(at: string | undefined): ConsoleAction[] {
+    const all = [...consoleActions()].sort((a, b) => compareInstants(a.at, b.at));
+    return at ? all.filter((action) => compareInstants(action.at, at) > 0) : all;
   }
 
   get liveAvailable(): boolean {
@@ -162,6 +204,9 @@ export class Show {
             ...(this.options.meter ? { meter: this.options.meter } : {}),
             ...(hooks.speed ? { speed: hooks.speed } : {}),
             ...(this.options.recordingDir ? { dir: this.options.recordingDir } : {}),
+            ...(this.options.port && mode === 'live' ? { port: this.options.port } : {}),
+            ...(this.options.idsPath ? { idsPath: this.options.idsPath } : {}),
+            ...(this.options.inProcess ? { client: this.world.client.client } : {}),
           });
           summary.run = result.run;
           summary.usd = result.usd;

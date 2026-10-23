@@ -56,6 +56,21 @@ Each tick runs one of three ways, chosen on the page:
 
 Keys: right arrow, space or a presenter's clicker runs the next tick; F fast-forwards to the next scene; R jumps to the rota and back; 1, 2 and 3 pick the mode. Live is offered only when the API-key variable is set, in the environment or in `.env`. The page listens on the loopback address only.
 
+## Hosted
+
+`apps/web` is the same page as a Next.js app for Vercel, so it can be shared as a link. Everyone who opens it gets their own fortnight from a fresh rota, kept in their browser until they start again.
+
+```
+npm run dev -w @ghillie/web     # then open http://localhost:4318
+```
+
+- **The engine is unchanged.** Between ticks a visitor's run is the saved show (how far it has got, what each tick did) and the rota's SQLite file, whole, both in Turso. A tick copies the file to the function's disk, carries on with `Show.resume`, and puts it back. A tick that fails before it counts is not saved, so a retry starts from the same file and Isla's console actions are applied once. `apps/live/test/resume.test.ts` checks that a fortnight saved and reopened after every tick ends exactly where an unbroken one does.
+- **The tool server runs in the function.** The agent's custom tool calls are answered over the world's own in-memory MCP client instead of a subprocess: the same server, store and clock.
+- **Live ticks need a password.** The right one sets a signed cookie for a week. They go through the same Ledger and $60 hard cap, here counting hosted spend from Turso, and each session keeps its $2 platform budget. A live tick's recording is kept in Turso and replayed in place of the committed one.
+- **Replays and the stand-in are open to anyone with the link** and spend nothing.
+
+Settings are in `apps/web/.env.example`. Without `TURSO_DATABASE_URL` it writes to `data/web.db`. On Vercel, set the project's root directory to `apps/web`; its build compiles the packages first.
+
 ## Three ways
 
 The same agent, on the same MCP server, with the same system prompt, brief and graders, built three times. What each

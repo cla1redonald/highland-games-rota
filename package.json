@@ -21,6 +21,7 @@
     "packages/agent-managed",
     "apps/demo",
     "apps/live",
+    "apps/web",
     "evals"
   ],
   "scripts": {
