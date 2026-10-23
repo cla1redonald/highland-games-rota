@@ -12,8 +12,8 @@ node_modules
 **/dist
 **/.next
 **/*.tsbuildinfo
-data
-ledger
-out
-coverage
-.git
+/data
+/ledger
+/out
+/coverage
+/.git
