@@ -8,7 +8,7 @@ A Highland games needs forty volunteers, a tug-of-war marshal with strong views,
 
 Ghillie is a rota engine and an MCP server for a summer circuit of Highland games in a made-up corner of Scotland. There are six Saturday games, in villages such as Glen Dunnock, Kinloch-on-Spey and Balvaig Bridge. Two of them fall on the same Saturday, and there is a Friday setup day as well. Isla is the organiser, and Morven, Hamish and Eilidh are her Chief Stewards. None of the people or places are real.
 
-Twice each weekday the agent reads whatever has been said since it last ran. It records who can make which games through the MCP tools, works out what has changed and writes to Isla if something needs her attention. Booking people, adding new volunteers, contacting anyone other than Isla and moving a date are all hers to do. The agent will carry one of those out only after she has approved that exact action, and each approval works once.
+Twice each weekday the agent reads whatever has been said since it last ran. It records who can make which games through the MCP tools, works out what has changed and writes to Isla if something needs her attention. Booking people, adding new volunteers and moving a date are hers to do, and the agent carries one out only after she has approved that exact action. Each approval works once. The agent never contacts anyone but Isla.
 
 ```
 packages/engine          the rota rules, the store, and the checks every write has to pass
@@ -49,7 +49,7 @@ I built the agent three times. All three builds use the same MCP server, system 
 
 ### By hand, on the Messages API
 
-`packages/agent-messages` is 271 lines, and the loop itself is 124 of them. It sends the whole conversation on every call and deals with each stop reason itself. It counts turns in code and checks each tool call against the server's schema before running it. Results are matched to their calls by id, errors are marked, and every turn gets a trace and a cost. The stable part of the prompt goes first behind a cache breakpoint, the evidence goes last, and server-side fallbacks are switched on. A live run can be recorded to cassettes, which is how the demo replays one for free.
+Everything the other two builds get from a framework is written out here by hand. `packages/agent-messages` is 271 lines, 124 of them the loop, and it resends the whole conversation on every call, routes each stop reason itself, counts turns in code, checks each tool call against the server's schema before running it, matches results to their calls by id with errors marked, gives every turn a trace and a cost, and puts the stable part of the prompt first behind a cache breakpoint with the evidence last. Server-side fallbacks are on, and cassettes record a live run so the demo can replay it for free.
 
 On Sonnet 5.5 it passed 34 of 37 (91.9%) on the first run. Three repeats gave 89.2%, 86.5% and 89.2%. Pooled, the repeats come to 98 of 111, 88.3%, with a 95% Wilson interval of 81.0% to 93.0%. At the median a tick cost $0.092 and took 15 s. On Opus 5.5 it passed 35 of 37 (94.6%) at a median of $0.171 a tick.
 
@@ -71,7 +71,7 @@ On Sonnet 5.5 it passed 35 of 37 (94.6%, 82.3% to 98.5%) at a median of $0.092 a
 
 At this sample size there is no telling the three apart on pass rate, and on cost they are within a cent of each other per tick. Largely the same cases failed on all three, so I think the problem lies in the prompt they share rather than in any of the frameworks. All the results are in `evals/results/`.
 
-Whichever build is running, its writes still go through the Phase 1a service. Authority is decided by a single function. A write needs an approval from the organiser for exactly that action, not used before, with the service in full mode. The service calls that function and so does every check in the harnesses, which means they cannot give different answers.
+Whichever build is running, its writes still go through the Phase 1a service. Authority is decided by a single function. A write needs an approval from the organiser for exactly that action, not used before, and the service has to be in full mode rather than tuning mode, where decisions are only proposed. The service calls that function and so does every check in the harnesses, which means they cannot give different answers.
 
 To run the builds again, set the API-key variable named in `.env.example` (one way is `set -a; . ./.env; set +a`) and then use these commands.
 
@@ -90,20 +90,20 @@ Each call is logged in the ledger (`ledger/spend.jsonl`), and the running total 
 - The latest thing someone said wins, and what a person says about their own dates outranks anyone else's account of it.
 - When something was said and when it was written down are tracked separately. If the log already holds something newer, an older piece of evidence is refused, however late it turns up.
 - "Until X" means up to X but not X itself. A phrase that does not pin down particular days never counts as a Yes.
-- Only the organiser books people, and only what she has approved, once. Saying she is leaning one way does not count as a decision.
+- Only the organiser books people. The agent records a booking only when she has approved that exact one, and each approval works once. Saying she is leaning one way does not count as a decision.
 - Someone can say yes to two games on the same Saturday, but they can only be on the ground at one of them, so a booking at both is refused and flagged.
 - The agent can suggest a recruit but never adds one, and it does not suggest the same person again without new evidence.
 - Nothing a source said is stored or sent apart from date words, and the service writes those itself. Medical and personal reasons never appear anywhere.
 - The organiser is recognised by her own sender id on her own channel, never by her name.
 - A source that could not be read is never reported as all clear, and a watchdog notices when a run did not happen.
-- Nobody is put down for three Saturdays in a row, and a week off resets the count. When someone reaches a limit, the message says whose limit it is.
+- Nobody is put down for three calendar weeks in a row, and a week off resets the count. When someone reaches the over-use limit, the message says whose limit it is.
 - If nothing needs Isla and nobody's dates were read, she gets no message.
 
 ## What is tested
 
-`npm test` runs 318 tests that pass and 1 that is skipped. The skipped one is a live cache check that only runs with `GHILLIE_LIVE=1` and a key. When I ran it live, it read 9,730 tokens from cache on the second tick. By package the passing tests are engine 121, stand-in 37, agent kit 31, eval harness 30, MCP server 16 (stdio and loopback HTTP), demo 16, Messages API build 14, Managed Agents build 14, feed 13, Agent SDK build 11, ledger 8 and deny-list 7. The HTTP test binds a local port.
+`npm test` passes 318 tests and skips one. The skipped one is a live cache check that only runs with `GHILLIE_LIVE=1` and a key. When I ran it live, it read 9,730 tokens from cache on the second tick. By package the passing tests are engine 121, stand-in 37, agent kit 31, eval harness 30, MCP server 16 (stdio and loopback HTTP), demo 16, Messages API build 14, Managed Agents build 14, feed 13, Agent SDK build 11, ledger 8 and deny-list 7. The HTTP test binds a local port.
 
-The engine tests cover coverage, the suggested split, over-use, each write guard, the findings from the security review and the closed grammar for dates. The MCP server is tested over real stdio and HTTP transports. There are tests for the feed adapters, for the stand-in (including people pretending to be the organiser over chat, mail and call notes), for the whole fortnight and for the deny-list.
+The engine tests cover the coverage counts, the suggested split, over-use, each write guard, the findings from the security review and the closed grammar for dates. The MCP server is tested over real stdio and HTTP transports. There are tests for the feed adapters, for the stand-in (including people pretending to be the organiser over chat, mail and call notes), for the whole fortnight and for the deny-list.
 
 For Phase 1b, the tests replay every stop reason of the hand-written loop through a stubbed client. On the Agent SDK they check that nothing is allowed by default, that the hook refuses a forged approval, and that a tick killed and resumed neither loses a decision nor repeats one. On Managed Agents they check that every write pauses, gets an answer and resumes. The ledger's hard stop and cassette replay are tested too. Every adversarial authority case goes through both the harness check and the service, and the test fails unless the two refuse it in the same way.
 

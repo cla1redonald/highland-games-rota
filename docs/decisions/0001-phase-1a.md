@@ -11,7 +11,7 @@ contradictory, and what was cut.
 
 1. The project brief asks for `.env.example` to hold one empty API-key variable named after the model provider. It
    also asks for a deny-list that fails on the provider's name anywhere outside the licence and the package.json
-   author fields. Both cannot hold, so the deny-list exempts that one empty line in `.env.example` and nothing else.
+   author fields. The two cannot both be met, so the deny-list exempts that one empty line in `.env.example` and nothing else.
 2. Every commit has to end with a co-author trailer whose address contains the same name, and the deny-list also has to
    run over `git log -p`. In history mode, commit trailers are exempt.
 3. TypeScript 7 is the current major, but typescript-eslint supports up to 6.0. The repo pins TypeScript 6 so that lint

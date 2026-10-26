@@ -7,5 +7,5 @@ What live runs leave behind, kept so they can be read and replayed without spend
   blanked before saving.
 - `managed/`: the exported event log of each Managed Agents session, one JSON line per event.
 
-The fortnight was recorded on 12 October 2026 on Sonnet 5.5: 19 ticks for $2.34. The Managed Agents logs are the 37
+The fortnight was recorded on 12 October 2026 on Sonnet 5.5: 19 ticks for $2.33. The Managed Agents logs are the 37
 eval sessions from the same day (`managed/eval/`).

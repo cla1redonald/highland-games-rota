@@ -9,10 +9,9 @@ impossible or contradictory, and what could not be done.
 
 ## How the live runs went
 
-1. The code was written and tested before any key was available, and run live afterwards. At the time there was no API
-   key in the environment, and the CLI's saved sign-in had expired with no refresh token ("user_oauth credentials ...
-   has client_id in config but missing refresh_token"). So everything was first tested against stubs. A key was then
-   supplied for the live runs and loaded into each command's environment only. It was never written to a file in this
+1. The code was written and tested against stubs first, because there was no API key in the environment and the
+   CLI's saved sign-in had expired with no refresh token ("user_oauth credentials ... has client_id in config but
+   missing refresh_token"). A key was supplied afterwards for the live runs and loaded into each command's environment only. It was never written to a file in this
    repo. The results are in `evals/results/`, the ledger is `ledger/spend.jsonl`, and the total is $32.74.
 2. The hard stop was lowered from $100 to $60, because the organisation's monthly limit is shared with other work. The
    runs were done in a fixed order of priority. That order was the Messages API build once, its three repeats, the
@@ -47,9 +46,9 @@ impossible or contradictory, and what could not be done.
    confirm-first means the repo's guard answers before it runs a write. A thin Streamable HTTP transport was still
    added to the server. It binds to loopback only, needs a bearer token on every request, keeps no state and is off
    unless `GHILLIE_HTTP_PORT` is set. The agent definition also has an `mcp` mode with every write tool on
-   `always_ask`, so the connector path is one public URL away. No run used it. Nor did any run use the SDK's
-   research-preview MCP tunnels API, which the reference notes this build worked from do not document, and which needs a
-   connector process and certificates.
+   `always_ask`, so the connector path is one public URL away. No run used it. No run used the SDK's
+   research-preview MCP tunnels API either. The reference notes this build was written from do not cover it, and it
+   needs a connector process and certificates.
 9. A deployment fires each session with a fixed opening message, so a scheduled run cannot carry the tick's evidence
    in its brief. The managed agent therefore has one extra custom tool, `gather_evidence`, which returns the same brief
    the other builds are given. The worker that answers scheduled sessions serves that tool as well. The rota server
@@ -129,10 +128,10 @@ impossible or contradictory, and what could not be done.
 26. Model ids live in `config.ts`. Sonnet 5.5 is used for all three builds, Opus 5.5 only for the comparison runs, and
     Haiku 5.5 for bulk checks.
 27. The builds are run on the cases the stand-in skips. The recurring-weekdays case is beyond the stand-in's reader,
-    but perhaps not beyond a model. It is graded for the builds and never counted as a flip.
+    but perhaps not beyond a model. It is graded for the builds and never counted as a case where a build and the stand-in disagree.
 28. The HTTP test binds a local port, which the sandbox used for the build blocks. It was run with binding allowed, and
     it runs unchanged in CI.
-29. The SDK hands a PostToolUse hook the tool's result as a plain string, and not as content blocks. This was measured
+29. The SDK hands a PostToolUse hook the tool's result as a plain string, and not as content blocks. This was found
     on the first live SDK case, from the session transcript, and the hook now reads both.
 30. When a harness check refuses a call for lack of authority, it is now recorded as the service's own refusal, with
     the service's refusal code, in both the SDK hook and the Managed Agents confirmer. A schema refusal is recorded as
