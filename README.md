@@ -49,7 +49,7 @@ I built the agent three times. All three builds use the same MCP server, system 
 
 ### By hand, on the Messages API
 
-Everything the other two builds get from a framework is written out here by hand. `packages/agent-messages` is 271 lines, 124 of them the loop, and it resends the whole conversation on every call, routes each stop reason itself, counts turns in code, checks each tool call against the server's schema before running it, matches results to their calls by id with errors marked, gives every turn a trace and a cost, and puts the stable part of the prompt first behind a cache breakpoint with the evidence last. Server-side fallbacks are on, and cassettes record a live run so the demo can replay it for free.
+Everything the other two builds get from a framework is written out here by hand. `packages/agent-messages` is 271 lines, and 124 of them are the loop. It resends the whole conversation on every call, deals with each stop reason itself and counts turns in code. Before running a tool call it checks it against the server's schema, then matches the result to the call by id and marks any error. Every turn gets a trace and a cost. The stable part of the prompt goes first behind a cache breakpoint, with the evidence last. Server-side fallbacks are on, and cassettes record a live run so the demo can replay it for free.
 
 On Sonnet 5.5 it passed 34 of 37 (91.9%) on the first run. Three repeats gave 89.2%, 86.5% and 89.2%. Pooled, the repeats come to 98 of 111, 88.3%, with a 95% Wilson interval of 81.0% to 93.0%. At the median a tick cost $0.092 and took 15 s. On Opus 5.5 it passed 35 of 37 (94.6%) at a median of $0.171 a tick.
 
