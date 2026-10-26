@@ -56,4 +56,4 @@ result from the rules before running the case.
 
 - **R22** The suggested split places bookings first and then the organiser's pencilled people. Yes people fill the emptiest game next, starting with whoever has done the fewest weeks running. A person who can only make one game is never crowded out of it. Chief Stewards are placed last, and only when a game would otherwise be short.
 - **R23** Nobody works three calendar weeks in a row, though two is fine, and a week off resets the count. The split looks ahead at bookings when it applies this.
-- **R29** Target is arenas times stewards per arena, unless set for the event. Green if the delta now (the people available minus the target) is at least zero, Amber if the Maybes could fill it, Red if short even then. A Saturday counts each person once.
+- **R29** Target is arenas times stewards per arena, unless set for the event. Green if the delta now (the people booked or saying Yes, minus the target) is at least zero, Amber if the Maybes could fill it, Red if short even then. A Saturday counts each person once.
