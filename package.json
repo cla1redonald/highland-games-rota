@@ -20,6 +20,7 @@
     "packages/agent-sdk",
     "packages/agent-managed",
     "apps/demo",
+    "apps/live",
     "evals"
   ],
   "scripts": {
@@ -38,7 +39,8 @@
     "managed:export": "npm run managed --silent -- export",
     "eval:live": "npm run build --silent && node evals/dist/live.js",
     "eval:baseline": "npm run build --silent && node evals/dist/live.js --impl stand-in",
-    "demo:live": "npm run build --silent && node apps/demo/dist/main.js --live"
+    "demo:live": "npm run build --silent && node apps/demo/dist/main.js --live",
+    "live": "node --conditions=ghillie-source --import tsx apps/live/src/main.ts"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

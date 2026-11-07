@@ -86,7 +86,7 @@ export interface TickResult {
   watchdog: string[];
 }
 
-function applyConsole(world: DemoWorld, action: ConsoleAction): string {
+export function applyConsole(world: DemoWorld, action: ConsoleAction): string {
   world.setNow(action.at);
   switch (action.action) {
     case 'pencil':

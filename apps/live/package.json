@@ -1,0 +1,25 @@
+{
+  "name": "@ghillie/live",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The room demo: a local page that runs the fortnight tick by tick on Managed Agents, live or replayed.",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "ghillie-source": "./src/show.ts",
+      "types": "./dist/show.d.ts",
+      "default": "./dist/show.js"
+    }
+  },
+  "dependencies": {
+    "@ghillie/agent-kit": "0.1.0",
+    "@ghillie/agent-managed": "0.1.0",
+    "@ghillie/agent-messages": "0.1.0",
+    "@ghillie/demo": "0.1.0",
+    "@ghillie/engine": "0.1.0",
+    "@ghillie/feed": "0.1.0",
+    "@ghillie/ledger": "0.1.0",
+    "@ghillie/stand-in": "0.1.0"
+  }
+}
